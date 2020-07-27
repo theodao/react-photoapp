@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true,
+    "jest": true,
+    "commonjs": true
+  },
+  "settings": {
+    "react": {
+      "version": "16.13.1"
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "jsx-a11y"],
+  "rules": {
+    "no-console": ["error", { "allow": ["tron", "disableYellowBox"] }],
+    "no-use-before-define": "error",
+    "comma-dangle": "error",
+    "import/no-named-as-default": "off",
+    "linebreak-style": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-filename-extension": "off",
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "class-methods-use-this": "off",
+    "max-len": ["error", { "code": 150 }],
+    "import/prefer-default-export": "off",
+    "no-undef": ["error"],
+    "no-unused-vars": "error",
+    "react/no-unescaped-entities": "off",
+    "react/forbid-prop-types": "off",
+  }
+}
