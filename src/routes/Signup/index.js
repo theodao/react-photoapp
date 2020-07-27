@@ -19,8 +19,8 @@ export default ({ history }) => {
         />
         <Button label="Sign in" width="full" />
         <LoginWrapper
+          className="u-cursorPointer"
           onClick={() => history.push('/login')}
-          style={{ cursor: 'pointer' }}
         >
           Login instead ?
         </LoginWrapper>

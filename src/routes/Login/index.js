@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors, Fonts } from '../../themes';
@@ -7,26 +8,49 @@ import { Colors, Fonts } from '../../themes';
 const { spacing } = Fonts;
 
 export default ({ history }) => {
+  const { handleSubmit, register } = useForm({
+    mode: 'onChange',
+  });
+
+  const onSubmit = ({ username, password }) => {
+    console.log(username);
+  };
+
   return (
     <Flex>
       <LoginBox>
         <LoginWrapper>Login</LoginWrapper>
-        <Input type="text" placeholder="Username" defaultValue="" />
-        <Input type="password" placeholder="Enter password" defaultValue="" />
-        <Button
-          label="Log in"
-          width="full"
-          style={{
-            marginBottom: spacing.small,
-          }}
-        />
-        <Button
-          label="Sign in"
-          width="full"
-          onClick={() => {
-            history.push('/signup');
-          }}
-        />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            type="text"
+            placeholder="Username"
+            defaultValue=""
+            name="username"
+            ref={register({})}
+          />
+          <Input
+            type="password"
+            placeholder="Enter password"
+            defaultValue=""
+            name="password"
+            ref={register({})}
+          />
+          <Button
+            label="Log in"
+            width="full"
+            onClick={handleSubmit(onSubmit)}
+            style={{
+              marginBottom: spacing.small,
+            }}
+          />
+          <Button
+            label="Sign in"
+            width="full"
+            onClick={() => {
+              history.push('/signup');
+            }}
+          />
+        </form>
       </LoginBox>
     </Flex>
   );
