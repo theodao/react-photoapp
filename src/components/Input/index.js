@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from '@gotitinc/design-system';
-import Fonts from '../../themes/fonts';
+import { Fonts } from '../../themes';
 
 const { spacing } = Fonts;
 const { Input, Label } = Form;

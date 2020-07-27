@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import Colors from '../../themes/colors';
-import Font from '../../themes/fonts';
+import { Colors, Fonts } from '../../themes';
 
-const { spacing } = Font;
+const { spacing } = Fonts;
 
 export default ({ history }) => {
   return (
