@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Colors from '../../themes/colors';
+import Font from '../../themes/fonts';
+
+const { spacing } = Font;
 
 export default ({ history }) => {
   return (
@@ -15,7 +18,7 @@ export default ({ history }) => {
           label="Log in"
           width="full"
           style={{
-            marginBottom: '10px',
+            marginBottom: spacing.small,
           }}
         />
         <Button
@@ -54,5 +57,5 @@ const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
   font-weight: 500;
-  margin: 10px 0;
+  margin: ${spacing.small} 0;
 `;

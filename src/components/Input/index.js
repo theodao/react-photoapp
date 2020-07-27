@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form } from '@gotitinc/design-system';
+import Fonts from '../../themes/fonts';
 
+const { spacing } = Fonts;
 const { Input, Label } = Form;
 
 export default ({
@@ -20,7 +22,7 @@ export default ({
       disabled={disabled}
       as={as}
       style={{
-        marginBottom: '10px',
+        marginBottom: spacing.small,
         ...style,
       }}
       {...rest}

@@ -1,3 +1,5 @@
+/** All color using in the application */
+
 const colors = {
   primaryBlue: '#375DE7',
   primaryDark: '#172B4D',
