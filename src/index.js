@@ -5,7 +5,7 @@ import createStore from './redux/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css';
-import './index.scss';
+import './styles/index.scss';
 import '@gotitinc/design-system/dist/index.min.css';
 
 const { store } = createStore();
