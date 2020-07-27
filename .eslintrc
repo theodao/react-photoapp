@@ -46,6 +46,8 @@
     "arrow-body-style": "off",
     "jsx-quotes": "off",
     "react/prop-types": 0,
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import rootReducer from '../reducer';
+import rootSaga from '../saga';
 
 export default () => {
   /** Redux configuration  */
@@ -21,10 +22,10 @@ export default () => {
   const store = createStore(rootReducer, compose(...enhancers));
 
   /** Run root saga  */
-  // const sagaManager = sagaMiddleware.run();
+  const sagaManager = sagaMiddleware.run(rootSaga);
 
   return {
     store,
-    // sagaManager,
+    sagaManager,
   };
 };
