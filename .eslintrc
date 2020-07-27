@@ -42,5 +42,6 @@
     "no-unused-vars": "error",
     "react/no-unescaped-entities": "off",
     "react/forbid-prop-types": "off",
+    "object-curly-newline": "off"
   }
 }
