@@ -26,7 +26,7 @@ const MainLayout = ({ loading, children, history, match }) => {
                 marginLeft: '10px',
               }}
             >
-              <TopMenu current={current} onSelect={setCurrent}>
+              <TopMenu current={current} onSelect={() => {}}>
                 <TopMenu.Item
                   eventKey="/dashboard"
                   onClick={() => history.push('/dashboard')}
