@@ -16,7 +16,7 @@ export default ({
   }, [currentPage]);
 
   useEffect(() => {
-    const numberOfPage = Math.trunc(totalItems / 10);
+    const numberOfPage = Math.ceil(totalItems / 10);
     const pageNumbers = [];
 
     for (let i = 1; i <= numberOfPage; i += 1) {

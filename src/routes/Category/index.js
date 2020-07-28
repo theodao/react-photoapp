@@ -1,5 +1,6 @@
 import React from 'react';
+import MainLayout from '../../Layout/MainLayout';
 
 export default () => {
-  return <>Category</>;
+  return <MainLayout>Category</MainLayout>;
 };

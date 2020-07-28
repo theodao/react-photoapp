@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Loader, TopMenu } from '@gotitinc/design-system';
+import { withRouter } from 'react-router-dom';
 import Button from '../components/Button';
 
-export default ({ loading, children }) => {
-  const [current, setCurrent] = useState('home');
+const MainLayout = ({ loading, children, history, match }) => {
+  const [current, setCurrent] = useState(match.path || '/dashboard');
 
   return (
     <div>
@@ -26,12 +27,24 @@ export default ({ loading, children }) => {
               }}
             >
               <TopMenu current={current} onSelect={setCurrent}>
-                <TopMenu.Item eventKey="home">Home</TopMenu.Item>
-                <TopMenu.Item eventKey="categories">
+                <TopMenu.Item
+                  eventKey="/dashboard"
+                  onClick={() => history.push('/dashboard')}
+                >
+                  Dashboard
+                </TopMenu.Item>
+                <TopMenu.Item
+                  eventKey="/add-category"
+                  onClick={() => history.push('/add-category')}
+                >
                   Add categories
                 </TopMenu.Item>
-                <TopMenu.Item eventKey="items">Add Items</TopMenu.Item>
-                <TopMenu.Item eventKey="about">About</TopMenu.Item>
+                <TopMenu.Item
+                  eventKey="/add-item"
+                  onClick={() => history.push('/add-item')}
+                >
+                  Add Items
+                </TopMenu.Item>
               </TopMenu>
             </div>
             <div>
@@ -49,6 +62,8 @@ export default ({ loading, children }) => {
     </div>
   );
 };
+
+export default withRouter(MainLayout);
 
 const Container = styled.div`
   position: fixed;
