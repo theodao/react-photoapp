@@ -1,23 +1,71 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm, Controller } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors } from '../../themes';
 
 export default ({ history }) => {
+  const { control, errors, handleSubmit } = useForm({
+    mode: 'onSubmit',
+  });
+
+  const onSubmit = ({ username, password, email }) => {};
+
   return (
     <Flex>
       <LoginBox>
         <LoginWrapper>Create an account</LoginWrapper>
-        <Input type="text" placeholder="Username" defaultValue="" />
-        <Input type="text" placeholder="Email" defaultValue="" />
-        <Input type="password" placeholder="Enter password" defaultValue="" />
-        <Input
-          type="password"
-          placeholder="Re enter password"
-          defaultValue=""
-        />
-        <Button label="Sign in" width="full" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            as={Input}
+            name="username"
+            placeholder="Username"
+            control={control}
+            type="text"
+            required
+            error={errors.username && errors.username.message}
+            defaultValue=""
+            rules={{
+              required: 'This field is required',
+            }}
+          />
+          <Controller
+            as={Input}
+            name="email"
+            control={control}
+            placeholder="Email"
+            type="text"
+            required
+            error={errors.username && errors.email.message}
+            defaultValue=""
+            rules={{
+              required: 'This field is required',
+            }}
+          />
+          <Controller
+            as={Input}
+            name="password"
+            placeholder="Password"
+            required
+            control={control}
+            error={errors.password && errors.password.message}
+            rules={{
+              minLength: {
+                message: 'Password must be more than 6 characters',
+                value: 6,
+              },
+              required: 'This field is required',
+            }}
+            type="password"
+            defaultValue=""
+          />
+          <Button
+            label="Sign in"
+            width="full"
+            onClick={handleSubmit(onSubmit)}
+          />
+        </form>
         <LoginWrapper
           className="u-cursorPointer"
           onClick={() => history.push('/login')}

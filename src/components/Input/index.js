@@ -3,7 +3,7 @@ import { Form } from '@gotitinc/design-system';
 import { Fonts } from '../../themes';
 
 const { spacing } = Fonts;
-const { Input, Label } = Form;
+const { Input, Label, Feedback } = Form;
 
 export default ({
   type,
@@ -11,21 +11,32 @@ export default ({
   label = null,
   disabled,
   as = 'input',
+  error = null,
   style = {},
   ...rest
 }) => (
-  <>
-    {label && <Label>{label}</Label>}
+  <div
+    style={{
+      marginBottom: spacing.small,
+    }}
+  >
+    {label && (
+      <Label>
+        {label}
+        {required && <span className="error"> *</span>}
+      </Label>
+    )}
     <Input
       type={type}
-      required={required}
       disabled={disabled}
+      required
+      isInvalid={error}
       as={as}
       style={{
-        marginBottom: spacing.small,
         ...style,
       }}
       {...rest}
     />
-  </>
+    {error && <Feedback type="invalid">{error}</Feedback>}
+  </div>
 );

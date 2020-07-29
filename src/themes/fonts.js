@@ -15,6 +15,7 @@ const size = {
 
 const spacing = {
   small: '10px',
+  medium: '15px',
 };
 
 export default {

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
@@ -9,55 +9,70 @@ import { Colors, Fonts } from '../../themes';
 
 const { spacing } = Fonts;
 
-const Login = ({ history, auth, dispatchLogin }) => {
-  const { handleSubmit, register } = useForm({
-    mode: 'onChange',
+const Login = ({ history, dispatchLogin }) => {
+  const { handleSubmit, control, errors } = useForm({
+    mode: 'onSubmit',
   });
 
   const onSubmit = ({ username, password }) => {
-    console.log(username);
+    dispatchLogin({
+      username,
+      password,
+    });
   };
 
   return (
     <Flex>
       <LoginBox>
         <LoginWrapper>Login</LoginWrapper>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-        <Input
-          type="text"
-          placeholder="Username"
-          defaultValue=""
-          name="username"
-          // ref={register({})}
-        />
-        <Input
-          type="password"
-          placeholder="Enter password"
-          defaultValue=""
-          name="password"
-          // ref={register({})}
-        />
-        <Button
-          label="Log in"
-          width="full"
-          onClick={() => {
-            dispatchLogin({
-              username: 1,
-              password: 2,
-            });
-          }}
-          style={{
-            marginBottom: spacing.small,
-          }}
-        />
-        <Button
-          label="Sign in"
-          width="full"
-          onClick={() => {
-            history.push('/signup');
-          }}
-        />
-        {/* </form> */}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            as={Input}
+            name="username"
+            control={control}
+            type="text"
+            required
+            label="Username"
+            error={errors.username && errors.username.message}
+            defaultValue=""
+            rules={{
+              required: 'This field is required',
+            }}
+          />
+          <Controller
+            as={Input}
+            name="password"
+            label="Password"
+            required
+            control={control}
+            error={errors.password && errors.password.message}
+            rules={{
+              minLength: {
+                message: 'Password must be more than 6 characters',
+                value: 6,
+              },
+              required: 'This field is required',
+            }}
+            type="password"
+            defaultValue=""
+          />
+          <Button
+            label="Log in"
+            width="full"
+            onClick={handleSubmit(onSubmit)}
+            style={{
+              marginBottom: spacing.small,
+              marginTop: spacing.small,
+            }}
+          />
+          <Button
+            label="Sign in"
+            width="full"
+            onClick={() => {
+              history.push('/signup');
+            }}
+          />
+        </form>
       </LoginBox>
     </Flex>
   );
