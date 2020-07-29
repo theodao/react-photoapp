@@ -49,6 +49,7 @@
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
     "implicit-arrow-linebreak": "off",
-    "require-yield": "warn"
+    "require-yield": "warn",
+    "react/jsx-one-expression-per-line": "off"
   }
 }

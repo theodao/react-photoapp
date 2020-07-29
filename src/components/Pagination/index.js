@@ -7,6 +7,7 @@ export default ({
   currentPage = 1,
   totalItems = 1,
   onChangePageNumber = () => {},
+  ...rest
 }) => {
   const [current, setCurrent] = useState(currentPage);
   const [pageList, setPageList] = useState([]);
@@ -28,7 +29,7 @@ export default ({
 
   return (
     <div className="u-textCenter">
-      <Pagination>
+      <Pagination {...rest}>
         <Prev
           disabled={current === 1}
           onClick={() => {
