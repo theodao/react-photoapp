@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import _get from 'lodash/get';
+import { connect } from 'react-redux';
+import CategoryActions from '../../redux/reducer/categoryReducer';
 import CardImage from '../../components/CardImage';
 import Pagination from '../../components/Pagination';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Http from '../../utils/HttpUtils';
 
-export default () => {
+const Dashboard = ({ category, fetchCategoryList }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [data, setData] = useState([]);
+
+  const { isFetching, categories } = category;
 
   useEffect(() => {
+    fetchCategoryList({
+      page: currentPage,
+    });
     Http.get('https://picsum.photos/v2/list?page=2&limit=10')
       .then((response) => {
         const responseData = _get(response, 'data', []);
-        setData(responseData);
       })
       .catch((err) => console.log(err));
   }, [currentPage]);
 
   return (
-    <MainLayout loading={false}>
+    <MainLayout loading={isFetching}>
       <Center>
         <Spacing size={SpacingSizes.LG} />
         <GridSystem>
@@ -43,6 +48,17 @@ export default () => {
     </MainLayout>
   );
 };
+
+const mapStateToProps = (state) => ({
+  category: state.category,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchCategoryList: (payload) =>
+    dispatch(CategoryActions.fetchCategories(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 const Center = styled.div`
   max-width: 1140px;

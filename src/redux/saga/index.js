@@ -6,5 +6,5 @@ import categorySaga from './categorySaga';
 import appSaga from './appSaga';
 
 export default function* root() {
-  yield all([...authSaga, ...categorySaga, ...appSaga]);
+  yield all([...authSaga, ...categorySaga]);
 }

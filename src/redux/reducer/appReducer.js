@@ -20,6 +20,6 @@ const setLoading = (state, { payload: isLoading }) =>
   });
 
 /** Link reducer to action types  */
-export const reducer = createReducer(INITIAL_STATE, {
-  [Types.IS_LOADING]: setLoading,
-});
+// export const reducer = createReducer(INITIAL_STATE, {
+//   [Types.IS_LOADING]: setLoading,
+// });

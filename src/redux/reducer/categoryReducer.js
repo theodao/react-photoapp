@@ -4,6 +4,7 @@ import produce from 'immer';
 const { Types, Creators } = createActions({
   setCategories: ['payload'],
   setItems: ['payload'],
+  setIsFetching: ['payload'],
   fetchCategories: ['payload'],
   fetchItems: ['payload'],
 });
@@ -15,6 +16,7 @@ export default Creators;
 const INITIAL_STATE = {
   categories: [],
   items: [],
+  isFetching: false,
 };
 
 /** Reducers */
@@ -28,8 +30,14 @@ const setItems = (state, { payload: data }) =>
     draft.items = data;
   });
 
+const setIsFetching = (state, { payload: isFetching }) =>
+  produce(state, (draft) => {
+    draft.isFetching = isFetching;
+  });
+
 /** Link reducer to Action Types */
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_CATEGORIES]: setCategories,
   [Types.SET_ITEMS]: setItems,
+  [Types.SET_IS_FETCHING]: setIsFetching,
 });
