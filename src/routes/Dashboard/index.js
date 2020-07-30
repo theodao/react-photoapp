@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import _get from 'lodash/get';
 import CardImage from '../../components/CardImage';
 import Pagination from '../../components/Pagination';
+import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Http from '../../utils/HttpUtils';
-import styles from './styles.module.scss';
 
 export default () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,6 +23,7 @@ export default () => {
   return (
     <MainLayout loading={false}>
       <Center>
+        <Spacing size={SpacingSizes.LG} />
         <GridSystem>
           {[100, 1000, 1002, 1001, 101, 1005, 1009, 1011, 1014, 1013].map(
             (item) => {
@@ -32,6 +33,7 @@ export default () => {
             },
           )}
         </GridSystem>
+        <Spacing size={SpacingSizes.LG} />
         <Pagination
           currentPage={currentPage}
           totalItems={7}

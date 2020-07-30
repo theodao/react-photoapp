@@ -6,6 +6,7 @@ import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors, Fonts } from '../../themes';
+import { error } from '../../constant';
 
 const { spacing } = Fonts;
 
@@ -36,7 +37,7 @@ const Login = ({ history, dispatchLogin }) => {
             error={errors.username && errors.username.message}
             defaultValue=""
             rules={{
-              required: 'This field is required',
+              required: error.REQUIRED,
             }}
           />
           <Controller
@@ -48,10 +49,10 @@ const Login = ({ history, dispatchLogin }) => {
             error={errors.password && errors.password.message}
             rules={{
               minLength: {
-                message: 'Password must be more than 6 characters',
+                message: error.PASSWORD_VALIDATION,
                 value: 6,
               },
-              required: 'This field is required',
+              required: error.REQUIRED,
             }}
             type="password"
             defaultValue=""

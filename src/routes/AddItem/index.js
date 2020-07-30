@@ -1,41 +1,58 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import MainLayout from '../../Layout/MainLayout';
 import { Fonts } from '../../themes';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import { error } from '../../constant';
 
 export default () => {
-  const { register } = useForm();
+  const { control, handleSubmit, errors } = useForm({
+    mode: 'onSubmit',
+  });
   const { spacing } = Fonts;
+
+  const onSubmit = ({ photoUrl, description }) => {};
 
   return (
     <MainLayout>
       <Flex>
         <LoginBox>
-          <Input
-            type="text"
-            placeholder="Photo URL"
-            defaultValue=""
-            name="photoUrl"
-            ref={register({})}
-          />
-          <Input
-            type="text"
-            placeholder="Description"
-            defaultValue=""
-            name="description"
-            ref={register({})}
-          />
-          <Button
-            label="Add"
-            width="full"
-            // onClick={handleSubmit(onSubmit)}
-            style={{
-              marginBottom: spacing.small,
-            }}
-          />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              as={Input}
+              type="text"
+              placeholder="Photo URL"
+              error={errors.photoUrl && errors.photoUrl.message}
+              control={control}
+              rules={{
+                required: error.REQUIRED,
+              }}
+              defaultValue=""
+              name="photoUrl"
+            />
+            <Controller
+              as={Input}
+              type="text"
+              placeholder="Description"
+              error={errors.description && errors.description.message}
+              defaultValue=""
+              rules={{
+                required: error.REQUIRED,
+              }}
+              name="description"
+              control={control}
+            />
+            <Button
+              label="Add"
+              width="full"
+              onClick={handleSubmit(onSubmit)}
+              style={{
+                marginBottom: spacing.small,
+              }}
+            />
+          </form>
         </LoginBox>
       </Flex>
     </MainLayout>

@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors } from '../../themes';
+import { error } from '../../constant';
 
 export default ({ history }) => {
   const { control, errors, handleSubmit } = useForm({
@@ -27,7 +28,7 @@ export default ({ history }) => {
             error={errors.username && errors.username.message}
             defaultValue=""
             rules={{
-              required: 'This field is required',
+              required: error.REQUIRED,
             }}
           />
           <Controller
@@ -40,7 +41,7 @@ export default ({ history }) => {
             error={errors.username && errors.email.message}
             defaultValue=""
             rules={{
-              required: 'This field is required',
+              required: error.REQUIRED,
             }}
           />
           <Controller
@@ -52,10 +53,10 @@ export default ({ history }) => {
             error={errors.password && errors.password.message}
             rules={{
               minLength: {
-                message: 'Password must be more than 6 characters',
+                message: error.PASSWORD_VALIDATION,
                 value: 6,
               },
-              required: 'This field is required',
+              required: error.REQUIRED,
             }}
             type="password"
             defaultValue=""
