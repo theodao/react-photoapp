@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Mainlayout component Should match snapshot 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "marginLeft": "10px",
+        }
+      }
+    >
+      <div
+        className="TopMenu u-backgroundWhite u-paddingVerticalExtraSmall"
+      >
+        <div
+          className="TopMenu-list"
+        >
+          <div
+            className="TopMenu-item u-positionRelative is-active u-flexInline u-alignItemsCenter u-cursorPointer"
+            onClick={[Function]}
+          >
+            <div
+              className="TopMenu-itemBefore u-positionAbsolute u-positionLeft u-positionTop u-backgroundTransparent u-widthFull"
+            />
+            <div
+              className="TopMenu-itemAfter u-positionAbsolute u-positionLeft u-positionBottom u-backgroundPrimary u-widthFull"
+            />
+            <span
+              className="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textPrimary"
+              onClick={[Function]}
+            >
+              <div
+                className="u-flexGrow-1"
+              >
+                Dashboard
+              </div>
+            </span>
+          </div>
+          <div
+            className="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
+            onClick={[Function]}
+          >
+            <a
+              className="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+            >
+              <div
+                className="u-flexGrow-1"
+              >
+                Add categories
+              </div>
+            </a>
+          </div>
+          <div
+            className="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
+            onClick={[Function]}
+          >
+            <a
+              className="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+            >
+              <div
+                className="u-flexGrow-1"
+              >
+                Add Items
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        className="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+        disabled={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "margin": "10px",
+          }
+        }
+      >
+        <span
+          className="Button-label u-inlineBlock"
+        >
+          Log out
+        </span>
+      </button>
+    </div>
+  </div>
+  <div />
+</div>
+`;

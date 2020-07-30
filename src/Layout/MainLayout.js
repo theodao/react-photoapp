@@ -4,7 +4,7 @@ import { Loader, TopMenu } from '@gotitinc/design-system';
 import { withRouter } from 'react-router-dom';
 import Button from '../components/Button';
 
-const MainLayout = ({ loading, children, history, match }) => {
+export const MainLayout = ({ loading, children, history, match }) => {
   const [current, setCurrent] = useState(match.path || '/dashboard');
 
   return (

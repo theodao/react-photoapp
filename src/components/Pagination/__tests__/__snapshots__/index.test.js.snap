@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Pagination component Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="u-textCenter"
+  >
+    <ul
+      class="Pagination u-marginNone u-paddingNone"
+    >
+      <li
+        class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-prev"
+      >
+        <span
+          class="u-block hover:u-textDecorationNone"
+        >
+          <div
+            class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+          >
+            <span
+              class="Button-icon u-inlineBlock"
+            >
+              <svg
+                aria-hidden="true"
+                class=""
+                focusable="false"
+                height="16px"
+                style="display: inline-block; vertical-align: middle;"
+                viewBox="0 0 24 24"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m10.0145413 11.9953152 6.6183511-6.80357144c.4894768-.50357143.4894768-1.31785715 0-1.81607143-.4894768-.50357143-1.2809712-.49821429-1.770448 0l-7.49836789 7.70892857c-.4738552.4875-.4842696 1.2696429-.0364504 1.7732143l7.52961109 7.7625c.2447384.2517857.5675848.375.885224.375s.6404856-.1232143.885224-.375c.4894768-.5035714.4894768-1.3178572 0-1.8160714z"
+                  style="fill: currentColor;"
+                />
+              </svg>
+            </span>
+          </div>
+        </span>
+      </li>
+      <li
+        class="Pagination-item is-active u-inlineBlock u-marginHorizontalTiny"
+      >
+        <span
+          class="u-block hover:u-textDecorationNone"
+        >
+          <div
+            class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone Button--small u-cursorPointer u-fontMedium"
+          >
+            1
+          </div>
+        </span>
+      </li>
+      <li
+        class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-next"
+      >
+        <span
+          class="u-block hover:u-textDecorationNone"
+        >
+          <div
+            class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+          >
+            <span
+              class="Button-icon u-inlineBlock"
+            >
+              <svg
+                aria-hidden="true"
+                class=""
+                focusable="false"
+                height="16px"
+                style="display: inline-block; vertical-align: middle;"
+                viewBox="0 0 24 24"
+                width="16px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m13.9854587 11.9966505-6.6183511-6.80610342c-.4894768-.50375884-.4894768-1.3183476 0-1.8167473.48947679-.49839971 1.28097118-.49839971 1.77044798 0l7.49836792 7.71179752c.4738552.4876814.4842696 1.2701154.0364504 1.7738742l-7.52961112 7.7653889c-.2447384.2518795-.5675848.3751396-.88522399.3751396-.3176392 0-.6404856-.1232601-.88522399-.3751396-.4894768-.5037588-.4894768-1.3183476 0-1.8167473z"
+                  style="fill: currentColor;"
+                />
+              </svg>
+            </span>
+          </div>
+        </span>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
