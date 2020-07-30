@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing input component Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    style="margin-bottom: 10px;"
+  >
+    <input
+      class="FormInput u-block u-widthFull u-webkitScrollbar"
+      required=""
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -14,29 +14,31 @@ export default ({
   error = null,
   style = {},
   ...rest
-}) => (
-  <div
-    style={{
-      marginBottom: spacing.small,
-    }}
-  >
-    {label && (
-      <Label>
-        {label}
-        {required && <span className="error"> *</span>}
-      </Label>
-    )}
-    <Input
-      type={type}
-      disabled={disabled}
-      required
-      isInvalid={error}
-      as={as}
+}) => {
+  return (
+    <div
       style={{
-        ...style,
+        marginBottom: spacing.small,
       }}
-      {...rest}
-    />
-    {error && <Feedback type="invalid">{error}</Feedback>}
-  </div>
-);
+    >
+      {label && (
+        <Label>
+          {label}
+          {required && <span className="error"> *</span>}
+        </Label>
+      )}
+      <Input
+        type={type}
+        disabled={disabled}
+        required
+        isInvalid={error}
+        as={as}
+        style={{
+          ...style,
+        }}
+        {...rest}
+      />
+      {error && <Feedback type="invalid">{error}</Feedback>}
+    </div>
+  );
+};
