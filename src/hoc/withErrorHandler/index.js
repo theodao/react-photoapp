@@ -27,7 +27,7 @@ const withErrorHandler = (WrappedComponent) => {
         },
         (err) => {
           /** Custom behavior of error status code here  */
-          return Promise.reject(err.response);
+          return Promise.reject(err.response.data);
         },
       );
     }

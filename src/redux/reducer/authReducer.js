@@ -6,6 +6,7 @@ const { Types, Creators } = createActions({
   setUserToken: ['payload'],
   login: ['payload'],
   logout: ['payload'],
+  signup: ['payload'],
 });
 
 export const AuthTypes = Types;

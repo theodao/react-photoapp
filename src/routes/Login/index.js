@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
+import { toast, Icon } from '@gotitinc/design-system';
+import ToastContent from '../../components/ToastContent';
 import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -15,10 +17,15 @@ const Login = ({ history, dispatchLogin }) => {
     mode: 'onSubmit',
   });
 
+  const notifyLoginFail = (content) =>
+    toast.error(() => <ToastContent title="Log in fail" content={content} />);
+
   const onSubmit = ({ username, password }) => {
     dispatchLogin({
       username,
       password,
+      history,
+      onFailure: notifyLoginFail,
     });
   };
 

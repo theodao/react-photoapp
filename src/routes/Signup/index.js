@@ -1,17 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
+import { connect } from 'react-redux';
+import { toast, Icon } from '@gotitinc/design-system';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import ToastContent from '../../components/ToastContent';
 import { Colors } from '../../themes';
 import { error } from '../../constant';
+import AuthActions from '../../redux/reducer/authReducer';
 
-export default ({ history }) => {
+const Signup = ({ history, dispatchSignup }) => {
   const { control, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
 
-  const onSubmit = ({ username, password, email }) => {};
+  const notifySignupSuccess = (content) =>
+    toast.success(() => (
+      <ToastContent title="Sign up success" content={content} />
+    ));
+
+  const notifySignupFail = (content) =>
+    toast.error(() => <ToastContent title="Sign up fail" content={content} />);
+
+  const onSubmit = ({ username, password, email }) => {
+    dispatchSignup({
+      username,
+      password,
+      email,
+      onSuccess: notifySignupSuccess,
+      onFailure: notifySignupFail,
+      history,
+    });
+  };
 
   return (
     <Flex>
@@ -77,6 +98,14 @@ export default ({ history }) => {
     </Flex>
   );
 };
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchSignup: (payload) => dispatch(AuthActions.signup(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
 
 const Flex = styled.div`
   display: flex;
