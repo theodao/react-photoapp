@@ -1,6 +1,10 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import CategoryActions, { CategoryTypes } from '../reducer/categoryReducer';
-import { getListCategories, createNewCategory } from '../../services/api';
+import {
+  getListCategories,
+  createNewCategory,
+  createNewItem,
+} from '../../services/api';
 
 function* fetchCategories({ payload }) {
   try {
@@ -8,16 +12,29 @@ function* fetchCategories({ payload }) {
 
     const { page = 2, limit = 10 } = payload;
 
-    // const response = yield call(getListCategories, page, limit);
+    const response = yield call(getListCategories, page, limit);
 
     yield put(CategoryActions.setIsFetching(false));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
 function* fetchItems({ payload }) {
-  console.log(payload);
+  const { photoUrl, description, categoryId } = payload;
+
+  try {
+    const response = yield call(
+      createNewItem,
+      {
+        photoUrl,
+        description,
+      },
+      categoryId,
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function* addCategory({ payload }) {

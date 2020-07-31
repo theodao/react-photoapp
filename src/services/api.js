@@ -23,6 +23,10 @@ export const createNewCategory = (data) => {
   return Http.post(`${END_POINT}/categories`, data);
 };
 
+export const createNewItem = (data, categoryId) => {
+  return Http.post(`${END_POINT}/categories/${categoryId}/items`, data);
+};
+
 export const login = (data) => {
   return Http.post(`${END_POINT}/login`, data);
 };
