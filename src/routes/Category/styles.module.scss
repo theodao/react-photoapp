@@ -1,0 +1,97 @@
+$transition: all 0.25s ease-in-out;
+$black: #111;
+
+.containerFluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.imageItem {
+  width: calc(1 / 4 * 100% - (1 - 1 / 4) * 26px);
+  margin: 0 10px;
+}
+
+.row > div:nth-child(4n) {
+  margin-right: 0;
+}
+
+.galleryCard {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.galleryThumbnail {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.cardIconOpen {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: $transition;
+
+  &:focus,
+  &:hover {
+    color: $black;
+  }
+}
+
+.galleryThumbnail:focus ~ .cardIconOpen,
+.galleryThumbnail:hover ~ .cardIconOpen,
+.galleryThumbnail ~ .cardIconOpen:focus,
+.galleryThumbnail ~ .cardIconOpen:hover {
+  opacity: 1;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(21, 21, 21, 0.75);
+}
+
+.modalBody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  padding: 0;
+  overflow: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.modalClose {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 1.5rem;
+  color: $black;
+  transition: $transition;
+
+  &:focus,
+  &:hover {
+    color: #fff;
+  }
+}
