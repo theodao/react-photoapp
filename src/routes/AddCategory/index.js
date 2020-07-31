@@ -1,20 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
+import { connect } from 'react-redux';
 import MainLayout from '../../Layout/MainLayout';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Fonts } from '../../themes';
 import { error } from '../../constant';
+import CategoryActions, {
+  CategoryTypes,
+} from '../../redux/reducer/categoryReducer';
 
 const { spacing } = Fonts;
 
-export default () => {
+const AddCategory = ({ dispatchAddCategory }) => {
   const { handleSubmit, errors, control } = useForm({
     mode: 'onSubmit',
   });
 
-  const onSubmit = ({ name, description, photoUrl }) => {};
+  const onSubmit = ({ name, description, photoUrl }) => {
+    dispatchAddCategory({
+      name,
+      description,
+    });
+  };
 
   return (
     <MainLayout>
@@ -71,6 +80,15 @@ export default () => {
     </MainLayout>
   );
 };
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchAddCategory: (payload) =>
+    dispatch(CategoryActions.addCategory(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);
 
 const Flex = styled.div`
   display: flex;

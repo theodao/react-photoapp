@@ -19,8 +19,11 @@ export const getListCategories = (page, limit) => {
 
 // export const updateItem = () => {}
 
+export const createNewCategory = (data) => {
+  return Http.post(`${END_POINT}/categories`, data);
+};
+
 export const login = (data) => {
-  console.log(data);
   return Http.post(`${END_POINT}/login`, data);
 };
 

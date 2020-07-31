@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import _get from 'lodash/get';
 import Http from '../../utils/HttpUtils';
 
 const withErrorHandler = (WrappedComponent) => {
@@ -27,7 +28,8 @@ const withErrorHandler = (WrappedComponent) => {
         },
         (err) => {
           /** Custom behavior of error status code here  */
-          return Promise.reject(err.response.data);
+          const errorObject = _get(err, 'response.data', {});
+          return Promise.reject(errorObject);
         },
       );
     }

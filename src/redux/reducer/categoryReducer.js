@@ -7,6 +7,8 @@ const { Types, Creators } = createActions({
   setIsFetching: ['payload'],
   fetchCategories: ['payload'],
   fetchItems: ['payload'],
+  addItem: ['payload'],
+  addCategory: ['payload'],
 });
 
 export const CategoryTypes = Types;
