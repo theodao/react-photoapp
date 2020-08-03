@@ -7,14 +7,14 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import ToastContent from '../../components/ToastContent';
 import { Colors } from '../../themes';
-import { error } from '../../constant';
+import { error } from '../../constants';
 import AuthActions from '../../redux/reducer/authReducer';
 
 export const Signup = ({ history, dispatchSignup, auth }) => {
   const { control, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { isLoggedIn } = auth;
     if (isLoggedIn) {
       history.push('/dashboard');
@@ -105,11 +105,11 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   dispatchSignup: (payload) => dispatch(AuthActions.signup(payload)),
 });
 

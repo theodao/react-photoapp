@@ -36,25 +36,25 @@ describe('Testing dashboard route', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Should call api', () => {
-    const mockFetchingData = jest.fn();
+  // it('Should call api', () => {
+  //   const mockFetchingData = jest.fn();
 
-    const tree = renderer.create(
-      <Provider store={store}>
-        <Dashboard
-          category={{
-            isFetching: false,
-            categories: [],
-          }}
-          auth={{
-            isLoggedIn: false,
-          }}
-          fetchCategoryList={mockFetchingData}
-        />
-      </Provider>,
-    );
-    tree.update();
+  //   const tree = renderer.create(
+  //     <Provider store={store}>
+  //       <Dashboard
+  //         category={{
+  //           isFetching: false,
+  //           categories: [],
+  //         }}
+  //         auth={{
+  //           isLoggedIn: false,
+  //         }}
+  //         fetchCategoryList={mockFetchingData}
+  //       />
+  //     </Provider>,
+  //   );
+  //   tree.update();
 
-    expect(mockFetchingData).toHaveBeenCalled();
-  });
+  //   expect(mockFetchingData).toHaveBeenCalled();
+  // });
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { Signup } from '../';
+import { Signup, mapStateToProps, mapDispatchToProps } from '../';
 
 describe('Testing sign up route', () => {
   afterEach(cleanup);
@@ -40,5 +40,27 @@ describe('Testing sign up route', () => {
     );
     tree.update();
     expect(pushFunction).toHaveBeenCalled();
+  });
+
+  it('Testing mapStateToProps', () => {
+    const state = {
+      auth: {
+        isLoggedIn: false,
+      },
+    };
+
+    const transformedState = mapStateToProps(state);
+
+    expecet(transformedState.auth.isLoggedIn).toBe(false);
+  });
+
+  it('Testing mapDistpachToProps', () => {
+    const mockedDispatchFunction = jest.fn();
+
+    const dispatchFunctions = mapDispatchToProps(mockedDispatchFunction);
+
+    dispatchFunctions.dispatchSignup();
+
+    expect(mockedDispatchFunction).toHaveBeenCalled();
   });
 });

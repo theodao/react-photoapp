@@ -5,7 +5,7 @@ import MainLayout from '../../Layout/MainLayout';
 import { Fonts } from '../../themes';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import { error } from '../../constant';
+import { error } from '../../constants';
 
 export default () => {
   const { control, handleSubmit, errors } = useForm({

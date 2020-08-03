@@ -8,7 +8,7 @@ import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors, Fonts } from '../../themes';
-import { error } from '../../constant';
+import { error } from '../../constants';
 
 const { spacing } = Fonts;
 
@@ -86,11 +86,11 @@ export const Login = ({ history, dispatchLogin }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   dispatchLogin: (payload) => dispatch(AuthActions.login(payload)),
 });
 

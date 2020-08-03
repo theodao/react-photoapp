@@ -6,7 +6,7 @@ import MainLayout from '../../Layout/MainLayout';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Fonts } from '../../themes';
-import { error } from '../../constant';
+import { error } from '../../constants';
 import CategoryActions, {
   CategoryTypes,
 } from '../../redux/reducer/categoryReducer';
