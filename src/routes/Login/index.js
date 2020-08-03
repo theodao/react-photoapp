@@ -20,9 +20,9 @@ const Login = ({ history, dispatchLogin }) => {
   const notifyLoginFail = (content) =>
     toast.error(() => <ToastContent title="Log in fail" content={content} />);
 
-  const onSubmit = ({ username, password }) => {
+  const onSubmit = ({ email, password }) => {
     dispatchLogin({
-      username,
+      email,
       password,
       history,
       onFailure: notifyLoginFail,
@@ -36,12 +36,12 @@ const Login = ({ history, dispatchLogin }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             as={Input}
-            name="username"
+            name="email"
             control={control}
             type="text"
             required
-            label="Username"
-            error={errors.username && errors.username.message}
+            label="Email"
+            error={errors.email && errors.email.message}
             defaultValue=""
             rules={{
               required: error.REQUIRED,

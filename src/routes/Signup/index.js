@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -10,10 +10,17 @@ import { Colors } from '../../themes';
 import { error } from '../../constant';
 import AuthActions from '../../redux/reducer/authReducer';
 
-const Signup = ({ history, dispatchSignup }) => {
+const Signup = ({ history, dispatchSignup, auth }) => {
   const { control, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
+
+  useEffect(() => {
+    const { isLoggedIn } = auth;
+    if (isLoggedIn) {
+      history.push('/dashboard');
+    }
+  }, []);
 
   const notifySignupSuccess = (content) =>
     toast.success(() => (
@@ -83,7 +90,7 @@ const Signup = ({ history, dispatchSignup }) => {
             defaultValue=""
           />
           <Button
-            label="Sign in"
+            label="Sign up"
             width="full"
             onClick={handleSubmit(onSubmit)}
           />
@@ -99,7 +106,9 @@ const Signup = ({ history, dispatchSignup }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchSignup: (payload) => dispatch(AuthActions.signup(payload)),

@@ -13,7 +13,6 @@ export const AuthTypes = Types;
 export default Creators;
 
 /** Initial State  */
-
 const INITIAL_STATE = {
   isLoggedIn: false,
   userToken: null,

@@ -10,7 +10,7 @@ export const addHttpHeaders = (headers) => {
 };
 
 const getToken = () => {
-  return localStorage.getItem('userToken');
+  return localStorage.getItem('token');
 };
 
 /** Request interceptos  */

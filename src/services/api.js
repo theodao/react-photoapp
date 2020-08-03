@@ -28,11 +28,15 @@ export const createNewItem = (data, categoryId) => {
 };
 
 export const login = (data) => {
-  return Http.post(`${END_POINT}/login`, data);
+  return Http.post(`${END_POINT}/auth`, data);
 };
 
 // export const logout = () => {}
 
 export const signup = (data) => {
-  return Http.post(`${END_POINT}/registrations`, data);
+  return Http.post(`${END_POINT}/users`, data);
+};
+
+export const getUserInformation = () => {
+  return Http.get(`${END_POINT}/users/me`);
 };

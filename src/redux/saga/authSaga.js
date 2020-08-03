@@ -1,18 +1,23 @@
 import { takeLatest, put } from 'redux-saga/effects';
+import _get from 'lodash/get';
 import AuthActions, { AuthTypes } from '../reducer/authReducer';
 import { signup as _signup, login as _login } from '../../services/api';
 import { mappingErrorResponse } from '../../utils/helper';
 
 function* login({ payload }) {
-  const { username, password, history, onFailure } = payload;
+  const { email, password, history, onFailure } = payload;
   try {
     const response = yield _login({
-      username,
+      email,
       password,
     });
 
     if (response.status === 200) {
       yield put(AuthActions.setIsLoggedIn(true));
+      const token = _get(response, 'data.access_token', null);
+      if (token !== null) {
+        localStorage.setItem('token', token);
+      }
       history.push('/dashboard');
     }
   } catch (error) {
@@ -32,12 +37,11 @@ function* login({ payload }) {
 // }
 
 function* signup({ payload }) {
-  const { email, username, password, onSuccess, onFailure, history } = payload;
+  const { email, password, onSuccess, onFailure, history } = payload;
 
   try {
     const response = yield _signup({
       email,
-      username,
       password,
       name: payload.username,
     });
