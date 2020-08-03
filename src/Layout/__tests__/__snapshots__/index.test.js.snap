@@ -97,7 +97,7 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
         <span
           className="Button-label u-inlineBlock"
         >
-          Log out
+          Login
         </span>
       </button>
     </div>

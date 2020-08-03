@@ -14,19 +14,28 @@ describe('Testing Mainlayout component', () => {
   };
 
   it('Should match snapshot', () => {
-    const pushFunction = jest.fn();
-
-    const history = {
-      push: pushFunction,
-    };
-
-    const tree = renderer.create(<MainLayout match={{ path: '' }} />).toJSON();
+    const tree = renderer
+      .create(
+        <MainLayout
+          match={{ path: '' }}
+          auth={{
+            isLoggedIn: false,
+          }}
+        />,
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('Should push to dashboard when clicking dashboard', () => {
     const wrapper = shallow(
-      <MainLayout match={{ path: '' }} history={history} />,
+      <MainLayout
+        match={{ path: '' }}
+        history={history}
+        auth={{
+          isLoggedIn: false,
+        }}
+      />,
     );
 
     wrapper
@@ -41,7 +50,13 @@ describe('Testing Mainlayout component', () => {
 
   it('Should push to add category when clicking add category', () => {
     const wrapper = shallow(
-      <MainLayout match={{ path: '' }} history={history} />,
+      <MainLayout
+        match={{ path: '' }}
+        auth={{
+          isLoggedIn: false,
+        }}
+        history={history}
+      />,
     );
 
     wrapper
@@ -56,7 +71,13 @@ describe('Testing Mainlayout component', () => {
 
   it('Should push to add item when clicking to add item', () => {
     const wrapper = shallow(
-      <MainLayout match={{ path: '' }} history={history} />,
+      <MainLayout
+        match={{ path: '' }}
+        auth={{
+          isLoggedIn: false,
+        }}
+        history={history}
+      />,
     );
 
     wrapper
@@ -67,5 +88,27 @@ describe('Testing Mainlayout component', () => {
       .props()
       .onClick();
     expect(pushFunction).toHaveBeenCalled();
+  });
+
+  it('Should dispatch logout when user is logged in', () => {
+    const dispatchLogout = jest.fn();
+
+    const wrapper = shallow(
+      <MainLayout
+        match={{ path: '' }}
+        auth={{
+          isLoggedIn: true,
+        }}
+        history={history}
+        dispatchLogout={dispatchLogout}
+      />,
+    );
+
+    wrapper
+      .findWhere((c) => c.name() === '_default' && c.prop('label') === 'Logout')
+      .props()
+      .onClick();
+
+    expect(dispatchLogout).toHaveBeenCalled();
   });
 });
