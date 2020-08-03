@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ const Signup = ({ history, dispatchSignup, auth }) => {
     mode: 'onSubmit',
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { isLoggedIn } = auth;
     if (isLoggedIn) {
       history.push('/dashboard');

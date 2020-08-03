@@ -18,7 +18,7 @@ export default Creators;
 const INITIAL_STATE = {
   categories: [],
   items: [],
-  isFetching: false,
+  isFetching: true,
 };
 
 /** Reducers */

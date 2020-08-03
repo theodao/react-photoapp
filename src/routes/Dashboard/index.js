@@ -9,10 +9,11 @@ import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Http from '../../utils/HttpUtils';
 
-const Dashboard = ({ category, fetchCategoryList }) => {
+const Dashboard = ({ category, fetchCategoryList, auth }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { isFetching, categories } = category;
+  const { isLoggedIn } = auth;
 
   useEffect(() => {
     fetchCategoryList({
@@ -51,6 +52,7 @@ const Dashboard = ({ category, fetchCategoryList }) => {
 
 const mapStateToProps = (state) => ({
   category: state.category,
+  auth: state.auth,
 });
 
 const mapDispatchToProps = (dispatch) => ({

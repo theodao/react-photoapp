@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Loader, TopMenu } from '@gotitinc/design-system';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import AuthActions from '../redux/reducer/authReducer';
 import Button from '../components/Button';
 
-export const MainLayout = ({ loading, children, history, match }) => {
+export const MainLayout = ({
+  loading,
+  children,
+  history,
+  match,
+  auth,
+  dispatchLogout,
+}) => {
   const [current, setCurrent] = useState(match.path || '/dashboard');
+  const { isLoggedIn } = auth;
 
   return (
     <div>
@@ -49,9 +59,15 @@ export const MainLayout = ({ loading, children, history, match }) => {
             </div>
             <div>
               <Button
-                label="Log out"
+                label={`${isLoggedIn ? 'Logout' : 'Login'}`}
                 style={{
                   margin: '10px',
+                }}
+                onClick={() => {
+                  if (isLoggedIn) {
+                    dispatchLogout();
+                  }
+                  history.push('/login');
                 }}
               />
             </div>
@@ -63,7 +79,20 @@ export const MainLayout = ({ loading, children, history, match }) => {
   );
 };
 
-export default withRouter(MainLayout);
+const MainLayoutWithRouter = withRouter(MainLayout);
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatchLogout: () => dispatch(AuthActions.logout()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainLayoutWithRouter);
 
 const Container = styled.div`
   position: fixed;

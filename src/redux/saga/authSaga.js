@@ -32,9 +32,14 @@ function* login({ payload }) {
   }
 }
 
-// function* logout({ payload }) {
-//   console.log(payload);
-// }
+function* logout() {
+  try {
+    yield put(AuthActions.setIsLoggedIn(false));
+    localStorage.removeItem('token');
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function* signup({ payload }) {
   const { email, password, onSuccess, onFailure, history } = payload;
@@ -58,6 +63,6 @@ function* signup({ payload }) {
 
 export default [
   takeLatest(AuthTypes.LOGIN, login),
-  // takeLatest(AuthTypes.LOGOUT, logout),
+  takeLatest(AuthTypes.LOGOUT, logout),
   takeLatest(AuthTypes.SIGNUP, signup),
 ];
