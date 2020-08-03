@@ -9,7 +9,7 @@ import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Http from '../../utils/HttpUtils';
 
-const Dashboard = ({ category, fetchCategoryList, auth }) => {
+export const Dashboard = ({ category, fetchCategoryList, auth }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { isFetching, categories } = category;

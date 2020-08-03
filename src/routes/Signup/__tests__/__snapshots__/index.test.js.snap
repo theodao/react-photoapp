@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing sign up route Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gItfda"
+  >
+    <div
+      class="sc-AxirZ jnnTzo"
+    >
+      <div
+        class="sc-AxiKw jbrNmo"
+      >
+        Create an account
+      </div>
+      <form>
+        <div
+          style="margin-bottom: 10px;"
+        >
+          <input
+            class="FormInput u-block u-widthFull u-webkitScrollbar"
+            name="username"
+            placeholder="Username"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          style="margin-bottom: 10px;"
+        >
+          <input
+            class="FormInput u-block u-widthFull u-webkitScrollbar"
+            name="email"
+            placeholder="Email"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          style="margin-bottom: 10px;"
+        >
+          <input
+            class="FormInput u-block u-widthFull u-webkitScrollbar"
+            name="password"
+            placeholder="Password"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+        >
+          <span
+            class="Button-label u-inlineBlock"
+          >
+            Sign up
+          </span>
+        </button>
+      </form>
+      <div
+        class="sc-AxiKw jbrNmo u-cursorPointer"
+      >
+        Login instead ?
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

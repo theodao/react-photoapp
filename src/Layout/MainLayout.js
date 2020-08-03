@@ -10,7 +10,7 @@ export const MainLayout = ({
   loading,
   children,
   history,
-  match,
+  match = {},
   auth,
   dispatchLogout,
 }) => {

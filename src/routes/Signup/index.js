@@ -10,12 +10,11 @@ import { Colors } from '../../themes';
 import { error } from '../../constant';
 import AuthActions from '../../redux/reducer/authReducer';
 
-const Signup = ({ history, dispatchSignup, auth }) => {
+export const Signup = ({ history, dispatchSignup, auth }) => {
   const { control, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     const { isLoggedIn } = auth;
     if (isLoggedIn) {
       history.push('/dashboard');

@@ -12,7 +12,7 @@ import { error } from '../../constant';
 
 const { spacing } = Fonts;
 
-const Login = ({ history, dispatchLogin }) => {
+export const Login = ({ history, dispatchLogin }) => {
   const { handleSubmit, control, errors } = useForm({
     mode: 'onSubmit',
   });
