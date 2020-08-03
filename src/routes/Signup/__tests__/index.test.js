@@ -51,7 +51,7 @@ describe('Testing sign up route', () => {
 
     const transformedState = mapStateToProps(state);
 
-    expecet(transformedState.auth.isLoggedIn).toBe(false);
+    expect(transformedState.auth.isLoggedIn).toBe(false);
   });
 
   it('Testing mapDistpachToProps', () => {

@@ -9,7 +9,7 @@ export const addHttpHeaders = (headers) => {
   Http.defaults.headers = { ...Http.defaults.headers, ...headers };
 };
 
-const getToken = () => {
+export const getToken = () => {
   return localStorage.getItem('token');
 };
 
