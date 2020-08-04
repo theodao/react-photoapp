@@ -1,29 +1,22 @@
+/* eslint-disable dot-notation */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import _get from 'lodash/get';
 import { connect } from 'react-redux';
 import CategoryActions from '../../redux/reducer/categoryReducer';
 import CardImage from '../../components/CardImage';
 import Pagination from '../../components/Pagination';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
-import Http from '../../utils/HttpUtils';
 
 export const Dashboard = ({ category, fetchCategoryList, auth }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { isFetching, categories } = category;
-  const { isLoggedIn } = auth;
+  const { isFetching, categories, totalCategories } = category;
 
   useEffect(() => {
     fetchCategoryList({
-      page: currentPage,
+      page: 0 + (currentPage - 1) * 10,
     });
-    Http.get('https://picsum.photos/v2/list?page=2&limit=10')
-      .then((response) => {
-        const responseData = _get(response, 'data', []);
-      })
-      .catch((err) => console.log(err));
   }, [currentPage]);
 
   return (
@@ -31,18 +24,14 @@ export const Dashboard = ({ category, fetchCategoryList, auth }) => {
       <Center>
         <Spacing size={SpacingSizes.LG} />
         <GridSystem>
-          {[100, 1000, 1002, 1001, 101, 1005, 1009, 1011, 1014, 1013].map(
-            (item) => {
-              return (
-                <CardImage src={`https://picsum.photos/id/${item}/3000/2000`} />
-              );
-            },
-          )}
+          {categories.map((item) => {
+            return <CardImage src={item['image_url']} title={item['name']} />;
+          })}
         </GridSystem>
         <Spacing size={SpacingSizes.LG} />
         <Pagination
           currentPage={currentPage}
-          totalItems={7}
+          totalItems={totalCategories}
           onChangePageNumber={setCurrentPage}
         />
       </Center>
@@ -75,9 +64,4 @@ const GridSystem = styled.div`
   grid-row-gap: 15px;
   max-width: 1140px;
   align-items: center;
-`;
-
-const GridItem = styled.div`
-  width: 100%;
-  height: 100%;
 `;

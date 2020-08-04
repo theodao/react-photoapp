@@ -15,7 +15,14 @@ export const compose = (...funcs) =>
  * @returns Array of error
  */
 
-export const mappingErrorResponse = (errorResponse) =>
+export const mappingErrorResponse = (errorResponse) => {
+  if (typeof errorResponse === 'string') {
+    return errorResponse;
+  }
+
   Object.keys(errorResponse).reduce((result, key) => {
     return result.concat(errorResponse[key]);
   }, []);
+
+  return '';
+};

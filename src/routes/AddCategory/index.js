@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { toast } from '@gotitinc/design-system';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import MainLayout from '../../Layout/MainLayout';
 import Input from '../../components/Input';
+import ToastContent from '../../components/ToastContent';
 import Button from '../../components/Button';
 import { Fonts } from '../../themes';
 import { error } from '../../constants';
-import CategoryActions, {
-  CategoryTypes,
-} from '../../redux/reducer/categoryReducer';
+import CategoryActions from '../../redux/reducer/categoryReducer';
 
 const { spacing } = Fonts;
 
@@ -18,10 +18,23 @@ const AddCategory = ({ dispatchAddCategory }) => {
     mode: 'onSubmit',
   });
 
+  const notifySignupSuccess = (content) =>
+    toast.success(() => (
+      <ToastContent title="Add category success" content={content} />
+    ));
+
+  const notifySignupFail = (content) =>
+    toast.error(() => (
+      <ToastContent title="Add category fail" content={content} />
+    ));
+
   const onSubmit = ({ name, description, photoUrl }) => {
     dispatchAddCategory({
       name,
       description,
+      photoUrl,
+      onSuccess: notifySignupSuccess,
+      onFailure: notifySignupFail,
     });
   };
 
@@ -81,7 +94,7 @@ const AddCategory = ({ dispatchAddCategory }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchAddCategory: (payload) =>

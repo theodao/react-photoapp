@@ -1,8 +1,8 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
-import { toast, Icon } from '@gotitinc/design-system';
+import { toast } from '@gotitinc/design-system';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import ToastContent from '../../components/ToastContent';

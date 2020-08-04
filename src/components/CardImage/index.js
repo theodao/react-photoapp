@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-export default ({ src, onClick = () => {} }) => {
+export default ({ src, onClick = () => {}, title = 'Category' }) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
@@ -14,7 +14,7 @@ export default ({ src, onClick = () => {} }) => {
         {' '}
         <img src={src} alt="#placeholder" />{' '}
       </div>
-      <div className={styles.cardTitle}>Category</div>
+      <div className={styles.cardTitle}>{title}</div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
-import { toast, Icon } from '@gotitinc/design-system';
+import { toast } from '@gotitinc/design-system';
 import ToastContent from '../../components/ToastContent';
 import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
@@ -74,7 +74,7 @@ export const Login = ({ history, dispatchLogin }) => {
             }}
           />
           <Button
-            label="Sign in"
+            label="Sign up"
             width="full"
             onClick={() => {
               history.push('/signup');

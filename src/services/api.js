@@ -2,10 +2,10 @@ import Http from '../utils/HttpUtils';
 
 const END_POINT = 'http://192.168.1.156:5000';
 
-export const getListCategories = (page, limit) => {
-  return Http.get('https://picsum.photos/v2/list', {
+export const getListCategories = (offset, limit) => {
+  return Http.get(`${END_POINT}/categories`, {
     params: {
-      page,
+      offset,
       limit,
     },
   });

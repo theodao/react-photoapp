@@ -3,6 +3,7 @@ import produce from 'immer';
 
 const { Types, Creators } = createActions({
   setCategories: ['payload'],
+  setTotalCategory: ['payload'],
   setItems: ['payload'],
   setIsFetching: ['payload'],
   fetchCategories: ['payload'],
@@ -17,6 +18,7 @@ export default Creators;
 /** Initial State */
 const INITIAL_STATE = {
   categories: [],
+  totalCategories: 0,
   items: [],
   isFetching: true,
 };
@@ -25,6 +27,11 @@ const INITIAL_STATE = {
 const setCategories = (state, { payload: data }) =>
   produce(state, (draft) => {
     draft.categories = data;
+  });
+
+const setTotalCategories = (state, { payload: data }) =>
+  produce(state, (draft) => {
+    draft.totalCategories = data;
   });
 
 const setItems = (state, { payload: data }) =>
@@ -42,4 +49,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SET_CATEGORIES]: setCategories,
   [Types.SET_ITEMS]: setItems,
   [Types.SET_IS_FETCHING]: setIsFetching,
+  [Types.SET_TOTAL_CATEGORY]: setTotalCategories,
 });

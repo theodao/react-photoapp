@@ -1,22 +1,31 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
+import _get from 'lodash/get';
 import CategoryActions, { CategoryTypes } from '../reducer/categoryReducer';
 import {
   getListCategories,
   createNewCategory,
   createNewItem,
 } from '../../services/api';
+import { mappingErrorResponse } from '../../utils/helper';
 
 function* fetchCategories({ payload }) {
   try {
     yield put(CategoryActions.setIsFetching(true));
 
-    const { page = 2, limit = 10 } = payload;
+    const { page = 1, limit = 10 } = payload;
 
     const response = yield call(getListCategories, page, limit);
+    if (response.status === 200) {
+      const categories = _get(response, 'data.categories', []);
+      const totalCategories = _get(response, 'data.total_categories', 0);
 
+      yield put(CategoryActions.setCategories(categories));
+      yield put(CategoryActions.setTotalCategory(totalCategories));
+    }
     yield put(CategoryActions.setIsFetching(false));
   } catch (error) {
-    // console.log(error);
+    console.log(error);
+    yield put(CategoryActions.setIsFetching(false));
   }
 }
 
@@ -38,17 +47,22 @@ function* fetchItems({ payload }) {
 }
 
 function* addCategory({ payload }) {
-  const { name, description, photoUrl } = payload;
+  const { name, description, photoUrl, onSuccess, onFailure } = payload;
 
   try {
     const response = yield call(createNewCategory, {
       name,
       description,
+      image_url: photoUrl,
     });
 
-    console.log(response);
+    if (response.status === 201) {
+      onSuccess();
+    }
   } catch (error) {
-    console.log(error);
+    const { message } = error;
+    const errorList = mappingErrorResponse(message);
+    onFailure(errorList);
   }
 }
 
