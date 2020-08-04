@@ -4,7 +4,12 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import renderer from 'react-test-renderer';
-import { Dashboard } from '../';
+import {
+  Dashboard,
+  mapDispatchToProps,
+  mapStateToProps,
+  ImageModal,
+} from '../';
 
 describe('Testing dashboard route', () => {
   afterEach(cleanup);
@@ -26,6 +31,7 @@ describe('Testing dashboard route', () => {
             isFetching: false,
             categories: [],
           }}
+          fetchCategoryList={jest.fn()}
           auth={{
             isLoggedIn: false,
           }}
@@ -36,25 +42,65 @@ describe('Testing dashboard route', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // it('Should call api', () => {
-  //   const mockFetchingData = jest.fn();
+  it('Should call api', () => {
+    const mockFetchingData = jest.fn();
 
-  //   const tree = renderer.create(
-  //     <Provider store={store}>
-  //       <Dashboard
-  //         category={{
-  //           isFetching: false,
-  //           categories: [],
-  //         }}
-  //         auth={{
-  //           isLoggedIn: false,
-  //         }}
-  //         fetchCategoryList={mockFetchingData}
-  //       />
-  //     </Provider>,
-  //   );
-  //   tree.update();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Dashboard
+          category={{
+            isFetching: false,
+            categories: [],
+          }}
+          auth={{
+            isLoggedIn: false,
+          }}
+          fetchCategoryList={mockFetchingData}
+        />
+      </Provider>,
+    );
+    tree.update();
 
-  //   expect(mockFetchingData).toHaveBeenCalled();
-  // });
+    expect(mockFetchingData).toHaveBeenCalled();
+  });
+
+  it('testing mapStateToProps', () => {
+    const state = {
+      auth: {
+        isLoggedIn: false,
+      },
+      category: {
+        categories: [],
+      },
+    };
+
+    const mappedState = mapStateToProps(state);
+
+    expect(mappedState.auth.isLoggedIn).toEqual(false);
+    expect(mappedState.category.categories).toEqual([]);
+  });
+
+  it('testing mapDispatchToProps', () => {
+    const mockDispatchFunction = jest.fn();
+
+    const mappedDistpachFunction = mapDispatchToProps(mockDispatchFunction);
+
+    mappedDistpachFunction.fetchCategoryList();
+    expect(mockDispatchFunction).toHaveBeenCalled();
+  });
+
+  it('testing image modal snapshot', () => {
+    const { asFragment } = render(
+      <ImageModal
+        data={{
+          description: '',
+          name: '',
+          image_url: '',
+        }}
+        onClick={jest.fn()}
+        isOpen
+      />,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

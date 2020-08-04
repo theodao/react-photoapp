@@ -11,7 +11,7 @@ import Button from '../../components/Button';
 import MainLayout from '../../Layout/MainLayout';
 import styles from './styles.module.scss';
 
-const ImageModal = ({ isOpen, onClick = () => {}, data = {} }) => {
+export const ImageModal = ({ isOpen, onClick = () => {}, data = {} }) => {
   if (isOpen === false) {
     return null;
   }
@@ -94,12 +94,12 @@ export const Dashboard = ({ category, fetchCategoryList, auth }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   category: state.category,
   auth: state.auth,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   fetchCategoryList: (payload) =>
     dispatch(CategoryActions.fetchCategories(payload)),
 });

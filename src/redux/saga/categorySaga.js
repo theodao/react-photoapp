@@ -8,7 +8,7 @@ import {
 } from '../../services/api';
 import { mappingErrorResponse } from '../../utils/helper';
 
-function* fetchCategories({ payload }) {
+export function* fetchCategories({ payload }) {
   try {
     yield put(CategoryActions.setIsFetching(true));
 
@@ -29,7 +29,7 @@ function* fetchCategories({ payload }) {
   }
 }
 
-function* fetchItems({ payload }) {
+export function* fetchItems({ payload }) {
   const { photoUrl, description, categoryId } = payload;
 
   try {
@@ -46,7 +46,7 @@ function* fetchItems({ payload }) {
   }
 }
 
-function* addCategory({ payload }) {
+export function* addCategory({ payload }) {
   const { name, description, photoUrl, onSuccess, onFailure } = payload;
 
   try {

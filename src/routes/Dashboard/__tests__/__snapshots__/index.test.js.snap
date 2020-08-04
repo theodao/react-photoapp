@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing dashboard route Should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      style="display: flex; justify-content: space-between;"
+    >
+      <div
+        style="margin-left: 10px;"
+      >
+        <div
+          class="TopMenu u-backgroundWhite u-paddingVerticalExtraSmall"
+        >
+          <div
+            class="TopMenu-list"
+          >
+            <div
+              class="TopMenu-item u-positionRelative is-active u-flexInline u-alignItemsCenter u-cursorPointer"
+            >
+              <div
+                class="TopMenu-itemBefore u-positionAbsolute u-positionLeft u-positionTop u-backgroundTransparent u-widthFull"
+              />
+              <div
+                class="TopMenu-itemAfter u-positionAbsolute u-positionLeft u-positionBottom u-backgroundPrimary u-widthFull"
+              />
+              <span
+                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textPrimary"
+              >
+                <div
+                  class="u-flexGrow-1"
+                >
+                  Dashboard
+                </div>
+              </span>
+            </div>
+            <div
+              class="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
+            >
+              <a
+                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
+                href="#"
+                role="button"
+              >
+                <div
+                  class="u-flexGrow-1"
+                >
+                  Add categories
+                </div>
+              </a>
+            </div>
+            <div
+              class="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
+            >
+              <a
+                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
+                href="#"
+                role="button"
+              >
+                <div
+                  class="u-flexGrow-1"
+                >
+                  Add Items
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+          style="margin: 10px;"
+        >
+          <span
+            class="Button-label u-inlineBlock"
+          >
+            Login
+          </span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div
+        class="sc-AxiKw gARtGm"
+      >
+        <div
+          class="sc-AxjAm dNrbJL"
+        />
+        <div
+          class="sc-AxhCb lkyqwL"
+        />
+        <div
+          class="sc-AxjAm dNrbJL"
+        />
+        <div
+          class="u-textCenter"
+        >
+          <ul
+            class="Pagination u-marginNone u-paddingNone"
+          >
+            <li
+              class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-prev"
+            >
+              <span
+                class="u-block hover:u-textDecorationNone"
+              >
+                <div
+                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+                >
+                  <span
+                    class="Button-icon u-inlineBlock"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class=""
+                      focusable="false"
+                      height="16px"
+                      style="display: inline-block; vertical-align: middle;"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m10.0145413 11.9953152 6.6183511-6.80357144c.4894768-.50357143.4894768-1.31785715 0-1.81607143-.4894768-.50357143-1.2809712-.49821429-1.770448 0l-7.49836789 7.70892857c-.4738552.4875-.4842696 1.2696429-.0364504 1.7732143l7.52961109 7.7625c.2447384.2517857.5675848.375.885224.375s.6404856-.1232143.885224-.375c.4894768-.5035714.4894768-1.3178572 0-1.8160714z"
+                        style="fill: currentColor;"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </span>
+            </li>
+            <li
+              class="Pagination-item is-active u-inlineBlock u-marginHorizontalTiny"
+            >
+              <span
+                class="u-block hover:u-textDecorationNone"
+              >
+                <div
+                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone Button--small u-cursorPointer u-fontMedium"
+                >
+                  1
+                </div>
+              </span>
+            </li>
+            <li
+              class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-next"
+            >
+              <span
+                class="u-block hover:u-textDecorationNone"
+              >
+                <div
+                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+                >
+                  <span
+                    class="Button-icon u-inlineBlock"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class=""
+                      focusable="false"
+                      height="16px"
+                      style="display: inline-block; vertical-align: middle;"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m13.9854587 11.9966505-6.6183511-6.80610342c-.4894768-.50375884-.4894768-1.3183476 0-1.8167473.48947679-.49839971 1.28097118-.49839971 1.77044798 0l7.49836792 7.71179752c.4738552.4876814.4842696 1.2701154.0364504 1.7738742l-7.52961112 7.7653889c-.2447384.2518795-.5675848.3751396-.88522399.3751396-.3176392 0-.6404856-.1232601-.88522399-.3751396-.4894768-.5037588-.4894768-1.3183476 0-1.8167473z"
+                        style="fill: currentColor;"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  ,
+</DocumentFragment>
+`;
+
+exports[`Testing dashboard route testing image modal snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modalOverlay"
+  >
+    <div
+      class="Modal Modal--centered Modal--relative u-positionRelative Modal--large"
+    >
+      <div
+        class="Modal-dialog u-positionRelative"
+      >
+        <div
+          class="Modal-container u-positionRelative u-flex u-flexColumn u-widthFull u-roundedLarge u-shadowLarge"
+        >
+          <div
+            class="Modal-header u-positionRelative u-backgroundWhite u-paddingHorizontalMedium u-paddingTopLarge u-paddingBottomSmall"
+          >
+            <div
+              class="Modal-title u-text650 u-textCenter"
+            />
+            <button
+              class="Modal-close u-positionAbsolute u-backgroundTransparent u-borderNone u-cursorPointer u-paddingTiny u-lineHeightReset"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="u-opacityHalf"
+                focusable="false"
+                height="24px"
+                style="display: inline-block; vertical-align: middle;"
+                viewBox="0 0 24 24"
+                width="24px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m13.6588112 12 5.0002619-5.0015715c.4545692-.45468832.4545692-1.20272394 0-1.65741226-.4545693-.45468832-1.2024091-.45468832-1.6569783 0l-5.0002619 5.00157146-5.00026181-5.00157146c-.45456926-.45468832-1.20240901-.45468832-1.65697826 0-.22728463.22734416-.34459283.52802514-.34459283.82870613 0 .30068098.1173082.60136197.34459283.82870613l5.00026187 5.0015715-5.00026187 5.0015715c-.22728463.2273442-.34459283.5280251-.34459283.8287061s.1173082.601362.34459283.8287062c.45456925.4546883 1.202409.4546883 1.65697826 0l5.00026181-5.0015715 5.0002619 5.0015715c.4545692.4546883 1.202409.4546883 1.6569783 0 .4545692-.4546884.4545692-1.202724 0-1.6574123z"
+                  style="fill: currentColor;"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="Modal-body u-paddingHorizontalMedium u-backgroundWhite u-paddingTopSmall u-paddingBottomMedium"
+          >
+            <div
+              class="u-textCenter"
+            >
+              <img
+                alt=""
+                class="u-maxWidthFull u-marginBottomExtraSmall"
+                src=""
+              />
+            </div>
+            <p />
+          </div>
+          <div
+            class="Modal-footer u-backgroundLightest u-paddingMedium u-flex u-alignItemsCenter u-justifyContentEnd"
+          >
+            <button
+              class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+            >
+              <span
+                class="Button-label u-inlineBlock"
+              >
+                View Category Image
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -28,22 +28,6 @@ const mockModule = () => {
       withRouter: (Component) => Component,
     };
   });
-
-  jest.mock('axios', () => {
-    return {
-      create: () => {
-        return {
-          interceptors: {
-            request: { use: jest.fn(), eject: jest.fn() },
-            response: { use: jest.fn(), eject: jest.fn() },
-          },
-          defaults: {
-            params: {},
-          },
-        };
-      },
-    };
-  });
 };
 
 export default mockModule;
