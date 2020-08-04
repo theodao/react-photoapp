@@ -2,8 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import { Icon } from '@gotitinc/design-system';
+import { Icon, Modal } from '@gotitinc/design-system';
 import MainLayout from '../../Layout/MainLayout';
+import Button from '../../components/Button';
 import styles from './styles.module.scss';
 
 const imgUrls = [
@@ -25,16 +26,27 @@ const GalleryModal = ({ isOpen, onClick = () => {}, src = '' }) => {
   if (isOpen === false) {
     return null;
   }
-
   return (
-    <div isOpen={isOpen} className={styles.modalOverlay} onClick={onClick}>
-      <div className={styles.modalBody}>
-        <a className={styles.modalClose} href="#" onClick={onClick}>
-          <span className="fa fa-times" />
-        </a>
-
-        <img src={src} alt={` ${src}`} />
-      </div>
+    <div className={styles.modalOverlay}>
+      <Modal size="large" relative show onHide={onClick} centered>
+        <Modal.Header closeButton onHide={onClick}>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="u-textCenter">
+            <img
+              src={src}
+              className="u-maxWidthFull u-marginBottomExtraSmall"
+              alt=""
+            />
+          </div>
+          <p>Modal body text goes here.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={onClick} label="Edit" />
+          <Button variant="negative" label="Delete" />
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

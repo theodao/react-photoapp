@@ -74,6 +74,7 @@ $black: #111;
   top: 50%;
   left: 50%;
   z-index: 11;
+  background-color: #fff;
   padding: 0;
   overflow: auto;
   max-width: 100%;
@@ -85,13 +86,23 @@ $black: #111;
 .modalClose {
   position: absolute;
   top: 0;
-  right: 8px;
+  left: 8px;
   font-size: 1.5rem;
-  color: $black;
+  color: #d1d1d1;
   transition: $transition;
 
   &:focus,
   &:hover {
     color: #fff;
   }
+}
+
+.modalHeader {
+  padding: 5px 15px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 15px;
 }
