@@ -20,9 +20,7 @@ export const mappingErrorResponse = (errorResponse) => {
     return errorResponse;
   }
 
-  Object.keys(errorResponse).reduce((result, key) => {
+  return Object.keys(errorResponse).reduce((result, key) => {
     return result.concat(errorResponse[key]);
   }, []);
-
-  return '';
 };

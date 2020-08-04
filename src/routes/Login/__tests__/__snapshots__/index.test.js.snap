@@ -72,7 +72,7 @@ exports[`Testing login route Should match snapshot 1`] = `
           <span
             class="Button-label u-inlineBlock"
           >
-            Sign in
+            Sign up
           </span>
         </button>
       </form>
