@@ -21,7 +21,7 @@ function* login({ payload }) {
       history.push('/dashboard');
     }
   } catch (error) {
-    const { message } = error;
+    const message = _get(error, 'data.message');
 
     if (typeof message === 'object') {
       const errorList = mappingErrorResponse(message);
@@ -55,7 +55,8 @@ function* signup({ payload }) {
       history.push('/login');
     }
   } catch (error) {
-    const { message } = error;
+    const message = _get(error, 'data.message');
+
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);
   }

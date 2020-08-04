@@ -60,7 +60,8 @@ function* addCategory({ payload }) {
       onSuccess();
     }
   } catch (error) {
-    const { message } = error;
+    const message = _get(error, 'data.message');
+
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);
   }

@@ -28,7 +28,7 @@ const withErrorHandler = (WrappedComponent) => {
         },
         (err) => {
           /** Custom behavior of error status code here  */
-          const errorObject = _get(err, 'response.data', {});
+          const errorObject = _get(err, 'response', {});
           return Promise.reject(errorObject);
         },
       );
