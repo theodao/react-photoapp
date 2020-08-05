@@ -235,6 +235,7 @@ exports[`Testing dashboard route testing image modal snapshot 1`] = `
                 alt=""
                 class="u-maxWidthFull u-marginBottomExtraSmall"
                 src=""
+                style="height: 500px; border-radius: 20px;"
               />
             </div>
             <p />
