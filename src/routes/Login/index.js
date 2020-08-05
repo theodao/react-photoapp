@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
@@ -12,10 +12,17 @@ import { error } from '../../constants';
 
 const { spacing } = Fonts;
 
-export const Login = ({ history, dispatchLogin }) => {
+export const Login = ({ history, dispatchLogin, auth }) => {
   const { handleSubmit, control, errors } = useForm({
     mode: 'onSubmit',
   });
+
+  useLayoutEffect(() => {
+    const { isLoggedIn } = auth;
+    if (isLoggedIn) {
+      history.push('/dashboard');
+    }
+  }, []);
 
   const notifyLoginFail = (content) =>
     toast.error(() => <ToastContent title="Log in fail" content={content} />);

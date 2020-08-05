@@ -49,21 +49,6 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
                 </div>
               </a>
             </div>
-            <div
-              class="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
-            >
-              <a
-                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
-                href="#"
-                role="button"
-              >
-                <div
-                  class="u-flexGrow-1"
-                >
-                  Add Items
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -88,8 +73,24 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
           class="sc-AxjAm dNrbJL"
         />
         <div
-          class="sc-AxhCb lkyqwL"
-        />
+          style="max-width: 1140px; display: flex; justify-content: center; margin: 0px auto;"
+        >
+          <div
+            class="EmptyState u-inlineBlock u-textCenter"
+          >
+            <img
+              alt="General"
+              class="u-maxWidthFull"
+              src="https://designsystem-cdn.got-it.ai/images/general.8da83c28.svg"
+              width="240"
+            />
+            <div
+              class="EmptyState-heading u-marginTopSmall u-text650 u-textLight"
+            >
+              Category Empty
+            </div>
+          </div>
+        </div>
         <div
           class="sc-AxjAm dNrbJL"
         />
@@ -248,6 +249,15 @@ exports[`Testing dashboard route testing image modal snapshot 1`] = `
                 class="Button-label u-inlineBlock"
               >
                 View Category Image
+              </span>
+            </button>
+            <button
+              class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+            >
+              <span
+                class="Button-label u-inlineBlock"
+              >
+                Add Item
               </span>
             </button>
           </div>

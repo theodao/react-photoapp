@@ -39,7 +39,7 @@ describe('Testing serivce module', () => {
   });
 
   it('tesing create new item api', () => {
-    createNewItem();
+    createNewItem({});
     expect(Http.post).toHaveBeenCalled();
   });
 

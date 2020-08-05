@@ -69,27 +69,6 @@ describe('Testing Mainlayout component', () => {
     expect(pushFunction).toHaveBeenCalled();
   });
 
-  it('Should push to add item when clicking to add item', () => {
-    const wrapper = shallow(
-      <MainLayout
-        match={{ path: '' }}
-        auth={{
-          isLoggedIn: false,
-        }}
-        history={history}
-      />,
-    );
-
-    wrapper
-      .findWhere(
-        (c) =>
-          c.name() === 'TopMenu.Item' && c.prop('eventKey') === '/add-item',
-      )
-      .props()
-      .onClick();
-    expect(pushFunction).toHaveBeenCalled();
-  });
-
   it('Should dispatch logout when user is logged in', () => {
     const dispatchLogout = jest.fn();
 
