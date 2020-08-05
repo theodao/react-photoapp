@@ -8,6 +8,7 @@ import Button from '../components/Button';
 
 export const MainLayout = ({
   loading,
+  fullScreenLoading = false,
   children,
   history,
   match = {},
@@ -19,7 +20,7 @@ export const MainLayout = ({
 
   return (
     <div>
-      {loading ? (
+      {fullScreenLoading ? (
         <Container>
           <Loader />
         </Container>
@@ -66,7 +67,15 @@ export const MainLayout = ({
               />
             </div>
           </div>
-          <div>{children}</div>
+          <div>
+            {loading ? (
+              <Container>
+                <Loader />
+              </Container>
+            ) : (
+              children
+            )}
+          </div>
         </>
       )}
     </div>
@@ -93,8 +102,7 @@ const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
   z-index: 999;
   display: flex;
   justify-content: center;

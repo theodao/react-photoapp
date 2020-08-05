@@ -52,16 +52,16 @@ export function* fetchItems({ payload }) {
 
 export function* fetchItem({ payload }) {
   try {
-    yield put(CategoryActions.setIsFetching(true));
+    yield put(CategoryActions.setIsFetchingItem(true));
     const { categoryId, itemId } = payload;
     const response = yield call(getItemDetail, categoryId, itemId);
     if (response.status === 200) {
       const item = _get(response, 'data', {});
       yield put(CategoryActions.setCurrentItem(item));
     }
-    yield put(CategoryActions.setIsFetching(false));
+    yield put(CategoryActions.setIsFetchingItem(false));
   } catch (error) {
-    yield put(CategoryActions.setIsFetching(false));
+    yield put(CategoryActions.setIsFetchingItem(false));
   }
 }
 
@@ -112,8 +112,8 @@ export function* updateItem({ payload }) {
   try {
     const response = yield call(updateItemDetail, categoryId, itemId, data);
     if (response.status === 200) {
-      console.log(response);
       onSuccess();
+      yield put(CategoryActions.setItemDetail(response.data));
     }
   } catch (error) {
     const message = _get(error, 'data.message');

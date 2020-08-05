@@ -8,6 +8,7 @@ import _get from 'lodash/get';
 import CategoryActions from '../../redux/reducer/categoryReducer';
 import CardImage from '../../components/CardImage';
 import ToastContent from '../../components/ToastContent';
+import Empty from '../../components/Empty';
 import Pagination from '../../components/Pagination';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import Button from '../../components/Button';
@@ -183,17 +184,22 @@ export const Dashboard = ({
     <MainLayout loading={isFetching}>
       <Center>
         <Spacing size={SpacingSizes.LG} />
-        <GridSystem>
-          {categories.map((item) => {
-            return (
-              <CardImage
-                src={item['image_url']}
-                title={item['name']}
-                onClick={() => openModal(item)}
-              />
-            );
-          })}
-        </GridSystem>
+        {categories.length === 0 ? (
+          <Empty title="Category" />
+        ) : (
+          <GridSystem>
+            {categories.map((item) => {
+              return (
+                <CardImage
+                  src={item['image_url']}
+                  title={item['name']}
+                  onClick={() => openModal(item)}
+                />
+              );
+            })}
+          </GridSystem>
+        )}
+
         <Spacing size={SpacingSizes.LG} />
         <Pagination
           currentPage={currentPage}

@@ -11,6 +11,7 @@ import ToastContent from '../../components/ToastContent';
 import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Empty from '../../components/Empty';
 import CategoryActions from '../../redux/reducer/categoryReducer';
 import { error } from '../../constants';
 import { Fonts } from '../../themes';
@@ -230,52 +231,56 @@ const ItemList = ({
   }, [currentPage]);
 
   return (
-    <MainLayout>
-      <div className={styles.containerFluid}>
-        <div className={styles.row}>
-          {category.items.map((item, index) => {
-            return (
-              <div className={styles.imageItem}>
-                <div className={styles.galleryCard}>
-                  <GalleryImage
-                    className={styles.galleryThumbnail}
-                    src={item['image_url']}
-                    alt={`Image number  ${index + 1}`}
-                  />
-                  <Icon
-                    name="informationCircle"
-                    size="medium"
-                    style={{
-                      cursor: 'pointer',
-                    }}
-                    className={styles.cardIconOpen}
-                    onClick={() => openModal(item.id, categoryId)}
-                  />
+    <MainLayout loading={category.isFetching}>
+      {category.items.length === 0 ? (
+        <Empty title="Item" />
+      ) : (
+        <div className={styles.containerFluid}>
+          <div className={styles.row}>
+            {category.items.map((item, index) => {
+              return (
+                <div className={styles.imageItem}>
+                  <div className={styles.galleryCard}>
+                    <GalleryImage
+                      className={styles.galleryThumbnail}
+                      src={item['image_url']}
+                      alt={`Image number  ${index + 1}`}
+                    />
+                    <Icon
+                      name="informationCircle"
+                      size="medium"
+                      style={{
+                        cursor: 'pointer',
+                      }}
+                      className={styles.cardIconOpen}
+                      onClick={() => openModal(item.id, categoryId)}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <GalleryModal
-          isOpen={showModal}
-          onClick={closeModal}
-          data={category.currentItem}
-          categoryId={categoryId}
-          deleteItemDetail={deleteItemDetail}
-          onClickOpenEditModal={openEditModal}
-          isLoading={category.isFetching}
-          fetchItems={fetchItems}
-        />
-        <EditItemModal
-          isOpen={showEditModal}
-          onClick={closeEditModal}
-          data={category.currentItem}
-          fetchItemDetail={fetchItemDetail}
-          categoryId={categoryId}
-          updateItemdetail={updateItemdetail}
-        />
-      </div>
+          <GalleryModal
+            isOpen={showModal}
+            onClick={closeModal}
+            data={category.currentItem}
+            categoryId={categoryId}
+            deleteItemDetail={deleteItemDetail}
+            onClickOpenEditModal={openEditModal}
+            isLoading={category.isFetchingItem}
+            fetchItems={fetchItems}
+          />
+          <EditItemModal
+            isOpen={showEditModal}
+            onClick={closeEditModal}
+            data={category.currentItem}
+            fetchItemDetail={fetchItemDetail}
+            categoryId={categoryId}
+            updateItemdetail={updateItemdetail}
+          />
+        </div>
+      )}
     </MainLayout>
   );
 };
