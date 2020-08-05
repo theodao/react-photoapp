@@ -13,7 +13,7 @@ import CategoryActions from '../../redux/reducer/categoryReducer';
 
 const { spacing } = Fonts;
 
-const AddCategory = ({ dispatchAddCategory }) => {
+export const AddCategory = ({ dispatchAddCategory }) => {
   const { handleSubmit, errors, control } = useForm({
     mode: 'onSubmit',
   });

@@ -193,7 +193,7 @@ const GalleryImage = ({ className, src = '', alt = '' }) => {
   );
 };
 
-const ItemList = ({
+export const ItemList = ({
   fetchItems,
   fetchItemDetail,
   deleteItemDetail,

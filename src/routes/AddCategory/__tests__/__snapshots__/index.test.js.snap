@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Add Category component Should match snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      style="display: flex; justify-content: space-between;"
+    >
+      <div
+        style="margin-left: 10px;"
+      >
+        <div
+          class="TopMenu u-backgroundWhite u-paddingVerticalExtraSmall"
+        >
+          <div
+            class="TopMenu-list"
+          >
+            <div
+              class="TopMenu-item u-positionRelative is-active u-flexInline u-alignItemsCenter u-cursorPointer"
+            >
+              <div
+                class="TopMenu-itemBefore u-positionAbsolute u-positionLeft u-positionTop u-backgroundTransparent u-widthFull"
+              />
+              <div
+                class="TopMenu-itemAfter u-positionAbsolute u-positionLeft u-positionBottom u-backgroundPrimary u-widthFull"
+              />
+              <span
+                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textPrimary"
+              >
+                <div
+                  class="u-flexGrow-1"
+                >
+                  Dashboard
+                </div>
+              </span>
+            </div>
+            <div
+              class="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
+            >
+              <a
+                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
+                href="#"
+                role="button"
+              >
+                <div
+                  class="u-flexGrow-1"
+                >
+                  Add categories
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+          style="margin: 10px;"
+        >
+          <span
+            class="Button-label u-inlineBlock"
+          >
+            Login
+          </span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div
+        class="sc-AxirZ kRBMTz"
+      >
+        <div
+          class="sc-AxiKw fViGGb"
+        >
+          <form>
+            <div
+              style="margin-bottom: 10px;"
+            >
+              <input
+                class="FormInput u-block u-widthFull u-webkitScrollbar"
+                name="name"
+                placeholder="Category Name"
+                required=""
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              style="margin-bottom: 10px;"
+            >
+              <input
+                class="FormInput u-block u-widthFull u-webkitScrollbar"
+                name="description"
+                placeholder="Description"
+                required=""
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              style="margin-bottom: 10px;"
+            >
+              <input
+                class="FormInput u-block u-widthFull u-webkitScrollbar"
+                name="photoUrl"
+                placeholder="Photo URL"
+                required=""
+                type="text"
+                value=""
+              />
+            </div>
+            <button
+              class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+              style="margin-bottom: 10px;"
+            >
+              <span
+                class="Button-label u-inlineBlock"
+              >
+                Add
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  , ,
+</DocumentFragment>
+`;

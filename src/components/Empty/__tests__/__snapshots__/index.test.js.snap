@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing empty component Should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    style="max-width: 1140px; display: flex; justify-content: center; margin: 0px auto;"
+  >
+    <div
+      class="EmptyState u-inlineBlock u-textCenter"
+    >
+      <img
+        alt="General"
+        class="u-maxWidthFull"
+        src="https://designsystem-cdn.got-it.ai/images/general.8da83c28.svg"
+        width="240"
+      />
+      <div
+        class="EmptyState-heading u-marginTopSmall u-text650 u-textLight"
+      >
+         Empty
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
