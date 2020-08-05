@@ -78,10 +78,12 @@ export const AddItemModal = ({
     return null;
   }
   const { spacing } = Fonts;
-  const notifyAddItemSuccess = (content) =>
+  const notifyAddItemSuccess = (content) => {
     toast.success(() => (
       <ToastContent title="Add item success" content={content} />
     ));
+    onClick();
+  };
 
   const notifyAddItemFail = (content) =>
     toast.error(() => <ToastContent title="Add item fail" content={content} />);

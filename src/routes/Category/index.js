@@ -3,18 +3,43 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
-import { Icon, Modal, Loader } from '@gotitinc/design-system';
+import { Icon, Modal, Loader, toast } from '@gotitinc/design-system';
 import _get from 'lodash/get';
 import { connect } from 'react-redux';
+import ToastContent from '../../components/ToastContent';
 import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
 import CategoryActions from '../../redux/reducer/categoryReducer';
 import styles from './styles.module.scss';
 
-const GalleryModal = ({ isOpen, onClick = () => {}, data = {}, isLoading }) => {
+const GalleryModal = ({
+  isOpen,
+  onClick = () => {},
+  data = {},
+  isLoading,
+  categoryId,
+  deleteItemDetail,
+  fetchItems,
+}) => {
   if (isOpen === false) {
     return null;
   }
+  const notifyAddItemSuccess = (content) => {
+    toast.success(() => (
+      <ToastContent title="Delete item success" content={content} />
+    ));
+    onClick();
+    fetchItems({
+      offset: 0,
+      id: categoryId,
+    });
+  };
+
+  const notifyAddItemFail = (content) =>
+    toast.error(() => (
+      <ToastContent title="Delete item fail" content={content} />
+    ));
+
   return (
     <div className={styles.modalOverlay}>
       <Modal size="large" relative show onHide={onClick} centered>
@@ -37,7 +62,18 @@ const GalleryModal = ({ isOpen, onClick = () => {}, data = {}, isLoading }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={onClick} label="Edit" />
-          <Button variant="negative" label="Delete" />
+          <Button
+            variant="negative"
+            label="Delete"
+            onClick={() => {
+              deleteItemDetail({
+                categoryId,
+                itemId: data.id,
+                onSuccess: notifyAddItemSuccess,
+                onFailure: notifyAddItemFail,
+              });
+            }}
+          />
         </Modal.Footer>
       </Modal>
     </div>
@@ -57,7 +93,13 @@ const GalleryImage = ({ className, src = '', alt = '' }) => {
   );
 };
 
-const ItemList = ({ fetchItems, fetchItemDetail, category, match }) => {
+const ItemList = ({
+  fetchItems,
+  fetchItemDetail,
+  deleteItemDetail,
+  category,
+  match,
+}) => {
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const openModal = (itemId, categoryId) => {
@@ -80,7 +122,7 @@ const ItemList = ({ fetchItems, fetchItemDetail, category, match }) => {
   }, [currentPage]);
 
   return (
-    <MainLayout>
+    <MainLayout loading={category.isFetching}>
       <div className={styles.containerFluid}>
         <div className={styles.row}>
           {category.items.map((item, index) => {
@@ -111,7 +153,10 @@ const ItemList = ({ fetchItems, fetchItemDetail, category, match }) => {
           isOpen={showModal}
           onClick={closeModal}
           data={category.currentItem}
+          categoryId={categoryId}
+          deleteItemDetail={deleteItemDetail}
           isLoading={category.isFetching}
+          fetchItems={fetchItems}
         />
       </div>
     </MainLayout>
@@ -126,6 +171,7 @@ const mapDistpatchToProps = (dispatch) => ({
   fetchItems: (payload) => dispatch(CategoryActions.fetchItems(payload)),
   fetchItemDetail: (payload) =>
     dispatch(CategoryActions.fetchItemDetail(payload)),
+  deleteItemDetail: (payload) => dispatch(CategoryActions.deleteItem(payload)),
 });
 
 export default connect(mapStateToProps, mapDistpatchToProps)(ItemList);

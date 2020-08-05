@@ -7,6 +7,7 @@ import {
   getItemDetail,
   createNewCategory,
   createNewItem,
+  deleteItemDetail,
 } from '../../services/api';
 import { mappingErrorResponse } from '../../utils/helper';
 
@@ -89,6 +90,22 @@ export function* addItem({ payload }) {
   }
 }
 
+export function* deleteItem({ payload }) {
+  const { categoryId, itemId, onSuccess, onFailure } = payload;
+  try {
+    const response = yield call(deleteItemDetail, categoryId, itemId);
+    if (response.status === 200) {
+      yield put(CategoryActions.setCurrentItem({}));
+      onSuccess();
+    }
+  } catch (error) {
+    const message = _get(error, 'data.message');
+
+    const errorList = mappingErrorResponse(message);
+    onFailure(errorList);
+  }
+}
+
 export function* addCategory({ payload }) {
   const { name, description, photoUrl, onSuccess, onFailure } = payload;
 
@@ -116,4 +133,5 @@ export default [
   takeLatest(CategoryTypes.FETCH_ITEM_DETAIL, fetchItem),
   takeLatest(CategoryTypes.ADD_CATEGORY, addCategory),
   takeLatest(CategoryTypes.ADD_ITEM, addItem),
+  takeLatest(CategoryTypes.DELETE_ITEM, deleteItem),
 ];

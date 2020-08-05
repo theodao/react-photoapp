@@ -26,6 +26,10 @@ export const getItemDetail = (categoryId, itemId) => {
 
 // export const updateItem = () => {}
 
+export const deleteItemDetail = (categoryId, itemId) => {
+  return Http.delete(`${END_POINT}/categories/${categoryId}/items/${itemId}`);
+};
+
 export const createNewItem = (data) => {
   const { description, photoUrl, id } = data;
   return Http.post(`${END_POINT}/categories/${id}/items`, {

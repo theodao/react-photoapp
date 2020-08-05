@@ -13,6 +13,7 @@ const { Types, Creators } = createActions({
   fetchItemDetail: ['payload'],
   addItem: ['payload'],
   addCategory: ['payload'],
+  deleteItem: ['payload'],
 });
 
 export const CategoryTypes = Types;
