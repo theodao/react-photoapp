@@ -21,13 +21,14 @@ export const ImageModal = ({
   isOpen,
   onClick = () => {},
   data = {},
+  history = {},
   onClickAddModel = () => {},
 }) => {
   if (isOpen === false) {
     return null;
   }
 
-  const { description, image_url: url, name } = data;
+  const { description, image_url: url, name, id } = data;
 
   return (
     <div className={styles.modalOverlay}>
@@ -48,7 +49,9 @@ export const ImageModal = ({
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={onClick}
+            onClick={() => {
+              history.push(`/category/${id}`);
+            }}
             label="View Category Image"
           />
           <Button
@@ -139,7 +142,12 @@ export const AddItemModal = ({
   );
 };
 
-export const Dashboard = ({ category, fetchCategoryList, auth, addItem }) => {
+export const Dashboard = ({
+  category,
+  fetchCategoryList,
+  history,
+  addItem,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const { isFetching, categories, totalCategories } = category;
@@ -165,7 +173,7 @@ export const Dashboard = ({ category, fetchCategoryList, auth, addItem }) => {
 
   useEffect(() => {
     fetchCategoryList({
-      page: 0 + (currentPage - 1) * 10,
+      offset: 0 + (currentPage - 1) * 10,
     });
   }, [currentPage]);
 
@@ -196,6 +204,7 @@ export const Dashboard = ({ category, fetchCategoryList, auth, addItem }) => {
         onClick={closeModal}
         data={modalData}
         onClickAddModel={openAddModal}
+        history={history}
       />
       <AddItemModal
         isOpen={showAddModal}

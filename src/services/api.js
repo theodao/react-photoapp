@@ -11,11 +11,18 @@ export const getListCategories = (offset, limit) => {
   });
 };
 
-// export const getListItems = () => {}
+export const getListItems = (offset, limit, id) => {
+  return Http.get(`${END_POINT}/categories/${id}/items`, {
+    params: {
+      offset,
+      limit,
+    },
+  });
+};
 
-// export const getItemDetail = () => {}
-
-// export const getCategoryDetail = () => {}
+export const getItemDetail = (categoryId, itemId) => {
+  return Http.get(`${END_POINT}/categories/${categoryId}/items/${itemId}`);
+};
 
 // export const updateItem = () => {}
 
@@ -34,8 +41,6 @@ export const createNewCategory = (data) => {
 export const login = (data) => {
   return Http.post(`${END_POINT}/auth`, data);
 };
-
-// export const logout = () => {}
 
 export const signup = (data) => {
   return Http.post(`${END_POINT}/users`, data);

@@ -1,28 +1,17 @@
+/* eslint-disable dot-notation */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
-import { Icon, Modal } from '@gotitinc/design-system';
+import React, { useState, useEffect } from 'react';
+import { Icon, Modal, Loader } from '@gotitinc/design-system';
+import _get from 'lodash/get';
+import { connect } from 'react-redux';
 import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
+import CategoryActions from '../../redux/reducer/categoryReducer';
 import styles from './styles.module.scss';
 
-const imgUrls = [
-  'https://source.unsplash.com/3Z70SDuYs5g/800x600',
-  'https://source.unsplash.com/01vFmYAOqQ0/800x600',
-  'https://source.unsplash.com/2Bjq3A7rGn4/800x600',
-  'https://source.unsplash.com/t20pc32VbrU/800x600',
-  'https://source.unsplash.com/pHANr-CpbYM/800x600',
-  'https://source.unsplash.com/3PmwYw2uErY/800x600',
-  'https://source.unsplash.com/uOi3lg8fGl4/800x600',
-  'https://source.unsplash.com/CwkiN6_qpDI/800x600',
-  'https://source.unsplash.com/9O1oQ9SzQZQ/800x600',
-  'https://source.unsplash.com/E4944K_4SvI/800x600',
-  'https://source.unsplash.com/-hI5dX2ObAs/800x600',
-  'https://source.unsplash.com/vZlTg_McCDo/800x600',
-];
-
-const GalleryModal = ({ isOpen, onClick = () => {}, src = '' }) => {
+const GalleryModal = ({ isOpen, onClick = () => {}, data = {}, isLoading }) => {
   if (isOpen === false) {
     return null;
   }
@@ -34,13 +23,17 @@ const GalleryModal = ({ isOpen, onClick = () => {}, src = '' }) => {
         </Modal.Header>
         <Modal.Body>
           <div className="u-textCenter">
-            <img
-              src={src}
-              className="u-maxWidthFull u-marginBottomExtraSmall"
-              alt=""
-            />
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <img
+                src={data['image_url']}
+                className="u-maxWidthFull u-marginBottomExtraSmall"
+                alt=""
+              />
+            )}
           </div>
-          <p>Modal body text goes here.</p>
+          <p>{data['description']}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={onClick} label="Edit" />
@@ -52,33 +45,51 @@ const GalleryModal = ({ isOpen, onClick = () => {}, src = '' }) => {
 };
 
 const GalleryImage = ({ className, src = '', alt = '' }) => {
-  return <img className={className} src={src} alt={alt} />;
+  return (
+    <img
+      className={className}
+      style={{
+        height: '100%',
+      }}
+      src={src}
+      alt={alt}
+    />
+  );
 };
 
-export default () => {
+const ItemList = ({ fetchItems, fetchItemDetail, category, match }) => {
   const [showModal, setShowModal] = useState(false);
-  const [modalUrl, setModalUrl] = useState('');
-  const openModal = (modalUrlInput) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const openModal = (itemId, categoryId) => {
     setShowModal(true);
-    setModalUrl(modalUrlInput);
+    fetchItemDetail({
+      categoryId,
+      itemId,
+    });
   };
+  const categoryId = _get(match, 'params.id', null);
 
   const closeModal = () => {
     setShowModal(false);
-    setModalUrl('');
   };
+  useEffect(() => {
+    fetchItems({
+      offset: 0 + (currentPage - 1) * 10,
+      id: categoryId,
+    });
+  }, [currentPage]);
 
   return (
     <MainLayout>
       <div className={styles.containerFluid}>
         <div className={styles.row}>
-          {imgUrls.map((url, index) => {
+          {category.items.map((item, index) => {
             return (
               <div className={styles.imageItem}>
                 <div className={styles.galleryCard}>
                   <GalleryImage
                     className={styles.galleryThumbnail}
-                    src={url}
+                    src={item['image_url']}
                     alt={`Image number  ${index + 1}`}
                   />
                   <Icon
@@ -88,7 +99,7 @@ export default () => {
                       cursor: 'pointer',
                     }}
                     className={styles.cardIconOpen}
-                    onClick={(e) => openModal(url, e)}
+                    onClick={() => openModal(item.id, categoryId)}
                   />
                 </div>
               </div>
@@ -96,8 +107,25 @@ export default () => {
           })}
         </div>
 
-        <GalleryModal isOpen={showModal} onClick={closeModal} src={modalUrl} />
+        <GalleryModal
+          isOpen={showModal}
+          onClick={closeModal}
+          data={category.currentItem}
+          isLoading={category.isFetching}
+        />
       </div>
     </MainLayout>
   );
 };
+
+const mapStateToProps = (state) => ({
+  category: state.category,
+});
+
+const mapDistpatchToProps = (dispatch) => ({
+  fetchItems: (payload) => dispatch(CategoryActions.fetchItems(payload)),
+  fetchItemDetail: (payload) =>
+    dispatch(CategoryActions.fetchItemDetail(payload)),
+});
+
+export default connect(mapStateToProps, mapDistpatchToProps)(ItemList);

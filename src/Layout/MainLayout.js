@@ -49,12 +49,6 @@ export const MainLayout = ({
                 >
                   Add categories
                 </TopMenu.Item>
-                <TopMenu.Item
-                  eventKey="/add-item"
-                  onClick={() => history.push('/add-item')}
-                >
-                  Add Items
-                </TopMenu.Item>
               </TopMenu>
             </div>
             <div>
