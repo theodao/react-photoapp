@@ -24,7 +24,11 @@ export default ({
       pageNumbers.push(i);
     }
 
-    setPageList(pageNumbers);
+    if (pageNumbers.length === 0) {
+      setPageList([1]);
+    } else {
+      setPageList(pageNumbers);
+    }
   }, [totalItems]);
 
   return (

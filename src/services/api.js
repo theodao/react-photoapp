@@ -19,12 +19,16 @@ export const getListCategories = (offset, limit) => {
 
 // export const updateItem = () => {}
 
-export const createNewCategory = (data) => {
-  return Http.post(`${END_POINT}/categories`, data);
+export const createNewItem = (data) => {
+  const { description, photoUrl, id } = data;
+  return Http.post(`${END_POINT}/categories/${id}/items`, {
+    description,
+    image_url: photoUrl,
+  });
 };
 
-export const createNewItem = (data, categoryId) => {
-  return Http.post(`${END_POINT}/categories/${categoryId}/items`, data);
+export const createNewCategory = (data) => {
+  return Http.post(`${END_POINT}/categories`, data);
 };
 
 export const login = (data) => {

@@ -29,20 +29,29 @@ export function* fetchCategories({ payload }) {
   }
 }
 
-export function* fetchItems({ payload }) {
-  const { photoUrl, description, categoryId } = payload;
+export function* addItem({ payload }) {
+  const {
+    photoUrl,
+    description,
+    id,
+    onSuccess = () => {},
+    onFailure = () => {},
+  } = payload;
 
   try {
-    const response = yield call(
-      createNewItem,
-      {
-        photoUrl,
-        description,
-      },
-      categoryId,
-    );
+    const response = yield call(createNewItem, {
+      photoUrl,
+      description,
+      id,
+    });
+    if (response.status === 201) {
+      onSuccess();
+    }
   } catch (error) {
-    console.log(error);
+    const message = _get(error, 'data.message');
+
+    const errorList = mappingErrorResponse(message);
+    onFailure(errorList);
   }
 }
 
@@ -67,13 +76,9 @@ export function* addCategory({ payload }) {
   }
 }
 
-function addItem({ payload }) {
-  console.log(payload);
-}
-
 export default [
   takeLatest(CategoryTypes.FETCH_CATEGORIES, fetchCategories),
-  takeLatest(CategoryTypes.FETCH_ITEMS, fetchItems),
+  // takeLatest(CategoryTypes.FETCH_ITEMS, fetchItems),
   takeLatest(CategoryTypes.ADD_CATEGORY, addCategory),
   takeLatest(CategoryTypes.ADD_ITEM, addItem),
 ];
