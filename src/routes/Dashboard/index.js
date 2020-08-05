@@ -41,6 +41,10 @@ export const ImageModal = ({
           <div className="u-textCenter">
             <img
               src={url}
+              style={{
+                height: '500px',
+                borderRadius: '20px',
+              }}
               className="u-maxWidthFull u-marginBottomExtraSmall"
               alt=""
             />
