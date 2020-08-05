@@ -94,9 +94,9 @@ export const AddCategory = ({ dispatchAddCategory }) => {
   );
 };
 
-const mapStateToProps = () => ({});
+export const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   dispatchAddCategory: (payload) =>
     dispatch(CategoryActions.addCategory(payload)),
 });

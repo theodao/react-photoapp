@@ -4,7 +4,7 @@ import AuthActions, { AuthTypes } from '../reducer/authReducer';
 import { signup as _signup, login as _login } from '../../services/api';
 import { mappingErrorResponse } from '../../utils/helper';
 
-function* login({ payload }) {
+export function* login({ payload }) {
   const { email, password, history, onFailure } = payload;
   try {
     const response = yield _login({
@@ -32,7 +32,7 @@ function* login({ payload }) {
   }
 }
 
-function* logout() {
+export function* logout() {
   try {
     yield put(AuthActions.setIsLoggedIn(false));
     localStorage.removeItem('token');
@@ -41,7 +41,7 @@ function* logout() {
   }
 }
 
-function* signup({ payload }) {
+export function* signup({ payload }) {
   const { email, password, onSuccess, onFailure, history } = payload;
 
   try {

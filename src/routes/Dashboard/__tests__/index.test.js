@@ -9,6 +9,7 @@ import {
   mapDispatchToProps,
   mapStateToProps,
   ImageModal,
+  AddItemModal,
 } from '../';
 
 describe('Testing dashboard route', () => {
@@ -86,12 +87,29 @@ describe('Testing dashboard route', () => {
     const mappedDistpachFunction = mapDispatchToProps(mockDispatchFunction);
 
     mappedDistpachFunction.fetchCategoryList();
+    mappedDistpachFunction.addItem();
+
     expect(mockDispatchFunction).toHaveBeenCalled();
   });
 
   it('testing image modal snapshot', () => {
     const { asFragment } = render(
       <ImageModal
+        data={{
+          description: '',
+          name: '',
+          image_url: '',
+        }}
+        onClick={jest.fn()}
+        isOpen
+      />,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('testing add item modal snapshot', () => {
+    const { asFragment } = render(
+      <AddItemModal
         data={{
           description: '',
           name: '',

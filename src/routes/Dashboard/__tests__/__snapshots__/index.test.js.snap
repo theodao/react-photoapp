@@ -184,6 +184,96 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
+exports[`Testing dashboard route testing add item modal snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modalOverlay"
+  >
+    <div
+      class="Modal Modal--centered Modal--relative u-positionRelative Modal--medium"
+    >
+      <div
+        class="Modal-dialog u-positionRelative"
+      >
+        <div
+          class="Modal-container u-positionRelative u-flex u-flexColumn u-widthFull u-roundedLarge u-shadowLarge"
+        >
+          <div
+            class="Modal-header u-positionRelative u-backgroundWhite u-paddingHorizontalMedium u-paddingTopLarge u-paddingBottomSmall"
+          >
+            <div
+              class="Modal-title u-text650 u-textCenter"
+            >
+              Add Item
+            </div>
+            <button
+              class="Modal-close u-positionAbsolute u-backgroundTransparent u-borderNone u-cursorPointer u-paddingTiny u-lineHeightReset"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="u-opacityHalf"
+                focusable="false"
+                height="24px"
+                style="display: inline-block; vertical-align: middle;"
+                viewBox="0 0 24 24"
+                width="24px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m13.6588112 12 5.0002619-5.0015715c.4545692-.45468832.4545692-1.20272394 0-1.65741226-.4545693-.45468832-1.2024091-.45468832-1.6569783 0l-5.0002619 5.00157146-5.00026181-5.00157146c-.45456926-.45468832-1.20240901-.45468832-1.65697826 0-.22728463.22734416-.34459283.52802514-.34459283.82870613 0 .30068098.1173082.60136197.34459283.82870613l5.00026187 5.0015715-5.00026187 5.0015715c-.22728463.2273442-.34459283.5280251-.34459283.8287061s.1173082.601362.34459283.8287062c.45456925.4546883 1.202409.4546883 1.65697826 0l5.00026181-5.0015715 5.0002619 5.0015715c.4545692.4546883 1.202409.4546883 1.6569783 0 .4545692-.4546884.4545692-1.202724 0-1.6574123z"
+                  style="fill: currentColor;"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="Modal-body u-paddingHorizontalMedium u-backgroundWhite u-paddingTopSmall u-paddingBottomMedium"
+          >
+            <form>
+              <div
+                style="margin-bottom: 10px;"
+              >
+                <input
+                  class="FormInput u-block u-widthFull u-webkitScrollbar"
+                  name="photoUrl"
+                  placeholder="Photo URL"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                style="margin-bottom: 10px;"
+              >
+                <input
+                  class="FormInput u-block u-widthFull u-webkitScrollbar"
+                  name="description"
+                  placeholder="Description"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+              <button
+                class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+                style="margin-bottom: 10px;"
+              >
+                <span
+                  class="Button-label u-inlineBlock"
+                >
+                  Add
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Testing dashboard route testing image modal snapshot 1`] = `
 <DocumentFragment>
   <div

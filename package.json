@@ -67,5 +67,14 @@
     "pretty-quick": "^2.0.1",
     "react-test-renderer": "^16.13.1",
     "sinon": "^9.0.2"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/App.js",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/serviceWorker.js",
+      "<rootDir>/src/redux/store"
+    ]
   }
 }
