@@ -7,8 +7,8 @@ cache:
 before_install:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 script:
-  - yarn run test
-  - yarn run build
+  - npm run test
+  - CI=false npm run build
 deploy:
   provider: surge
   skip_cleanup: true
