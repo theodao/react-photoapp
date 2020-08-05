@@ -24,7 +24,12 @@ export const getItemDetail = (categoryId, itemId) => {
   return Http.get(`${END_POINT}/categories/${categoryId}/items/${itemId}`);
 };
 
-// export const updateItem = () => {}
+export const updateItemDetail = (categoryId, itemId, data) => {
+  return Http.put(
+    `${END_POINT}/categories/${categoryId}/items/${itemId}`,
+    data,
+  );
+};
 
 export const deleteItemDetail = (categoryId, itemId) => {
   return Http.delete(`${END_POINT}/categories/${categoryId}/items/${itemId}`);

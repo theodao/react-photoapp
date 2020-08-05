@@ -14,6 +14,7 @@ const { Types, Creators } = createActions({
   addItem: ['payload'],
   addCategory: ['payload'],
   deleteItem: ['payload'],
+  updateItem: ['payload'],
 });
 
 export const CategoryTypes = Types;
