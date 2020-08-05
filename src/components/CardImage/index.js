@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import styles from './styles.module.scss';
 
 export default ({ src, onClick = () => {}, title = 'Category' }) => {
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       className={styles.card}
       onClick={() => onClick()}

@@ -9,3 +9,10 @@ before_install:
 script:
   - yarn run test
   - yarn run build
+deploy:
+  provider: surge
+  skip_cleanup: true
+  domain: omniscient-father.surge.sh
+  project: ./build/
+  on:
+    branch: master

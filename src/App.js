@@ -29,6 +29,7 @@ function App() {
         />
         <Route
           path="/category/:id"
+          exact
           component={compose(withErrorHandler, withRouter)(Category)}
         />
         <Route
