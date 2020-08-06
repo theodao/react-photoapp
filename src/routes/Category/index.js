@@ -51,54 +51,52 @@ const GalleryModal = ({
     ));
 
   return (
-    <div className={styles.modalOverlay}>
-      <Modal size="large" relative show onHide={onClick} centered>
-        <Modal.Header closeButton onHide={onClick}></Modal.Header>
-        <Modal.Body>
-          <div className="u-textCenter">
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <img
-                src={data['image_url']}
-                className="u-maxWidthFull u-marginBottomExtraSmall"
-                alt=""
-              />
-            )}
-          </div>
-          <div>
-            <div className={styles.titleDetail}>Description</div>
-            <div>{data['description']}</div>
-          </div>
-          <Spacing size={SpacingSizes.SM} />
-          <div>
-            <div className={styles.titleDetail}>Author</div>
-            <div>{_get(data, 'author.name', null)}</div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="primary"
-            onClick={onClickOpenEditModal}
-            label="Edit"
-            disabled={!isLoggedIn}
-          />
-          <Button
-            variant="negative"
-            label="Delete"
-            disabled={!isLoggedIn}
-            onClick={() => {
-              deleteItemDetail({
-                categoryId,
-                itemId: data.id,
-                onSuccess: notifyAddItemSuccess,
-                onFailure: notifyAddItemFail,
-              });
-            }}
-          />
-        </Modal.Footer>
-      </Modal>
-    </div>
+    <Modal size="large" show={isOpen} onHide={onClick} centered>
+      <Modal.Header closeButton onHide={onClick}></Modal.Header>
+      <Modal.Body>
+        <div className="u-textCenter">
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <img
+              src={data['image_url']}
+              className="u-maxWidthFull u-marginBottomExtraSmall"
+              alt=""
+            />
+          )}
+        </div>
+        <div>
+          <div className={styles.titleDetail}>Description</div>
+          <div>{data['description']}</div>
+        </div>
+        <Spacing size={SpacingSizes.SM} />
+        <div>
+          <div className={styles.titleDetail}>Author</div>
+          <div>{_get(data, 'author.name', null)}</div>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          onClick={onClickOpenEditModal}
+          label="Edit"
+          disabled={!isLoggedIn}
+        />
+        <Button
+          variant="negative"
+          label="Delete"
+          disabled={!isLoggedIn}
+          onClick={() => {
+            deleteItemDetail({
+              categoryId,
+              itemId: data.id,
+              onSuccess: notifyAddItemSuccess,
+              onFailure: notifyAddItemFail,
+            });
+          }}
+        />
+      </Modal.Footer>
+    </Modal>
   );
 };
 
@@ -148,67 +146,68 @@ const EditItemModal = ({
   const { spacing } = Fonts;
 
   return (
-    <div className={styles.modalOverlay}>
-      <Modal size="medium" relative show onHide={onClick} centered>
-        <Modal.Header closeButton onHide={onClick}>
-          <Modal.Title>Edit Item</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={cx('Grid', styles.row)}>
-              <div className={cx('u-size3of12', styles.col3)}>Photo Url</div>
-              <div className="u-size9of12">
-                <Controller
-                  as={Input}
-                  type="text"
-                  placeholder="Photo URL"
-                  error={errors.photoUrl && errors.photoUrl.message}
-                  control={control}
-                  rules={{
-                    required: error.REQUIRED,
-                  }}
-                  defaultValue={data['image_url']}
-                  name="photoUrl"
-                />
-              </div>
+    <Modal size="medium" show={isOpen} onHide={onClick} centered>
+      <Modal.Header closeButton onHide={onClick}>
+        <Modal.Title>Edit Item</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={cx('Grid', styles.row)}>
+            <div className={cx('u-size3of12', styles.col3)}>Photo Url</div>
+            <div className="u-size9of12">
+              <Controller
+                as={Input}
+                type="text"
+                placeholder="Photo URL"
+                error={errors.photoUrl && errors.photoUrl.message}
+                control={control}
+                rules={{
+                  required: error.REQUIRED,
+                }}
+                defaultValue={data['image_url']}
+                name="photoUrl"
+              />
             </div>
+          </div>
+          <Spacing size={SpacingSizes.SM} />
 
-            <div className={cx('Grid', styles.row)}>
-              <div className={cx('u-size3of12', styles.col3)}>Description</div>
-              <div className="u-size9of12">
-                <Controller
-                  as={Input}
-                  type="text"
-                  placeholder="Description"
-                  error={errors.description && errors.description.message}
-                  defaultValue={data['description']}
-                  rules={{
-                    required: error.REQUIRED,
-                  }}
-                  name="description"
-                  control={control}
-                />
-              </div>
+          <div className={cx('Grid', styles.row)}>
+            <div className={cx('u-size3of12', styles.col3)}>Description</div>
+            <div className="u-size9of12">
+              <Controller
+                as={Input}
+                type="text"
+                placeholder="Description"
+                error={errors.description && errors.description.message}
+                defaultValue={data['description']}
+                rules={{
+                  required: error.REQUIRED,
+                }}
+                name="description"
+                control={control}
+              />
             </div>
-            <div className={cx('Grid', styles.row)}>
-              <div className={cx('u-size3of12', styles.col3)}>
-                <span />
-              </div>
-              <div className="u-size9of12">
-                <Button
-                  label="Edit"
-                  width="full"
-                  onClick={handleSubmit(onSubmit)}
-                  style={{
-                    marginBottom: spacing.small,
-                  }}
-                />
-              </div>
+          </div>
+          <Spacing size={SpacingSizes.SM} />
+
+          <div className={cx('Grid', styles.row)}>
+            <div className={cx('u-size3of12', styles.col3)}>
+              <span />
             </div>
-          </form>
-        </Modal.Body>
-      </Modal>
-    </div>
+            <div className="u-size9of12">
+              <Button
+                label="Edit"
+                width="full"
+                onClick={handleSubmit(onSubmit)}
+                style={{
+                  marginBottom: spacing.small,
+                }}
+              />
+            </div>
+          </div>
+        </form>
+      </Modal.Body>
+    </Modal>
   );
 };
 

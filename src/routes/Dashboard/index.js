@@ -34,42 +34,40 @@ export const ImageModal = ({
   const { description, image_url: url, name, id } = data;
 
   return (
-    <div className={styles.modalOverlay}>
-      <Modal size="large" relative show onHide={onClick} centered>
-        <Modal.Header closeButton onHide={onClick}>
-          <Modal.Title>{name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="u-textCenter">
-            <img
-              src={url}
-              style={{
-                height: '500px',
-                borderRadius: '20px',
-              }}
-              className="u-maxWidthFull u-marginBottomExtraSmall"
-              alt=""
-            />
-          </div>
-          <p>{description}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant="primary"
-            onClick={() => {
-              history.push(`/category/${id}`);
+    <Modal size="large" show={isOpen} onHide={onClick} centered>
+      <Modal.Header closeButton onHide={onClick}>
+        <Modal.Title>{name}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="u-textCenter">
+          <img
+            src={url}
+            style={{
+              height: '500px',
+              borderRadius: '20px',
             }}
-            label="View Category Image"
+            className="u-maxWidthFull u-marginBottomExtraSmall"
+            alt=""
           />
-          <Button
-            variant="primary"
-            onClick={onClickAddModel}
-            label="Add Item"
-            disabled={!isLoggedIn}
-          />
-        </Modal.Footer>
-      </Modal>
-    </div>
+        </div>
+        <p>{description}</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="primary"
+          onClick={() => {
+            history.push(`/category/${id}`);
+          }}
+          label="View Category Image"
+        />
+        <Button
+          variant="primary"
+          onClick={onClickAddModel}
+          label="Add Item"
+          disabled={!isLoggedIn}
+        />
+      </Modal.Footer>
+    </Modal>
   );
 };
 
@@ -106,70 +104,68 @@ export const AddItemModal = ({
     });
   };
   return (
-    <div className={styles.modalOverlay}>
-      <Modal size="medium" relative show onHide={onClick} centered>
-        <Modal.Header closeButton onHide={onClick}>
-          <Modal.Title>Add Item</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={cx('Grid')}>
-              <div className={cx('u-size3of12', styles.col3)}>Photo URL</div>
-              <div className="u-size9of12">
-                <Controller
-                  as={Input}
-                  type="text"
-                  placeholder="Photo URL"
-                  error={errors.photoUrl && errors.photoUrl.message}
-                  control={control}
-                  rules={{
-                    required: error.REQUIRED,
-                  }}
-                  defaultValue=""
-                  name="photoUrl"
-                />
-              </div>
+    <Modal size="medium" show={isOpen} onHide={onClick} centered>
+      <Modal.Header closeButton onHide={onClick}>
+        <Modal.Title>Add Item</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={cx('Grid')}>
+            <div className={cx('u-size3of12', styles.col3)}>Photo URL</div>
+            <div className="u-size9of12">
+              <Controller
+                as={Input}
+                type="text"
+                placeholder="Photo URL"
+                error={errors.photoUrl && errors.photoUrl.message}
+                control={control}
+                rules={{
+                  required: error.REQUIRED,
+                }}
+                defaultValue=""
+                name="photoUrl"
+              />
             </div>
-            <Spacing size={SpacingSizes.SM} />
+          </div>
+          <Spacing size={SpacingSizes.SM} />
 
-            <div className={cx('Grid')}>
-              <div className={cx('u-size3of12', styles.col3)}>Description</div>
-              <div className="u-size9of12">
-                <Controller
-                  as={Input}
-                  type="text"
-                  placeholder="Description"
-                  error={errors.description && errors.description.message}
-                  defaultValue=""
-                  rules={{
-                    required: error.REQUIRED,
-                  }}
-                  name="description"
-                  control={control}
-                />
-              </div>
+          <div className={cx('Grid')}>
+            <div className={cx('u-size3of12', styles.col3)}>Description</div>
+            <div className="u-size9of12">
+              <Controller
+                as={Input}
+                type="text"
+                placeholder="Description"
+                error={errors.description && errors.description.message}
+                defaultValue=""
+                rules={{
+                  required: error.REQUIRED,
+                }}
+                name="description"
+                control={control}
+              />
             </div>
-            <Spacing size={SpacingSizes.SM} />
+          </div>
+          <Spacing size={SpacingSizes.SM} />
 
-            <div className={cx('Grid')}>
-              <div className={cx('u-size3of12', styles.col3)}>
-                <span />
-              </div>
-              <div className="u-size9of12">
-                <Button
-                  label="Add"
-                  width="full"
-                  onClick={handleSubmit(onSubmit)}
-                  style={{
-                    marginBottom: spacing.small,
-                  }}
-                />
-              </div>
+          <div className={cx('Grid')}>
+            <div className={cx('u-size3of12', styles.col3)}>
+              <span />
             </div>
-          </form>
-        </Modal.Body>
-      </Modal>
-    </div>
+            <div className="u-size9of12">
+              <Button
+                label="Add"
+                width="full"
+                onClick={handleSubmit(onSubmit)}
+                style={{
+                  marginBottom: spacing.small,
+                }}
+              />
+            </div>
+          </div>
+        </form>
+      </Modal.Body>
+    </Modal>
   );
 };
 
