@@ -19,7 +19,11 @@ export const MainLayout = ({
   const { isLoggedIn } = auth;
 
   return (
-    <div>
+    <div
+      style={{
+        height: '100%',
+      }}
+    >
       {fullScreenLoading ? (
         <Container>
           <Loader />

@@ -9,6 +9,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import ToastContent from '../../components/ToastContent';
+import Pagination from '../../components/Pagination';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
@@ -279,8 +280,8 @@ export const ItemList = ({
                       alt={`Image number  ${index + 1}`}
                     />
                     <Icon
-                      name="informationCircle"
-                      size="medium"
+                      name="expand"
+                      size="large"
                       style={{
                         cursor: 'pointer',
                       }}
@@ -292,6 +293,12 @@ export const ItemList = ({
               );
             })}
           </div>
+          <Pagination
+            currentPage={currentPage}
+            totalItems={category.totalItems}
+            onChangePageNumber={setCurrentPage}
+          />
+          <Spacing size={SpacingSizes.SM} />
 
           <GalleryModal
             isOpen={showModal}

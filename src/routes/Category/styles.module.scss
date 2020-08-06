@@ -6,7 +6,10 @@ $black: #111;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .row {
@@ -111,10 +114,6 @@ $black: #111;
 .titleDetail {
   font-size: 0.9rem;
   color: #767676;
-}
-
-.row {
-  margin-bottom: 10px;
 }
 
 .col3 {
