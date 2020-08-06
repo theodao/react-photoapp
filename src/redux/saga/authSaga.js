@@ -21,7 +21,7 @@ export function* login({ payload }) {
       history.push('/dashboard');
     }
   } catch (error) {
-    const message = _get(error, 'data.message');
+    const message = _get(error, 'data.error');
 
     if (typeof message === 'object') {
       const errorList = mappingErrorResponse(message);

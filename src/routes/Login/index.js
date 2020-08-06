@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
@@ -14,9 +15,11 @@ import { error } from '../../constants';
 const { spacing } = Fonts;
 
 export const Login = ({ history, dispatchLogin, auth }) => {
-  const { handleSubmit, control, errors } = useForm({
-    mode: 'onSubmit',
+  const { handleSubmit, control, errors, formState } = useForm({
+    mode: 'onChange',
   });
+
+  const { isValid, isSubmitted } = formState;
 
   useLayoutEffect(() => {
     const { isLoggedIn } = auth;
@@ -49,10 +52,14 @@ export const Login = ({ history, dispatchLogin, auth }) => {
             type="text"
             required
             label="Email"
-            error={errors.email && errors.email.message}
+            error={isSubmitted && errors.email && errors.email.message}
             defaultValue=""
             rules={{
               required: error.REQUIRED,
+              pattern: {
+                message: error.INVALID_EMAIL,
+                value: /\S+@\S+\.\S+/,
+              },
             }}
           />
           <Spacing size={SpacingSizes.SM} />
@@ -62,7 +69,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
             label="Password"
             required
             control={control}
-            error={errors.password && errors.password.message}
+            error={isSubmitted && errors.password && errors.password.message}
             rules={{
               minLength: {
                 message: error.PASSWORD_VALIDATION,
@@ -77,6 +84,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
           <Button
             label="Log in"
             width="full"
+            disabled={!isValid}
             onClick={handleSubmit(onSubmit)}
             style={{
               marginBottom: spacing.small,
