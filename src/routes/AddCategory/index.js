@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import React from 'react';
 import styled from 'styled-components';
 import { toast } from '@gotitinc/design-system';
@@ -11,14 +12,17 @@ import Button from '../../components/Button';
 import { Fonts } from '../../themes';
 import { error } from '../../constants';
 import CategoryActions from '../../redux/reducer/categoryReducer';
+// import { asyncCheckImage } from '../../utils/helper';
 import styles from './styles.module.scss';
 
 const { spacing } = Fonts;
 
 export const AddCategory = ({ dispatchAddCategory }) => {
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, formState } = useForm({
     mode: 'onSubmit',
   });
+
+  const { isSubmitted, isValid, isDirty } = formState;
 
   const notifySignupSuccess = (content) =>
     toast.success(() => (
@@ -55,7 +59,7 @@ export const AddCategory = ({ dispatchAddCategory }) => {
                   type="text"
                   placeholder="Category Name"
                   control={control}
-                  error={errors.name && errors.name.message}
+                  error={isSubmitted && errors.name && errors.name.message}
                   defaultValue=""
                   name="name"
                   rules={{
@@ -73,7 +77,11 @@ export const AddCategory = ({ dispatchAddCategory }) => {
                   type="text"
                   placeholder="Description"
                   control={control}
-                  error={errors.description && errors.description.message}
+                  error={
+                    isSubmitted &&
+                    errors.description &&
+                    errors.description.message
+                  }
                   defaultValue=""
                   name="description"
                   rules={{
@@ -96,6 +104,7 @@ export const AddCategory = ({ dispatchAddCategory }) => {
                   name="photoUrl"
                   rules={{
                     required: error.REQUIRED,
+                    // validate: asyncCheckImage,
                   }}
                 />
               </div>
@@ -108,6 +117,7 @@ export const AddCategory = ({ dispatchAddCategory }) => {
               <div className="u-size9of12">
                 <Button
                   label="Add"
+                  disabled={!isDirty}
                   width="full"
                   onClick={handleSubmit(onSubmit)}
                   style={{
