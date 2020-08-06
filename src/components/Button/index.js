@@ -9,11 +9,13 @@ export default ({
   width = 'auto',
   onClick = () => {},
   style = {},
+  disabled = false,
   ...rest
 }) => {
   return (
     <Button
       variant={variant}
+      disabled={disabled}
       width={width}
       onClick={onClick}
       {...rest}

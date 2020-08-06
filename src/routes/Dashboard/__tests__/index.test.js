@@ -77,7 +77,7 @@ describe('Testing dashboard route', () => {
 
     const mappedState = mapStateToProps(state);
 
-    expect(mappedState.auth.isLoggedIn).toEqual(false);
+    expect(mappedState.isLoggedIn).toEqual(false);
     expect(mappedState.category.categories).toEqual([]);
   });
 

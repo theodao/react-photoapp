@@ -25,6 +25,7 @@ export const ImageModal = ({
   data = {},
   history = {},
   onClickAddModel = () => {},
+  isLoggedIn,
 }) => {
   if (isOpen === false) {
     return null;
@@ -64,6 +65,7 @@ export const ImageModal = ({
             variant="primary"
             onClick={onClickAddModel}
             label="Add Item"
+            disabled={!isLoggedIn}
           />
         </Modal.Footer>
       </Modal>
@@ -176,6 +178,7 @@ export const Dashboard = ({
   fetchCategoryList,
   history,
   addItem,
+  isLoggedIn,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -239,6 +242,7 @@ export const Dashboard = ({
         data={modalData}
         onClickAddModel={openAddModal}
         history={history}
+        isLoggedIn={isLoggedIn}
       />
       <AddItemModal
         isOpen={showAddModal}
@@ -252,7 +256,7 @@ export const Dashboard = ({
 
 export const mapStateToProps = (state) => ({
   category: state.category,
-  auth: state.auth,
+  isLoggedIn: state.auth.isLoggedIn,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

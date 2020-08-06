@@ -7,6 +7,7 @@ import { Icon, Modal, Loader, toast } from '@gotitinc/design-system';
 import _get from 'lodash/get';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 import ToastContent from '../../components/ToastContent';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
@@ -26,6 +27,7 @@ const GalleryModal = ({
   categoryId,
   deleteItemDetail,
   fetchItems,
+  isLoggedIn,
   onClickOpenEditModal = () => {},
 }) => {
   if (isOpen === false) {
@@ -78,10 +80,12 @@ const GalleryModal = ({
             variant="primary"
             onClick={onClickOpenEditModal}
             label="Edit"
+            disabled={!isLoggedIn}
           />
           <Button
             variant="negative"
             label="Delete"
+            disabled={!isLoggedIn}
             onClick={() => {
               deleteItemDetail({
                 categoryId,
@@ -150,38 +154,56 @@ const EditItemModal = ({
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Photo URL"
-              error={errors.photoUrl && errors.photoUrl.message}
-              control={control}
-              rules={{
-                required: error.REQUIRED,
-              }}
-              defaultValue={data['image_url']}
-              name="photoUrl"
-            />
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Description"
-              error={errors.description && errors.description.message}
-              defaultValue={data['description']}
-              rules={{
-                required: error.REQUIRED,
-              }}
-              name="description"
-              control={control}
-            />
-            <Button
-              label="Edit"
-              width="full"
-              onClick={handleSubmit(onSubmit)}
-              style={{
-                marginBottom: spacing.small,
-              }}
-            />
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>Photo Url</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Photo URL"
+                  error={errors.photoUrl && errors.photoUrl.message}
+                  control={control}
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                  defaultValue={data['image_url']}
+                  name="photoUrl"
+                />
+              </div>
+            </div>
+
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>Description</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Description"
+                  error={errors.description && errors.description.message}
+                  defaultValue={data['description']}
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                  name="description"
+                  control={control}
+                />
+              </div>
+            </div>
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>
+                <span />
+              </div>
+              <div className="u-size9of12">
+                <Button
+                  label="Edit"
+                  width="full"
+                  onClick={handleSubmit(onSubmit)}
+                  style={{
+                    marginBottom: spacing.small,
+                  }}
+                />
+              </div>
+            </div>
           </form>
         </Modal.Body>
       </Modal>
@@ -209,6 +231,7 @@ export const ItemList = ({
   updateItemdetail,
   category,
   match,
+  isLoggedIn,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -279,6 +302,7 @@ export const ItemList = ({
             onClickOpenEditModal={openEditModal}
             isLoading={category.isFetchingItem}
             fetchItems={fetchItems}
+            isLoggedIn={isLoggedIn}
           />
           <EditItemModal
             isOpen={showEditModal}
@@ -296,6 +320,7 @@ export const ItemList = ({
 
 const mapStateToProps = (state) => ({
   category: state.category,
+  isLoggedIn: state.auth.isLoggedIn,
 });
 
 const mapDistpatchToProps = (dispatch) => ({

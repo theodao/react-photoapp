@@ -55,7 +55,7 @@ export function* signup({ payload }) {
       history.push('/login');
     }
   } catch (error) {
-    const message = _get(error, 'data.message');
+    const message = _get(error, 'data.error');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);

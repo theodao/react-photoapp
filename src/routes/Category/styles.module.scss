@@ -112,3 +112,16 @@ $black: #111;
   font-size: 0.9rem;
   color: #767676;
 }
+
+.row {
+  margin-bottom: 10px;
+}
+
+.col3 {
+  font-weight: 600;
+  text-align: right;
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  font-size: 0.9rem;
+}

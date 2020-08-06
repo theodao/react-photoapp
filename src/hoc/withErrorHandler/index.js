@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import _get from 'lodash/get';
+import _set from 'lodash/set';
 import Http from '../../utils/HttpUtils';
 
 const withErrorHandler = (WrappedComponent) => {
@@ -29,6 +30,9 @@ const withErrorHandler = (WrappedComponent) => {
         (err) => {
           /** Custom behavior of error status code here  */
           const errorObject = _get(err, 'response', {});
+          if (errorObject.status === 401) {
+            _set(errorObject, 'data.message', 'You dont have permission');
+          }
           return Promise.reject(errorObject);
         },
       );
