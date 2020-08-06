@@ -22,6 +22,8 @@ export const MainLayout = ({
     <div
       style={{
         height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {fullScreenLoading ? (
@@ -83,7 +85,11 @@ export const MainLayout = ({
               ) : null}
             </div>
           </div>
-          <div>
+          <div
+            style={{
+              flex: 1,
+            }}
+          >
             {loading ? (
               <Container>
                 <Loader />

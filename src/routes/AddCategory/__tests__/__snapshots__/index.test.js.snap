@@ -3,7 +3,7 @@
 exports[`Testing Add Category component Should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    style="height: 100%;"
+    style="height: 100%; display: flex; flex-direction: column;"
   >
     <div
       style="display: flex; justify-content: space-between;"
@@ -77,9 +77,11 @@ exports[`Testing Add Category component Should match snapshot 1`] = `
         </button>
       </div>
     </div>
-    <div>
+    <div
+      style="flex: 1;"
+    >
       <div
-        class="sc-AxirZ kRBMTz"
+        class="sc-AxirZ enylqG"
       >
         <div
           class="sc-AxiKw bgIVGE"

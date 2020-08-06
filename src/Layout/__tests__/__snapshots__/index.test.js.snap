@@ -4,6 +4,8 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
 <div
   style={
     Object {
+      "display": "flex",
+      "flexDirection": "column",
       "height": "100%",
     }
   }
@@ -108,6 +110,12 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
       </button>
     </div>
   </div>
-  <div />
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
 </div>
 `;
