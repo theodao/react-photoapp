@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import ToastContent from '../../components/ToastContent';
-import { Colors } from '../../themes';
+import { Colors, Fonts } from '../../themes';
 import { error } from '../../constants';
 import AuthActions from '../../redux/reducer/authReducer';
 
@@ -43,7 +44,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
   return (
     <Flex>
       <LoginBox>
-        <LoginWrapper>Create an account</LoginWrapper>
+        <HeaderWrapper>Create an account</HeaderWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             as={Input}
@@ -58,6 +59,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
               required: error.REQUIRED,
             }}
           />
+          <Spacing size={SpacingSizes.SM} />
           <Controller
             as={Input}
             name="email"
@@ -71,6 +73,8 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
               required: error.REQUIRED,
             }}
           />
+          <Spacing size={SpacingSizes.SM} />
+
           <Controller
             as={Input}
             name="password"
@@ -88,6 +92,8 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
             type="password"
             defaultValue=""
           />
+          <Spacing size={SpacingSizes.SM} />
+
           <Button
             label="Sign up"
             width="full"
@@ -139,5 +145,10 @@ const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
   font-weight: 500;
+  font-size: 0.9rem;
   margin: 10px 0;
+`;
+
+const HeaderWrapper = styled(LoginWrapper)`
+  font-size: 1.2rem;
 `;

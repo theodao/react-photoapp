@@ -8,6 +8,7 @@ import _get from 'lodash/get';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import ToastContent from '../../components/ToastContent';
+import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -62,7 +63,15 @@ const GalleryModal = ({
               />
             )}
           </div>
-          <p>{data['description']}</p>
+          <div>
+            <div className={styles.titleDetail}>Description</div>
+            <div>{data['description']}</div>
+          </div>
+          <Spacing size={SpacingSizes.SM} />
+          <div>
+            <div className={styles.titleDetail}>Author</div>
+            <div>{_get(data, 'author.name', null)}</div>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button

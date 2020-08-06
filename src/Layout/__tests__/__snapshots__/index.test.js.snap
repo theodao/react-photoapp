@@ -72,6 +72,7 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
         onClick={[Function]}
         style={
           Object {
+            "fontSize": "0.9rem",
             "margin": "10px",
           }
         }
@@ -80,6 +81,23 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
           className="Button-label u-inlineBlock"
         >
           Login
+        </span>
+      </button>
+      <button
+        className="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+        disabled={false}
+        onClick={[Function]}
+        style={
+          Object {
+            "fontSize": "0.9rem",
+            "margin": "10px",
+          }
+        }
+      >
+        <span
+          className="Button-label u-inlineBlock"
+        >
+          Sign up
         </span>
       </button>
     </div>

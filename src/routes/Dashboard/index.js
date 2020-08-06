@@ -5,6 +5,7 @@ import { Modal, toast } from '@gotitinc/design-system';
 import { connect } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import _get from 'lodash/get';
+import cx from 'classnames';
 import CategoryActions from '../../redux/reducer/categoryReducer';
 import CardImage from '../../components/CardImage';
 import ToastContent from '../../components/ToastContent';
@@ -110,38 +111,59 @@ export const AddItemModal = ({
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Photo URL"
-              error={errors.photoUrl && errors.photoUrl.message}
-              control={control}
-              rules={{
-                required: error.REQUIRED,
-              }}
-              defaultValue=""
-              name="photoUrl"
-            />
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Description"
-              error={errors.description && errors.description.message}
-              defaultValue=""
-              rules={{
-                required: error.REQUIRED,
-              }}
-              name="description"
-              control={control}
-            />
-            <Button
-              label="Add"
-              width="full"
-              onClick={handleSubmit(onSubmit)}
-              style={{
-                marginBottom: spacing.small,
-              }}
-            />
+            <div className={cx('Grid')}>
+              <div className={cx('u-size3of12', styles.col3)}>Photo URL</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Photo URL"
+                  error={errors.photoUrl && errors.photoUrl.message}
+                  control={control}
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                  defaultValue=""
+                  name="photoUrl"
+                />
+              </div>
+            </div>
+            <Spacing size={SpacingSizes.SM} />
+
+            <div className={cx('Grid')}>
+              <div className={cx('u-size3of12', styles.col3)}>Description</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Description"
+                  error={errors.description && errors.description.message}
+                  defaultValue=""
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                  name="description"
+                  control={control}
+                />
+              </div>
+            </div>
+            <Spacing size={SpacingSizes.SM} />
+
+            <div className={cx('Grid')}>
+              <div className={cx('u-size3of12', styles.col3)}>
+                <span />
+              </div>
+              <div className="u-size9of12">
+                <Button
+                  label="Add"
+                  width="full"
+                  onClick={handleSubmit(onSubmit)}
+                  style={{
+                    marginBottom: spacing.small,
+                  }}
+                />
+              </div>
+            </div>
           </form>
         </Modal.Body>
       </Modal>

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
 import ToastContent from '../../components/ToastContent';
 import AuthActions from '../../redux/reducer/authReducer';
+import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { Colors, Fonts } from '../../themes';
@@ -54,6 +55,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
               required: error.REQUIRED,
             }}
           />
+          <Spacing size={SpacingSizes.SM} />
           <Controller
             as={Input}
             name="password"
@@ -71,6 +73,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
             type="password"
             defaultValue=""
           />
+          <Spacing size={SpacingSizes.SM} />
           <Button
             label="Log in"
             width="full"
@@ -126,6 +129,7 @@ const LoginBox = styled.div`
 const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
+  font-size: 1.2rem;
   font-weight: 500;
   margin: ${spacing.small} 0;
 `;

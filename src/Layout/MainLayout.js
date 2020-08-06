@@ -65,6 +65,18 @@ export const MainLayout = ({
                   history.push('/login');
                 }}
               />
+              {!isLoggedIn ? (
+                <Button
+                  variant="secondary"
+                  label="Sign up"
+                  style={{
+                    margin: '10px',
+                  }}
+                  onClick={() => {
+                    history.push('/signup');
+                  }}
+                />
+              ) : null}
             </div>
           </div>
           <div>

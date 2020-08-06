@@ -16,13 +16,13 @@ export default ({
   ...rest
 }) => {
   return (
-    <div
-      style={{
-        marginBottom: spacing.small,
-      }}
-    >
+    <div>
       {label && (
-        <Label>
+        <Label
+          style={{
+            fontSize: '0.9rem',
+          }}
+        >
           {label}
           {required && <span className="error"> *</span>}
         </Label>
@@ -35,6 +35,7 @@ export default ({
         as={as}
         style={{
           ...style,
+          fontSize: '0.9rem',
         }}
         {...rest}
       />

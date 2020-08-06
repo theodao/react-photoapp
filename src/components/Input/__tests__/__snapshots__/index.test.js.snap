@@ -2,12 +2,11 @@
 
 exports[`Testing input component Should match snapshot 1`] = `
 <DocumentFragment>
-  <div
-    style="margin-bottom: 10px;"
-  >
+  <div>
     <input
       class="FormInput u-block u-widthFull u-webkitScrollbar"
       required=""
+      style="font-size: 0.9rem;"
     />
   </div>
 </DocumentFragment>

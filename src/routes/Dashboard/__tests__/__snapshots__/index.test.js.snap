@@ -55,12 +55,22 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
       <div>
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
-          style="margin: 10px;"
+          style="margin: 10px; font-size: 0.9rem;"
         >
           <span
             class="Button-label u-inlineBlock"
           >
             Login
+          </span>
+        </button>
+        <button
+          class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+          style="margin: 10px; font-size: 0.9rem;"
+        >
+          <span
+            class="Button-label u-inlineBlock"
+          >
+            Sign up
           </span>
         </button>
       </div>
@@ -232,39 +242,82 @@ exports[`Testing dashboard route testing add item modal snapshot 1`] = `
           >
             <form>
               <div
-                style="margin-bottom: 10px;"
+                class="Grid"
               >
-                <input
-                  class="FormInput u-block u-widthFull u-webkitScrollbar"
-                  name="photoUrl"
-                  placeholder="Photo URL"
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="u-size3of12 col3"
+                >
+                  Photo URL
+                </div>
+                <div
+                  class="u-size9of12"
+                >
+                  <div>
+                    <input
+                      class="FormInput u-block u-widthFull u-webkitScrollbar"
+                      name="photoUrl"
+                      placeholder="Photo URL"
+                      required=""
+                      style="font-size: 0.9rem;"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
               <div
-                style="margin-bottom: 10px;"
+                class="sc-AxjAm cExXRh"
+              />
+              <div
+                class="Grid"
               >
-                <input
-                  class="FormInput u-block u-widthFull u-webkitScrollbar"
-                  name="description"
-                  placeholder="Description"
-                  required=""
-                  type="text"
-                  value=""
-                />
-              </div>
-              <button
-                class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
-                style="margin-bottom: 10px;"
-              >
-                <span
-                  class="Button-label u-inlineBlock"
+                <div
+                  class="u-size3of12 col3"
                 >
-                  Add
-                </span>
-              </button>
+                  Description
+                </div>
+                <div
+                  class="u-size9of12"
+                >
+                  <div>
+                    <input
+                      class="FormInput u-block u-widthFull u-webkitScrollbar"
+                      name="description"
+                      placeholder="Description"
+                      required=""
+                      style="font-size: 0.9rem;"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="sc-AxjAm cExXRh"
+              />
+              <div
+                class="Grid"
+              >
+                <div
+                  class="u-size3of12 col3"
+                >
+                  <span />
+                </div>
+                <div
+                  class="u-size9of12"
+                >
+                  <button
+                    class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+                    style="margin-bottom: 10px; font-size: 0.9rem;"
+                  >
+                    <span
+                      class="Button-label u-inlineBlock"
+                    >
+                      Add
+                    </span>
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -335,6 +388,7 @@ exports[`Testing dashboard route testing image modal snapshot 1`] = `
           >
             <button
               class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+              style="font-size: 0.9rem;"
             >
               <span
                 class="Button-label u-inlineBlock"
@@ -344,6 +398,7 @@ exports[`Testing dashboard route testing image modal snapshot 1`] = `
             </button>
             <button
               class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
+              style="font-size: 0.9rem;"
             >
               <span
                 class="Button-label u-inlineBlock"

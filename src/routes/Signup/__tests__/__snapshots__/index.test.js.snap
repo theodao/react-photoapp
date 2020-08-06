@@ -3,55 +3,62 @@
 exports[`Testing sign up route Should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm gItfda"
+    class="sc-AxirZ oxXIZ"
   >
     <div
-      class="sc-AxirZ jnnTzo"
+      class="sc-AxiKw EEztA"
     >
       <div
-        class="sc-AxiKw jbrNmo"
+        class="sc-AxhCb sc-AxhUy cRUfQ"
       >
         Create an account
       </div>
       <form>
-        <div
-          style="margin-bottom: 10px;"
-        >
+        <div>
           <input
             class="FormInput u-block u-widthFull u-webkitScrollbar"
             name="username"
             placeholder="Username"
             required=""
+            style="font-size: 0.9rem;"
             type="text"
             value=""
           />
         </div>
         <div
-          style="margin-bottom: 10px;"
-        >
+          class="sc-AxjAm cExXRh"
+        />
+        <div>
           <input
             class="FormInput u-block u-widthFull u-webkitScrollbar"
             name="email"
             placeholder="Email"
             required=""
+            style="font-size: 0.9rem;"
             type="text"
             value=""
           />
         </div>
         <div
-          style="margin-bottom: 10px;"
-        >
+          class="sc-AxjAm cExXRh"
+        />
+        <div>
           <input
             class="FormInput u-block u-widthFull u-webkitScrollbar"
             name="password"
             placeholder="Password"
             required=""
+            style="font-size: 0.9rem;"
             type="password"
             value=""
           />
         </div>
+        <div
+          class="sc-AxjAm cExXRh"
+        />
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+          style="font-size: 0.9rem;"
         >
           <span
             class="Button-label u-inlineBlock"
@@ -61,7 +68,7 @@ exports[`Testing sign up route Should match snapshot 1`] = `
         </button>
       </form>
       <div
-        class="sc-AxiKw jbrNmo u-cursorPointer"
+        class="sc-AxhCb jZbWFZ u-cursorPointer"
       >
         Login instead ?
       </div>

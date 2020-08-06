@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { toast } from '@gotitinc/design-system';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 import MainLayout from '../../Layout/MainLayout';
 import Input from '../../components/Input';
 import ToastContent from '../../components/ToastContent';
@@ -10,6 +11,7 @@ import Button from '../../components/Button';
 import { Fonts } from '../../themes';
 import { error } from '../../constants';
 import CategoryActions from '../../redux/reducer/categoryReducer';
+import styles from './styles.module.scss';
 
 const { spacing } = Fonts;
 
@@ -43,50 +45,77 @@ export const AddCategory = ({ dispatchAddCategory }) => {
       <Flex>
         <LoginBox>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Category Name"
-              control={control}
-              error={errors.name && errors.name.message}
-              defaultValue=""
-              name="name"
-              rules={{
-                required: error.REQUIRED,
-              }}
-            />
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Description"
-              control={control}
-              error={errors.description && errors.description.message}
-              defaultValue=""
-              name="description"
-              rules={{
-                required: error.REQUIRED,
-              }}
-            />
-            <Controller
-              as={Input}
-              type="text"
-              placeholder="Photo URL"
-              control={control}
-              error={errors.photoUrl && errors.photoUrl.message}
-              defaultValue=""
-              name="photoUrl"
-              rules={{
-                required: error.REQUIRED,
-              }}
-            />
-            <Button
-              label="Add"
-              width="full"
-              onClick={handleSubmit(onSubmit)}
-              style={{
-                marginBottom: spacing.small,
-              }}
-            />
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>
+                Category Name
+              </div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Category Name"
+                  control={control}
+                  error={errors.name && errors.name.message}
+                  defaultValue=""
+                  name="name"
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>Description</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Description"
+                  control={control}
+                  error={errors.description && errors.description.message}
+                  defaultValue=""
+                  name="description"
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className={cx('Grid', styles.row)}>
+              <div className={cx('u-size3of12', styles.col3)}>Photo URL</div>
+              <div className="u-size9of12">
+                <Controller
+                  as={Input}
+                  type="text"
+                  placeholder="Photo URL"
+                  control={control}
+                  error={errors.photoUrl && errors.photoUrl.message}
+                  defaultValue=""
+                  name="photoUrl"
+                  rules={{
+                    required: error.REQUIRED,
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="Grid">
+              <div className={cx('u-size3of12', styles.col3)}>
+                <span />
+              </div>
+              <div className="u-size9of12">
+                <Button
+                  label="Add"
+                  width="full"
+                  onClick={handleSubmit(onSubmit)}
+                  style={{
+                    marginBottom: spacing.small,
+                  }}
+                />
+              </div>
+            </div>
           </form>
         </LoginBox>
       </Flex>
@@ -117,8 +146,11 @@ const Flex = styled.div`
 
 const LoginBox = styled.div`
   border: 1px solid #eee;
-  width: 450px;
+  max-width: 600px;
+  margin: 20px auto;
   padding: 30px;
+  flex: 0 0 70%;
+  display: block;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 2px;
 `;

@@ -3,22 +3,21 @@
 exports[`Testing login route Should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm gItfda"
+    class="sc-AxirZ oxXIZ"
   >
     <div
-      class="sc-AxirZ jnnTzo"
+      class="sc-AxiKw EEztA"
     >
       <div
-        class="sc-AxiKw kXJzlH"
+        class="sc-AxhCb hOEozc"
       >
         Login
       </div>
       <form>
-        <div
-          style="margin-bottom: 10px;"
-        >
+        <div>
           <label
             class="FormLabel u-block u-marginBottomTiny"
+            style="font-size: 0.9rem;"
           >
             Email
             <span
@@ -31,15 +30,18 @@ exports[`Testing login route Should match snapshot 1`] = `
             class="FormInput u-block u-widthFull u-webkitScrollbar"
             name="email"
             required=""
+            style="font-size: 0.9rem;"
             type="text"
             value=""
           />
         </div>
         <div
-          style="margin-bottom: 10px;"
-        >
+          class="sc-AxjAm cExXRh"
+        />
+        <div>
           <label
             class="FormLabel u-block u-marginBottomTiny"
+            style="font-size: 0.9rem;"
           >
             Password
             <span
@@ -52,13 +54,17 @@ exports[`Testing login route Should match snapshot 1`] = `
             class="FormInput u-block u-widthFull u-webkitScrollbar"
             name="password"
             required=""
+            style="font-size: 0.9rem;"
             type="password"
             value=""
           />
         </div>
+        <div
+          class="sc-AxjAm cExXRh"
+        />
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
-          style="margin-bottom: 10px; margin-top: 10px;"
+          style="margin-bottom: 10px; margin-top: 10px; font-size: 0.9rem;"
         >
           <span
             class="Button-label u-inlineBlock"
@@ -68,6 +74,7 @@ exports[`Testing login route Should match snapshot 1`] = `
         </button>
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-widthFull u-textUppercase"
+          style="font-size: 0.9rem;"
         >
           <span
             class="Button-label u-inlineBlock"
