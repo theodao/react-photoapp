@@ -15,20 +15,17 @@ export const getToken = () => {
 };
 
 /** Request interceptos  */
-Http.interceptors.request.use(
-  (config) => {
-    let token = null;
+Http.interceptors.request.use((config) => {
+  let token = null;
 
-    token = getToken();
+  token = getToken();
 
-    if (token !== null) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    config.headers['Content-Type'] = 'application/json';
-    return config;
-  },
-  (error) => {},
-);
+  if (token !== null) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  config.headers['Content-Type'] = 'application/json';
+  return config;
+});
 
 // Http.defaults.timeout = 30000;
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Loader, TopMenu } from '@gotitinc/design-system';
 import { connect } from 'react-redux';
@@ -15,9 +15,8 @@ export const MainLayout = ({
   auth,
   dispatchLogout,
 }) => {
-  const [current, setCurrent] = useState(match.path || '/dashboard');
+  const current = match.path || '/dashboard';
   const { isLoggedIn } = auth;
-
   return (
     <div
       style={{

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import _get from 'lodash/get';
 import _set from 'lodash/set';
 import Http from '../../utils/HttpUtils';

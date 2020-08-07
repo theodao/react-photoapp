@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Pagination } from '@gotitinc/design-system';
 
-const { Prev, Item, Next, Ellipsis } = Pagination;
+const { Prev, Item, Next } = Pagination;
 
 export default ({
   currentPage = 1,
