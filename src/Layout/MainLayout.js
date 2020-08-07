@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Loader, TopMenu } from '@gotitinc/design-system';
 import { connect } from 'react-redux';
