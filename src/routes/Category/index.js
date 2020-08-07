@@ -170,6 +170,10 @@ const EditItemModal = ({
                 control={control}
                 rules={{
                   required: error.REQUIRED,
+                  pattern: {
+                    message: error.INVALID_URL,
+                    value: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
+                  },
                 }}
                 defaultValue={data['image_url']}
                 name="photoUrl"

@@ -109,7 +109,10 @@ export const AddCategory = ({ dispatchAddCategory, auth }) => {
                   name="photoUrl"
                   rules={{
                     required: error.REQUIRED,
-                    // validate: asyncCheckImage,
+                    pattern: {
+                      message: error.INVALID_URL,
+                      value: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
+                    },
                   }}
                 />
               </div>
