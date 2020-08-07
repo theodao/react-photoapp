@@ -7,7 +7,9 @@ describe('Testing login route', () => {
   afterEach(cleanup);
 
   it('Should match snapshot', () => {
-    const { asFragment } = render(<Login auth={{ isLoggedIn: false }} />);
+    const { asFragment } = render(
+      <Login auth={{ isLoggedIn: false }} app={{ isLoading: false }} />,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 

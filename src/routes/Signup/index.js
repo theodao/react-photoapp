@@ -11,12 +11,13 @@ import ToastContent from '../../components/ToastContent';
 import { Colors } from '../../themes';
 import { error } from '../../constants';
 
-export const Signup = ({ history, dispatchSignup, auth }) => {
+export const Signup = ({ history, dispatchSignup, auth, app }) => {
   const { control, errors, handleSubmit, formState } = useForm({
     mode: 'onChange',
   });
 
   const { isValid, isSubmitted, isDirty } = formState;
+  const { isLoading } = app;
 
   useLayoutEffect(() => {
     const { isLoggedIn } = auth;
@@ -104,6 +105,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
           <Button
             label="Sign up"
             disabled={!isDirty || !isValid}
+            loading={isLoading}
             width="full"
             onClick={handleSubmit(onSubmit)}
           />
@@ -121,6 +123,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
 
 export const mapStateToProps = (state) => ({
   auth: state.auth,
+  app: state.app,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

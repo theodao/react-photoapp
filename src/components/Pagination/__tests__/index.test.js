@@ -30,7 +30,6 @@ describe('Testing Pagination component', () => {
     const wrapper = shallow(
       <Pagination onChangePageNumber={onPageNumChange} currentPage={2} />,
     );
-    console.log(wrapper.debug());
     wrapper.find('Prev').props().onClick();
 
     expect(onPageNumChange).toHaveBeenCalled();
@@ -42,7 +41,6 @@ describe('Testing Pagination component', () => {
     const wrapper = shallow(
       <Pagination onChangePageNumber={onPageNumChange} currentPage={2} />,
     );
-    console.log(wrapper.debug());
     wrapper.find('Next').props().onClick();
 
     expect(onPageNumChange).toHaveBeenCalled();

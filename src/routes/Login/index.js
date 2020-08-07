@@ -14,12 +14,13 @@ import { error } from '../../constants';
 
 const { spacing } = Fonts;
 
-export const Login = ({ history, dispatchLogin, auth }) => {
+export const Login = ({ history, dispatchLogin, auth, app }) => {
   const { handleSubmit, control, errors, formState } = useForm({
     mode: 'onChange',
   });
 
   const { isValid, isSubmitted, isDirty } = formState;
+  const { isLoading } = app;
 
   useLayoutEffect(() => {
     const { isLoggedIn } = auth;
@@ -85,6 +86,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
             label="Log in"
             width="full"
             disabled={!isDirty || !isValid}
+            loading={isLoading}
             onClick={handleSubmit(onSubmit)}
             style={{
               marginBottom: spacing.small,
@@ -106,6 +108,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
 
 export const mapStateToProps = (state) => ({
   auth: state.auth,
+  app: state.app,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

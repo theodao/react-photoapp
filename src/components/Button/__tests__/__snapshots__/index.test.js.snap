@@ -4,7 +4,7 @@ exports[`Testing button component Should match snapshot 1`] = `
 <DocumentFragment>
   <button
     class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
-    style="font-size: 0.9rem;"
+    style="font-size: 0.9rem; opacity: 1;"
   >
     <span
       class="Button-label u-inlineBlock"

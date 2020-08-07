@@ -57,7 +57,7 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
       <div>
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textWhite hover:u-textWhite u-backgroundPrimary hover:u-backgroundPrimaryDark u-border u-borderPrimary hover:u-textDecorationNone u-cursorPointer u-textUppercase"
-          style="margin: 10px; font-size: 0.9rem;"
+          style="margin: 10px; font-size: 0.9rem; opacity: 1;"
         >
           <span
             class="Button-label u-inlineBlock"
@@ -67,7 +67,7 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
         </button>
         <button
           class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone u-cursorPointer u-textUppercase"
-          style="margin: 10px; font-size: 0.9rem;"
+          style="margin: 10px; font-size: 0.9rem; opacity: 1;"
         >
           <span
             class="Button-label u-inlineBlock"

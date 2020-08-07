@@ -1,6 +1,7 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import _get from 'lodash/get';
 import AuthActions, { AuthTypes } from '../reducer/authReducer';
+import AppActions from '../reducer/appReducer';
 import {
   signup as _signup,
   login as _login,
@@ -11,6 +12,7 @@ import { mappingErrorResponse } from '../../utils/helper';
 export function* login({ payload }) {
   const { email, password, history, onFailure } = payload;
   try {
+    yield put(AppActions.setLoading(true));
     const response = yield _login({
       email,
       password,
@@ -26,9 +28,11 @@ export function* login({ payload }) {
       const userInfo = _get(userInformationResponse, 'data', {});
       yield put(AuthActions.setUserInformation(userInfo));
       history.push('/dashboard');
+      yield put(AppActions.setLoading(false));
     }
   } catch (error) {
-    const message = _get(error, 'data.error');
+    const message = _get(error, 'data.error', 'Something went wrong');
+    yield put(AppActions.setLoading(false));
 
     if (typeof message === 'object') {
       const errorList = mappingErrorResponse(message);
@@ -52,6 +56,7 @@ export function* signup({ payload }) {
   const { email, password, onSuccess, onFailure, history } = payload;
 
   try {
+    yield put(AppActions.setLoading(true));
     const response = yield _signup({
       email,
       password,
@@ -60,9 +65,11 @@ export function* signup({ payload }) {
     if (response) {
       onSuccess();
       history.push('/login');
+      yield put(AppActions.setLoading(false));
     }
   } catch (error) {
-    const message = _get(error, 'data.error');
+    yield put(AppActions.setLoading(false));
+    const message = _get(error, 'data.error', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);

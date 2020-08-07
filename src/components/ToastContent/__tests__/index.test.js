@@ -13,7 +13,5 @@ describe('Testing toast content component', () => {
 
   it('If content was an array it should be rendered', () => {
     const wrapper = shallow(<ToastContent content={['a']} />);
-
-    console.log(wrapper.debug());
   });
 });

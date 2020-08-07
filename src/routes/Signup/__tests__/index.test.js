@@ -24,6 +24,9 @@ describe('Testing sign up route', () => {
         auth={{
           isLoggedIn: false,
         }}
+        app={{
+          isLoading: false,
+        }}
       />,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -34,6 +37,9 @@ describe('Testing sign up route', () => {
       <Signup
         auth={{
           isLoggedIn: true,
+        }}
+        app={{
+          isLoading: false,
         }}
         history={history}
       />,

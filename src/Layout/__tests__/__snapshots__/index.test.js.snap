@@ -82,6 +82,7 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
           Object {
             "fontSize": "0.9rem",
             "margin": "10px",
+            "opacity": 1,
           }
         }
       >
@@ -99,6 +100,7 @@ exports[`Testing Mainlayout component Should match snapshot 1`] = `
           Object {
             "fontSize": "0.9rem",
             "margin": "10px",
+            "opacity": 1,
           }
         }
       >

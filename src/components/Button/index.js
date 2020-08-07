@@ -10,21 +10,26 @@ export default ({
   onClick = () => {},
   style = {},
   disabled = false,
+  loading = false,
   ...rest
 }) => {
   return (
     <Button
       variant={variant}
-      disabled={disabled}
+      disabled={disabled || loading}
       width={width}
       onClick={onClick}
       {...rest}
       style={{
         ...style,
         fontSize: '0.9rem',
+        opacity: loading ? 0.7 : 1,
       }}
     >
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {loading ? <span>...</span> : null}
+      </Label>
     </Button>
   );
 };
