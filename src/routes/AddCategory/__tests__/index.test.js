@@ -19,7 +19,12 @@ describe('Testing Add Category component', () => {
     }));
     const { asFragment } = render(
       <Provider store={store}>
-        <AddCategory />, ,
+        <AddCategory
+          auth={{
+            isLoggedIn: false,
+          }}
+        />
+        , ,
       </Provider>,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -34,7 +39,11 @@ describe('Testing Add Category component', () => {
 
     const mappedState = mapStateToProps(state);
 
-    expect(mappedState).toEqual({});
+    expect(mappedState).toEqual({
+      auth: {
+        isLoggedIn: false,
+      },
+    });
   });
 
   it('testing mapDispatchToProps', () => {
@@ -51,7 +60,12 @@ describe('Testing Add Category component', () => {
     const mockedDispatchAddCategory = jest.fn();
 
     const wrapper = shallow(
-      <AddCategory dispatchAddCategory={mockedDispatchAddCategory} />,
+      <AddCategory
+        dispatchAddCategory={mockedDispatchAddCategory}
+        auth={{
+          isLoggedIn: true,
+        }}
+      />,
     );
     wrapper.find('form').props().onSubmit();
 

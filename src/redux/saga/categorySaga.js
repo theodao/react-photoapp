@@ -137,7 +137,7 @@ export function* addCategory({ payload }) {
       onSuccess();
     }
   } catch (error) {
-    const message = _get(error, 'data.error');
+    const message = _get(error, 'data.message');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);

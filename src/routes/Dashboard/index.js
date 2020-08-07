@@ -58,7 +58,7 @@ export const ImageModal = ({
           onClick={() => {
             history.push(`/category/${id}`);
           }}
-          label="View Category Image"
+          label="View Category Images"
         />
         <Button
           variant="primary"

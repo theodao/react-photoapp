@@ -17,12 +17,13 @@ import styles from './styles.module.scss';
 
 const { spacing } = Fonts;
 
-export const AddCategory = ({ dispatchAddCategory }) => {
+export const AddCategory = ({ dispatchAddCategory, auth }) => {
   const { handleSubmit, errors, control, formState } = useForm({
     mode: 'onSubmit',
   });
 
-  const { isSubmitted, isValid, isDirty } = formState;
+  const { isSubmitted, isDirty } = formState;
+  const { isLoggedIn } = auth;
 
   const notifySignupSuccess = (content) =>
     toast.success(() => (
@@ -35,13 +36,17 @@ export const AddCategory = ({ dispatchAddCategory }) => {
     ));
 
   const onSubmit = ({ name, description, photoUrl }) => {
-    dispatchAddCategory({
-      name,
-      description,
-      photoUrl,
-      onSuccess: notifySignupSuccess,
-      onFailure: notifySignupFail,
-    });
+    if (!isLoggedIn) {
+      notifySignupFail('Please Sign in first');
+    } else {
+      dispatchAddCategory({
+        name,
+        description,
+        photoUrl,
+        onSuccess: notifySignupSuccess,
+        onFailure: notifySignupFail,
+      });
+    }
   };
 
   return (
@@ -133,7 +138,9 @@ export const AddCategory = ({ dispatchAddCategory }) => {
   );
 };
 
-export const mapStateToProps = () => ({});
+export const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   dispatchAddCategory: (payload) =>

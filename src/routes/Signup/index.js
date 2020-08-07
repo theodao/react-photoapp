@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
+import AuthActions from '../../redux/reducer/authReducer';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import ToastContent from '../../components/ToastContent';
-import { Colors, Fonts } from '../../themes';
+import { Colors } from '../../themes';
 import { error } from '../../constants';
-import AuthActions from '../../redux/reducer/authReducer';
 
 export const Signup = ({ history, dispatchSignup, auth }) => {
-  const { control, errors, handleSubmit } = useForm({
-    mode: 'onSubmit',
+  const { control, errors, handleSubmit, formState } = useForm({
+    mode: 'onChange',
   });
+
+  const { isValid, isSubmitted } = formState;
+
   useLayoutEffect(() => {
     const { isLoggedIn } = auth;
     if (isLoggedIn) {
@@ -53,7 +56,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
             control={control}
             type="text"
             required
-            error={errors.username && errors.username.message}
+            error={isSubmitted && errors.username && errors.username.message}
             defaultValue=""
             rules={{
               required: error.REQUIRED,
@@ -67,10 +70,14 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
             placeholder="Email"
             type="text"
             required
-            error={errors.username && errors.email.message}
+            error={isSubmitted && errors.username && errors.email.message}
             defaultValue=""
             rules={{
               required: error.REQUIRED,
+              pattern: {
+                message: error.INVALID_EMAIL,
+                value: /\S+@\S+\.\S+/,
+              },
             }}
           />
           <Spacing size={SpacingSizes.SM} />
@@ -81,7 +88,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
             placeholder="Password"
             required
             control={control}
-            error={errors.password && errors.password.message}
+            error={isSubmitted && errors.password && errors.password.message}
             rules={{
               minLength: {
                 message: error.PASSWORD_VALIDATION,
@@ -96,6 +103,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
 
           <Button
             label="Sign up"
+            disabled={!isValid}
             width="full"
             onClick={handleSubmit(onSubmit)}
           />
@@ -104,7 +112,7 @@ export const Signup = ({ history, dispatchSignup, auth }) => {
           className="u-cursorPointer"
           onClick={() => history.push('/login')}
         >
-          Login instead ?
+          Log In instead ?
         </LoginWrapper>
       </LoginBox>
     </Flex>
