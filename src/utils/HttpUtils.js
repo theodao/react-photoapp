@@ -1,8 +1,8 @@
 import http from 'axios';
-import { api } from '../constants';
+import { API_BASE_URL } from '../config';
 
 const Http = http.create({
-  baseURL: api.API_SERVER_URL,
+  baseURL: API_BASE_URL,
 });
 
 // Function to add custom header
