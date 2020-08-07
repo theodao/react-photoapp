@@ -7,10 +7,18 @@ describe('Testing auth reducer', () => {
     const store = createStore(reducer);
     store.dispatch(actions.setIsLoggedIn(true));
     store.dispatch(actions.setUserToken(1));
+    store.dispatch(
+      actions.setUserInformation({
+        name: 'Trung',
+      }),
+    );
 
-    const { isLoggedIn, userToken } = store.getState();
+    const { isLoggedIn, userToken, userInformation } = store.getState();
 
     expect(userToken).toEqual(1);
     expect(isLoggedIn).toEqual(true);
+    expect(userInformation).toEqual({
+      name: 'Trung',
+    });
   });
 });

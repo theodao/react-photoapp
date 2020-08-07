@@ -12,6 +12,16 @@ describe('Testing auth saga', () => {
         access_token: '1',
       },
     });
+    const stubbedGetUserInformation = Sinon.stub(
+      CategoryAPI,
+      'getUserInformation',
+    ).resolves({
+      status: 200,
+      data: {
+        name: 'Trung',
+        id: 1,
+      },
+    });
     await runSaga(
       {
         dispatch,
@@ -27,8 +37,10 @@ describe('Testing auth saga', () => {
     );
 
     expect(stubbedLogIn.called).toEqual(true);
+    expect(stubbedGetUserInformation.called).toEqual(true);
 
     stubbedLogIn.restore();
+    stubbedGetUserInformation.restore();
   });
 
   it('Should logout', async () => {

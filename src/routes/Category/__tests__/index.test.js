@@ -20,6 +20,9 @@ describe('Testing Item list component', () => {
       <Provider store={store}>
         <ItemList
           fetchItems={jest.fn()}
+          auth={{
+            userInformation: {},
+          }}
           category={{
             isFetching: false,
             items: [],

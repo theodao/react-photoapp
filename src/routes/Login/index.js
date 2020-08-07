@@ -19,7 +19,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
     mode: 'onChange',
   });
 
-  const { isValid, isSubmitted } = formState;
+  const { isValid, isSubmitted, isDirty } = formState;
 
   useLayoutEffect(() => {
     const { isLoggedIn } = auth;
@@ -84,7 +84,7 @@ export const Login = ({ history, dispatchLogin, auth }) => {
           <Button
             label="Log in"
             width="full"
-            disabled={!isValid}
+            disabled={!isDirty || !isValid}
             onClick={handleSubmit(onSubmit)}
             style={{
               marginBottom: spacing.small,

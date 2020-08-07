@@ -1,7 +1,11 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import _get from 'lodash/get';
 import AuthActions, { AuthTypes } from '../reducer/authReducer';
-import { signup as _signup, login as _login } from '../../services/api';
+import {
+  signup as _signup,
+  login as _login,
+  getUserInformation,
+} from '../../services/api';
 import { mappingErrorResponse } from '../../utils/helper';
 
 export function* login({ payload }) {
@@ -18,6 +22,9 @@ export function* login({ payload }) {
       if (token !== null) {
         localStorage.setItem('token', token);
       }
+      const userInformationResponse = yield getUserInformation();
+      const userInfo = _get(userInformationResponse, 'data', {});
+      yield put(AuthActions.setUserInformation(userInfo));
       history.push('/dashboard');
     }
   } catch (error) {

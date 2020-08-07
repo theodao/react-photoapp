@@ -28,6 +28,7 @@ const GalleryModal = ({
   categoryId,
   deleteItemDetail,
   fetchItems,
+  userInformation,
   isLoggedIn,
   onClickOpenEditModal = () => {},
 }) => {
@@ -50,6 +51,8 @@ const GalleryModal = ({
       <ToastContent title="Delete item fail" content={content} />
     ));
 
+  const authorId = _get(data, 'author.id', null);
+
   return (
     <Modal size="large" show={isOpen} onHide={onClick} centered>
       <Modal.Header closeButton onHide={onClick}></Modal.Header>
@@ -65,27 +68,31 @@ const GalleryModal = ({
             />
           )}
         </div>
-        <div>
-          <div className={styles.titleDetail}>Description</div>
-          <div>{data['description']}</div>
-        </div>
-        <Spacing size={SpacingSizes.SM} />
-        <div>
-          <div className={styles.titleDetail}>Author</div>
-          <div>{_get(data, 'author.name', null)}</div>
-        </div>
+        {isLoading ? null : (
+          <>
+            <div>
+              <div className={styles.titleDetail}>Description</div>
+              <div>{data['description']}</div>
+            </div>
+            <Spacing size={SpacingSizes.SM} />
+            <div>
+              <div className={styles.titleDetail}>Author</div>
+              <div>{_get(data, 'author.name', null)}</div>
+            </div>
+          </>
+        )}
       </Modal.Body>
       <Modal.Footer>
         <Button
           variant="primary"
           onClick={onClickOpenEditModal}
           label="Edit"
-          disabled={!isLoggedIn}
+          disabled={!isLoggedIn || authorId !== userInformation.id}
         />
         <Button
           variant="negative"
           label="Delete"
-          disabled={!isLoggedIn}
+          disabled={!isLoggedIn || authorId !== userInformation.id}
           onClick={() => {
             deleteItemDetail({
               categoryId,
@@ -230,6 +237,7 @@ export const ItemList = ({
   deleteItemDetail,
   updateItemdetail,
   category,
+  auth,
   match,
   isLoggedIn,
 }) => {
@@ -254,6 +262,7 @@ export const ItemList = ({
     setShowEditModal(false);
   };
   const categoryId = _get(match, 'params.id', null);
+  const { userInformation = {} } = auth;
 
   useEffect(() => {
     fetchItems({
@@ -309,6 +318,7 @@ export const ItemList = ({
             isLoading={category.isFetchingItem}
             fetchItems={fetchItems}
             isLoggedIn={isLoggedIn}
+            userInformation={userInformation}
           />
           <EditItemModal
             isOpen={showEditModal}
@@ -326,6 +336,7 @@ export const ItemList = ({
 
 const mapStateToProps = (state) => ({
   category: state.category,
+  auth: state.auth,
   isLoggedIn: state.auth.isLoggedIn,
 });
 
