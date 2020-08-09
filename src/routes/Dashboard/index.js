@@ -34,7 +34,7 @@ export const ImageModal = ({
   const { description, image_url: url, name, id } = data;
 
   return (
-    <Modal size="large" show={isOpen} onHide={onClick} centered>
+    <Modal size="medium" show={isOpen} onHide={onClick} centered>
       <Modal.Header closeButton onHide={onClick}>
         <Modal.Title>{name}</Modal.Title>
       </Modal.Header>
@@ -43,7 +43,7 @@ export const ImageModal = ({
           <img
             src={url}
             style={{
-              height: '500px',
+              height: '300px',
               borderRadius: '20px',
             }}
             className="u-maxWidthFull u-marginBottomExtraSmall"
@@ -77,9 +77,12 @@ export const AddItemModal = ({
   data = {},
   addItem,
 }) => {
-  const { control, handleSubmit, errors } = useForm({
+  const { control, handleSubmit, errors, formState } = useForm({
     mode: 'onSubmit',
   });
+
+  const { isDirty } = formState;
+
   if (isOpen === false) {
     return null;
   }
@@ -160,6 +163,7 @@ export const AddItemModal = ({
               <Button
                 label="Add"
                 width="full"
+                disabled={!isDirty}
                 onClick={handleSubmit(onSubmit)}
                 style={{
                   marginBottom: spacing.small,

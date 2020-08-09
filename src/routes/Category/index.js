@@ -54,7 +54,7 @@ const GalleryModal = ({
   const authorId = _get(data, 'author.id', null);
 
   return (
-    <Modal size="large" show={isOpen} onHide={onClick} centered>
+    <Modal size="medium" show={isOpen} onHide={onClick} centered>
       <Modal.Header closeButton onHide={onClick}></Modal.Header>
       <Modal.Body>
         <div className="u-textCenter">
@@ -62,6 +62,10 @@ const GalleryModal = ({
             <Loader />
           ) : (
             <img
+              style={{
+                height: '300px',
+                borderRadius: '20px',
+              }}
               src={data['image_url']}
               className="u-maxWidthFull u-marginBottomExtraSmall"
               alt=""
@@ -115,9 +119,12 @@ const EditItemModal = ({
   fetchItemDetail = () => {},
   data = {},
 }) => {
-  const { control, handleSubmit, errors } = useForm({
+  const { control, handleSubmit, errors, formState } = useForm({
     mode: 'onSubmit',
   });
+
+  const { isDirty } = formState;
+
   if (isOpen === false) {
     return null;
   }
@@ -208,6 +215,7 @@ const EditItemModal = ({
             <div className="u-size9of12">
               <Button
                 label="Edit"
+                disabled={!isDirty}
                 width="full"
                 onClick={handleSubmit(onSubmit)}
                 style={{
