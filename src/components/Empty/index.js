@@ -6,6 +6,8 @@ export default ({ title = '' }) => (
     style={{
       maxWidth: '1140px',
       display: 'flex',
+      height: '100%',
+      alignItems: 'center',
       justifyContent: 'center',
       margin: '0 auto',
     }}

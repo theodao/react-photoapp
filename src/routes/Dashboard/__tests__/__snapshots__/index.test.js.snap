@@ -87,7 +87,7 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
           class="sc-AxjAm dNrbJL"
         />
         <div
-          style="max-width: 1140px; display: flex; justify-content: center; margin: 0px auto;"
+          style="max-width: 1140px; display: flex; height: 100%; align-items: center; justify-content: center; margin: 0px auto;"
         >
           <div
             class="EmptyState u-inlineBlock u-textCenter"
