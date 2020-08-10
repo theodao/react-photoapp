@@ -53,7 +53,7 @@ describe('Testing Mainlayout component', () => {
       <MainLayout
         match={{ path: '' }}
         auth={{
-          isLoggedIn: false,
+          isLoggedIn: true,
         }}
         history={history}
       />,

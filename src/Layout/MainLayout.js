@@ -49,12 +49,14 @@ export const MainLayout = ({
                 >
                   Dashboard
                 </TopMenu.Item>
-                <TopMenu.Item
-                  eventKey="/add-category"
-                  onClick={() => history.push('/add-category')}
-                >
-                  Add categories
-                </TopMenu.Item>
+                {isLoggedIn ? (
+                  <TopMenu.Item
+                    eventKey="/add-category"
+                    onClick={() => history.push('/add-category')}
+                  >
+                    Add categories
+                  </TopMenu.Item>
+                ) : null}
               </TopMenu>
             </div>
             <div>

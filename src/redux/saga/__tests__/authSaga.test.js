@@ -64,7 +64,15 @@ describe('Testing auth saga', () => {
         dispatch,
       },
       signup,
-      { payload: {} },
+      {
+        payload: {
+          history: {
+            push: jest.fn(),
+          },
+          onSuccess: jest.fn(),
+          onFailure: jest.fn(),
+        },
+      },
     );
 
     expect(stubbedSignUp.called).toEqual(true);

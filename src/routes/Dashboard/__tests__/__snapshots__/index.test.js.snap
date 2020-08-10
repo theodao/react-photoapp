@@ -36,21 +36,6 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
                 </div>
               </span>
             </div>
-            <div
-              class="TopMenu-item u-positionRelative u-marginLeftLarge u-flexInline u-alignItemsCenter u-cursorPointer"
-            >
-              <a
-                class="u-positionRelative u-flexInline u-flexGrow-1 u-paddingVerticalTiny hover:u-textDecorationNone u-textDark hover:u-textPrimary"
-                href="#"
-                role="button"
-              >
-                <div
-                  class="u-flexGrow-1"
-                >
-                  Add categories
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>
