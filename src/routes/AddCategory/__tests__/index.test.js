@@ -23,6 +23,9 @@ describe('Testing Add Category component', () => {
           auth={{
             isLoggedIn: false,
           }}
+          app={{
+            isLoading: false,
+          }}
         />
         , ,
       </Provider>,
@@ -35,6 +38,9 @@ describe('Testing Add Category component', () => {
       auth: {
         isLoggedIn: false,
       },
+      app: {
+        isLoading: false,
+      },
     };
 
     const mappedState = mapStateToProps(state);
@@ -42,6 +48,9 @@ describe('Testing Add Category component', () => {
     expect(mappedState).toEqual({
       auth: {
         isLoggedIn: false,
+      },
+      app: {
+        isLoading: false,
       },
     });
   });
@@ -64,6 +73,9 @@ describe('Testing Add Category component', () => {
         dispatchAddCategory={mockedDispatchAddCategory}
         auth={{
           isLoggedIn: true,
+        }}
+        app={{
+          isLoading: false,
         }}
       />,
     );

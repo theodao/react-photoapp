@@ -1,6 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import _get from 'lodash/get';
 import CategoryActions, { CategoryTypes } from '../reducer/categoryReducer';
+import AppActions from '../reducer/appReducer';
 import {
   getListCategories,
   getListItems,
@@ -127,6 +128,7 @@ export function* addCategory({ payload }) {
   const { name, description, photoUrl, onSuccess, onFailure } = payload;
 
   try {
+    yield put(AppActions.setLoading(true));
     const response = yield call(createNewCategory, {
       name,
       description,
@@ -134,9 +136,11 @@ export function* addCategory({ payload }) {
     });
 
     if (response.status === 201) {
+      yield put(AppActions.setLoading(false));
       onSuccess();
     }
   } catch (error) {
+    yield put(AppActions.setLoading(false));
     const message = _get(error, 'data.message');
 
     const errorList = mappingErrorResponse(message);

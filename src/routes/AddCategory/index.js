@@ -16,13 +16,14 @@ import styles from './styles.module.scss';
 
 const { spacing } = Fonts;
 
-export const AddCategory = ({ dispatchAddCategory, auth }) => {
+export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
   const { handleSubmit, errors, control, formState } = useForm({
     mode: 'onSubmit',
   });
 
   const { isSubmitted, isDirty } = formState;
   const { isLoggedIn } = auth;
+  const { isLoading } = app;
 
   const notifySignupSuccess = (content) =>
     toast.success(() => (
@@ -124,6 +125,7 @@ export const AddCategory = ({ dispatchAddCategory, auth }) => {
               <div className="u-size9of12">
                 <Button
                   label="Add"
+                  loading={isLoading}
                   disabled={!isDirty}
                   width="full"
                   onClick={handleSubmit(onSubmit)}
@@ -142,6 +144,7 @@ export const AddCategory = ({ dispatchAddCategory, auth }) => {
 
 export const mapStateToProps = (state) => ({
   auth: state.auth,
+  app: state.app,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
