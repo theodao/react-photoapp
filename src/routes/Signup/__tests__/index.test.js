@@ -48,6 +48,33 @@ describe('Testing sign up route', () => {
     expect(pushFunction).toHaveBeenCalled();
   });
 
+  it('Should navigate to login page', () => {
+    const pushToLogInPageFunc = jest.fn();
+
+    const wrapper = shallow(
+      <Signup
+        auth={{
+          isLoggedIn: false,
+        }}
+        app={{
+          isLoading: false,
+        }}
+        history={{
+          push: pushToLogInPageFunc,
+        }}
+      />,
+    );
+
+    wrapper
+      .findWhere(
+        (c) => c.name() === 'styled.div' && c.text() === 'Log In instead ?',
+      )
+      .props()
+      .onClick();
+
+    expect(pushToLogInPageFunc).toHaveBeenCalled();
+  });
+
   it('Testing mapStateToProps', () => {
     const state = {
       auth: {

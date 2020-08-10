@@ -1,5 +1,9 @@
 import {
   getListCategories,
+  getListItems,
+  getItemDetail,
+  updateItemDetail,
+  deleteItemDetail,
   createNewCategory,
   createNewItem,
   login,
@@ -22,6 +26,8 @@ jest.mock('axios', () => {
         },
         post: jest.fn(),
         get: jest.fn(),
+        put: jest.fn(),
+        delete: jest.fn(),
       };
     },
   };
@@ -56,5 +62,25 @@ describe('Testing serivce module', () => {
   it('teting get user information api', () => {
     getUserInformation();
     expect(Http.get).toHaveBeenCalled();
+  });
+
+  it('testing get list item api', () => {
+    getListItems();
+    expect(Http.get).toHaveBeenCalled();
+  });
+
+  it('testing get item detail', () => {
+    getItemDetail();
+    expect(Http.get).toHaveBeenCalled();
+  });
+
+  it('tesing update item', () => {
+    updateItemDetail();
+    expect(Http.put).toHaveBeenCalled();
+  });
+
+  it('testing delete item', () => {
+    deleteItemDetail();
+    expect(Http.delete).toHaveBeenCalled();
   });
 });

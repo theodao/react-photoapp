@@ -20,7 +20,7 @@ import { error } from '../../constants';
 import { Fonts } from '../../themes';
 import styles from './styles.module.scss';
 
-const GalleryModal = ({
+export const GalleryModal = ({
   isOpen,
   onClick = () => {},
   data = {},
@@ -111,7 +111,7 @@ const GalleryModal = ({
   );
 };
 
-const EditItemModal = ({
+export const EditItemModal = ({
   isOpen,
   onClick = () => {},
   updateItemdetail = () => {},
@@ -230,7 +230,7 @@ const EditItemModal = ({
   );
 };
 
-const GalleryImage = ({ className, src = '', alt = '' }) => {
+export const GalleryImage = ({ className, src = '', alt = '' }) => {
   return (
     <img
       className={className}
@@ -346,13 +346,13 @@ export const ItemList = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   category: state.category,
   auth: state.auth,
   isLoggedIn: state.auth.isLoggedIn,
 });
 
-const mapDistpatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   fetchItems: (payload) => dispatch(CategoryActions.fetchItems(payload)),
   fetchItemDetail: (payload) =>
     dispatch(CategoryActions.fetchItemDetail(payload)),
@@ -360,4 +360,4 @@ const mapDistpatchToProps = (dispatch) => ({
   updateItemdetail: (payload) => dispatch(CategoryActions.updateItem(payload)),
 });
 
-export default connect(mapStateToProps, mapDistpatchToProps)(ItemList);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList);

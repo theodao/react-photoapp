@@ -2,7 +2,7 @@ import React from 'react';
 // import { cleanup, render } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import { MainLayout } from '../MainLayout';
+import { MainLayout, mapDispatchToProps, mapStateToProps } from '../MainLayout';
 
 describe('Testing Mainlayout component', () => {
   // afterEach(cleanup);
@@ -89,5 +89,79 @@ describe('Testing Mainlayout component', () => {
       .onClick();
 
     expect(dispatchLogout).toHaveBeenCalled();
+  });
+
+  it('testing sign up function', () => {
+    const pushToSignUpPageFunc = jest.fn();
+
+    const wrapper = shallow(
+      <MainLayout
+        match={{ path: '' }}
+        auth={{
+          isLoggedIn: false,
+        }}
+        history={{
+          push: pushToSignUpPageFunc,
+        }}
+      />,
+    );
+
+    wrapper
+      .findWhere(
+        (c) => c.name() === '_default' && c.prop('label') === 'Sign up',
+      )
+      .props()
+      .onClick();
+
+    expect(pushToSignUpPageFunc).toHaveBeenCalled();
+  });
+
+  it('testing login function', () => {
+    const pushToLogInPageFunc = jest.fn();
+
+    const wrapper = shallow(
+      <MainLayout
+        match={{ path: '' }}
+        auth={{
+          isLoggedIn: false,
+        }}
+        history={{
+          push: pushToLogInPageFunc,
+        }}
+      />,
+    );
+
+    wrapper
+      .findWhere((c) => c.name() === '_default' && c.prop('label') === 'Login')
+      .props()
+      .onClick();
+
+    expect(pushToLogInPageFunc).toHaveBeenCalled();
+  });
+
+  it('testing mapStateToProps', () => {
+    const state = {
+      auth: {
+        isLoggedIn: false,
+      },
+    };
+
+    const mappedState = mapStateToProps(state);
+
+    expect(mappedState).toEqual({
+      auth: {
+        isLoggedIn: false,
+      },
+    });
+  });
+
+  it('testing mapDispatchToProps', () => {
+    const mockDispatchFunction = jest.fn();
+
+    const mappedDistpachFunction = mapDispatchToProps(mockDispatchFunction);
+
+    mappedDistpachFunction.dispatchLogout();
+
+    expect(mockDispatchFunction).toHaveBeenCalled();
   });
 });

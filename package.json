@@ -75,7 +75,8 @@
       "<rootDir>/src/App.js",
       "<rootDir>/src/index.js",
       "<rootDir>/src/serviceWorker.js",
-      "<rootDir>/src/redux/store"
+      "<rootDir>/src/redux/store",
+      "<rootDir>/src/mocks"
     ]
   }
 }

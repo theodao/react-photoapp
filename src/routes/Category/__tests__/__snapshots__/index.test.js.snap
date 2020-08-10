@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing Item list component Edit item modal should match snapshot 1`] = `<DocumentFragment />`;
+
+exports[`Testing Item list component Gallery image should match snapshot 1`] = `
+<DocumentFragment>
+  <img
+    alt=""
+    src=""
+    style="height: 100%;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing Item list component Gallery modal should match snapshot 1`] = `<DocumentFragment />`;
+
 exports[`Testing Item list component Should match snapshot 1`] = `
 <DocumentFragment>
   <div
