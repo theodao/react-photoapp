@@ -85,7 +85,7 @@ export function* addItem({ payload }) {
       onSuccess();
     }
   } catch (error) {
-    const message = _get(error, 'data.message');
+    const message = _get(error, 'data.data', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);
@@ -101,7 +101,7 @@ export function* deleteItem({ payload }) {
       onSuccess();
     }
   } catch (error) {
-    const message = _get(error, 'data.message');
+    const message = _get(error, 'data.message', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);
@@ -117,7 +117,7 @@ export function* updateItem({ payload }) {
       yield put(CategoryActions.setItemDetail(response.data));
     }
   } catch (error) {
-    const message = _get(error, 'data.error');
+    const message = _get(error, 'data.data', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);
@@ -141,7 +141,7 @@ export function* addCategory({ payload }) {
     }
   } catch (error) {
     yield put(AppActions.setLoading(false));
-    const message = _get(error, 'data.message');
+    const message = _get(error, 'data.data', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);

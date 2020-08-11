@@ -177,6 +177,14 @@ export const EditItemModal = ({
                 control={control}
                 rules={{
                   required: error.REQUIRED,
+                  minLength: {
+                    value: 1,
+                    message: error.FIELD_LENGTH,
+                  },
+                  maxLength: {
+                    value: 200,
+                    message: error.FIELD_LENGTH,
+                  },
                   pattern: {
                     message: error.INVALID_URL,
                     value: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
@@ -200,6 +208,14 @@ export const EditItemModal = ({
                 defaultValue={data['description']}
                 rules={{
                   required: error.REQUIRED,
+                  minLength: {
+                    value: 1,
+                    message: error.FIELD_LENGTH,
+                  },
+                  maxLength: {
+                    value: 200,
+                    message: error.FIELD_LENGTH,
+                  },
                 }}
                 name="description"
                 control={control}

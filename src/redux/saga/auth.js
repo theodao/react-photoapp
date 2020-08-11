@@ -31,7 +31,7 @@ export function* login({ payload }) {
       yield put(AppActions.setLoading(false));
     }
   } catch (error) {
-    const message = _get(error, 'data.error', 'Something went wrong');
+    const message = _get(error, 'data.data', 'Something went wrong');
     yield put(AppActions.setLoading(false));
 
     if (typeof message === 'object') {
@@ -69,7 +69,7 @@ export function* signup({ payload }) {
     }
   } catch (error) {
     yield put(AppActions.setLoading(false));
-    const message = _get(error, 'data.error', 'Something went wrong');
+    const message = _get(error, 'data.data', 'Something went wrong');
 
     const errorList = mappingErrorResponse(message);
     onFailure(errorList);

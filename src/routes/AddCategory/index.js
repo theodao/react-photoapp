@@ -69,6 +69,10 @@ export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
                   name="name"
                   rules={{
                     required: error.REQUIRED,
+                    minLength: {
+                      value: 1,
+                      message: error.FIELD_LENGTH,
+                    },
                   }}
                 />
               </div>
@@ -91,6 +95,14 @@ export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
                   name="description"
                   rules={{
                     required: error.REQUIRED,
+                    minLength: {
+                      value: 1,
+                      message: error.FIELD_LENGTH,
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: error.FIELD_LENGTH,
+                    },
                   }}
                 />
               </div>
@@ -109,6 +121,14 @@ export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
                   name="photoUrl"
                   rules={{
                     required: error.REQUIRED,
+                    minLength: {
+                      value: 1,
+                      message: error.FIELD_LENGTH,
+                    },
+                    maxLength: {
+                      value: 200,
+                      message: error.FIELD_LENGTH,
+                    },
                     pattern: {
                       message: error.INVALID_URL,
                       value: /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
