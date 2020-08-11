@@ -28,8 +28,10 @@
     "yup": "^0.29.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_ENV=development react-scripts start",
     "build": "react-scripts build && cp build/index.html build/200.html",
+    "build:staging": "REACT_APP_ENV=staging npm run build",
+    "build:prod": "REACT_APP_ENV=production npm run build",
     "test": "react-scripts test --watchAll=false",
     "coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
