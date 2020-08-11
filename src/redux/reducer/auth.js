@@ -31,3 +31,10 @@ export default createReducer(INITIAL_STATE, {
   [AuthTypes.SET_USER_TOKEN]: setUserToken,
   [AuthTypes.SET_USER_INFORMATION]: setUserInformation,
 });
+
+/** Selector  */
+export const selectAuthState = (state) => state.auth;
+export const selectIsLoggedIn = (state) => selectAuthState(state).isLoggedIn;
+export const selectUserToken = (state) => selectAuthState(state).userToken;
+export const selectUserInformation = (state) =>
+  selectAuthState(state).userInformation;

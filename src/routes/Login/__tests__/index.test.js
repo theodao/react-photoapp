@@ -1,28 +1,17 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import { Login, mapDispatchToProps, mapStateToProps } from '../';
+import { mapDispatchToProps } from '../';
+import { Login } from '../';
 
 describe('Testing login route', () => {
   afterEach(cleanup);
 
   it('Should match snapshot', () => {
     const { asFragment } = render(
-      <Login auth={{ isLoggedIn: false }} app={{ isLoading: false }} />,
+      <Login isLoggedIn={false} isLoading={false} />,
     );
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('Testing mapState to props', () => {
-    const state = {
-      auth: {
-        isLoggedIn: false,
-      },
-    };
-
-    const mappedState = mapStateToProps(state);
-
-    expect(mappedState.auth.isLoggedIn).toEqual(false);
   });
 
   it('Testing mapDispatchToProps', () => {

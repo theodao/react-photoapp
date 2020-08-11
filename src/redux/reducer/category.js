@@ -71,3 +71,19 @@ export default createReducer(INITIAL_STATE, {
   [CategoryTypes.SET_CURRENT_ITEM]: setCurrentItem,
   [CategoryTypes.SET_ITEM_DETAIL]: setItemDetail,
 });
+
+/** Selector */
+export const selectCategoryState = (state) => state.category;
+export const selectCategories = (state) =>
+  selectCategoryState(state).categories;
+export const selectTotalCategories = (state) =>
+  selectCategoryState(state).totalCategories;
+export const selectIsFetching = (state) =>
+  selectCategoryState(state).isFetching;
+export const selectItems = (state) => selectCategoryState(state).items;
+export const selectCurrentItems = (state) =>
+  selectCategoryState(state).currentItem;
+export const selectIsFetchingItem = (state) =>
+  selectCategoryState(state).isFetchingItem;
+export const selectTotalItems = (state) =>
+  selectCategoryState(state).totalItems;

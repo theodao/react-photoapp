@@ -17,3 +17,7 @@ const setLoading = (state, { payload: isLoading }) =>
 export default createReducer(INITIAL_STATE, {
   [AppTypes.SET_LOADING]: setLoading,
 });
+
+/** Selector  */
+export const selectAppState = (state) => state.app;
+export const selectIsLoading = (state) => selectAppState(state).isLoading;

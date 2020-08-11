@@ -7,6 +7,12 @@ import { useForm, Controller } from 'react-hook-form';
 import _get from 'lodash/get';
 import cx from 'classnames';
 import CategoryActions from '../../redux/actions/category';
+import {
+  selectCategories,
+  selectTotalCategories,
+  selectIsFetching,
+} from '../../redux/reducer/category';
+import { selectIsLoggedIn } from '../../redux/reducer/auth';
 import CardImage from '../../components/CardImage';
 import ToastContent from '../../components/ToastContent';
 import Empty from '../../components/Empty';
@@ -194,15 +200,16 @@ export const AddItemModal = ({
 };
 
 export const Dashboard = ({
-  category,
   fetchCategoryList,
   history,
   addItem,
   isLoggedIn,
+  isFetching,
+  categories,
+  totalCategories,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { isFetching, categories, totalCategories } = category;
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
   const [showAddModal, setShowAddModal] = useState(false);
@@ -275,8 +282,10 @@ export const Dashboard = ({
 };
 
 export const mapStateToProps = (state) => ({
-  category: state.category,
-  isLoggedIn: state.auth.isLoggedIn,
+  isLoggedIn: selectIsLoggedIn(state),
+  totalCategories: selectTotalCategories(state),
+  categories: selectCategories(state),
+  isFetching: selectIsFetching(state),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

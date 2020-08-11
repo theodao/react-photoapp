@@ -16,6 +16,17 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Empty from '../../components/Empty';
 import CategoryActions from '../../redux/actions/category';
+import {
+  selectCurrentItems,
+  selectIsFetchingItem,
+  selectItems,
+  selectTotalItems,
+  selectIsFetching,
+} from '../../redux/reducer/category';
+import {
+  selectUserInformation,
+  selectIsLoggedIn,
+} from '../../redux/reducer/auth';
 import { error } from '../../constants';
 import { Fonts } from '../../themes';
 import styles from './styles.module.scss';
@@ -264,8 +275,12 @@ export const ItemList = ({
   fetchItemDetail,
   deleteItemDetail,
   updateItemdetail,
-  category,
-  auth,
+  currentItem,
+  userInformation,
+  totalItems,
+  isFetchingItem,
+  isFetching,
+  items,
   match,
   isLoggedIn,
 }) => {
@@ -290,7 +305,6 @@ export const ItemList = ({
     setShowEditModal(false);
   };
   const categoryId = _get(match, 'params.id', null);
-  const { userInformation = {} } = auth;
 
   useEffect(() => {
     fetchItems({
@@ -300,13 +314,13 @@ export const ItemList = ({
   }, [currentPage]);
 
   return (
-    <MainLayout loading={category.isFetching}>
-      {category.items.length === 0 ? (
+    <MainLayout loading={isFetching}>
+      {items.length === 0 ? (
         <Empty title="Item" />
       ) : (
         <div className={styles.containerFluid}>
           <div className={styles.row}>
-            {category.items.map((item, index) => {
+            {items.map((item, index) => {
               return (
                 <div className={styles.imageItem}>
                   <div className={styles.galleryCard}>
@@ -331,7 +345,7 @@ export const ItemList = ({
           </div>
           <Pagination
             currentPage={currentPage}
-            totalItems={category.totalItems}
+            totalItems={totalItems}
             onChangePageNumber={setCurrentPage}
           />
           <Spacing size={SpacingSizes.SM} />
@@ -339,11 +353,11 @@ export const ItemList = ({
           <GalleryModal
             isOpen={showModal}
             onClick={closeModal}
-            data={category.currentItem}
+            data={currentItem}
             categoryId={categoryId}
             deleteItemDetail={deleteItemDetail}
             onClickOpenEditModal={openEditModal}
-            isLoading={category.isFetchingItem}
+            isLoading={isFetchingItem}
             fetchItems={fetchItems}
             isLoggedIn={isLoggedIn}
             userInformation={userInformation}
@@ -351,7 +365,7 @@ export const ItemList = ({
           <EditItemModal
             isOpen={showEditModal}
             onClick={closeEditModal}
-            data={category.currentItem}
+            data={currentItem}
             fetchItemDetail={fetchItemDetail}
             categoryId={categoryId}
             updateItemdetail={updateItemdetail}
@@ -363,9 +377,13 @@ export const ItemList = ({
 };
 
 export const mapStateToProps = (state) => ({
-  category: state.category,
-  auth: state.auth,
-  isLoggedIn: state.auth.isLoggedIn,
+  isLoggedIn: selectIsLoggedIn(state),
+  userInformation: selectUserInformation(state),
+  isFetchingItem: selectIsFetchingItem(state),
+  isFetching: selectIsFetching(state),
+  currentItem: selectCurrentItems(state),
+  totalItems: selectTotalItems(state),
+  items: selectItems(state),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

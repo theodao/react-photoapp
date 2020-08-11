@@ -4,6 +4,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
 import AuthActions from '../../redux/actions/auth';
+import { selectIsLoggedIn } from '../../redux/reducer/auth';
+import { selectIsLoading } from '../../redux/reducer/app';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
@@ -11,16 +13,14 @@ import ToastContent from '../../components/ToastContent';
 import { Colors } from '../../themes';
 import { error } from '../../constants';
 
-export const Signup = ({ history, dispatchSignup, auth, app }) => {
+export const Signup = ({ history, dispatchSignup, isLoggedIn, isLoading }) => {
   const { control, errors, handleSubmit, formState } = useForm({
     mode: 'onChange',
   });
 
   const { isValid, isSubmitted, isDirty } = formState;
-  const { isLoading } = app;
 
   useLayoutEffect(() => {
-    const { isLoggedIn } = auth;
     if (isLoggedIn) {
       history.push('/dashboard');
     }
@@ -122,8 +122,8 @@ export const Signup = ({ history, dispatchSignup, auth, app }) => {
 };
 
 export const mapStateToProps = (state) => ({
-  auth: state.auth,
-  app: state.app,
+  isLoading: selectIsLoading(state),
+  isLoggedIn: selectIsLoggedIn(state),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

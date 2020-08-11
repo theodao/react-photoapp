@@ -5,6 +5,8 @@ import { toast } from '@gotitinc/design-system';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import cx from 'classnames';
+import { selectIsLoading } from '../../redux/reducer/app';
+import { selectIsLoggedIn } from '../../redux/reducer/auth';
 import MainLayout from '../../Layout/MainLayout';
 import Input from '../../components/Input';
 import ToastContent from '../../components/ToastContent';
@@ -16,14 +18,12 @@ import styles from './styles.module.scss';
 
 const { spacing } = Fonts;
 
-export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
+export const AddCategory = ({ dispatchAddCategory, isLoggedIn, isLoading }) => {
   const { handleSubmit, errors, control, formState } = useForm({
     mode: 'onSubmit',
   });
 
   const { isSubmitted, isDirty } = formState;
-  const { isLoggedIn } = auth;
-  const { isLoading } = app;
 
   const notifySignupSuccess = (content) =>
     toast.success(() => (
@@ -163,8 +163,8 @@ export const AddCategory = ({ dispatchAddCategory, auth, app }) => {
 };
 
 export const mapStateToProps = (state) => ({
-  auth: state.auth,
-  app: state.app,
+  isLoading: selectIsLoading(state),
+  isLoggedIn: selectIsLoggedIn(state),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

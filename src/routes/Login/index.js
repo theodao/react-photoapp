@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
 import ToastContent from '../../components/ToastContent';
 import AuthActions from '../../redux/actions/auth';
+import { selectIsLoggedIn } from '../../redux/reducer/auth';
+import { selectIsLoading } from '../../redux/reducer/app';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -14,16 +16,13 @@ import { error } from '../../constants';
 
 const { spacing } = Fonts;
 
-export const Login = ({ history, dispatchLogin, auth, app }) => {
+export const Login = ({ history, dispatchLogin, isLoading, isLoggedIn }) => {
   const { handleSubmit, control, errors, formState } = useForm({
     mode: 'onChange',
   });
-
   const { isValid, isSubmitted, isDirty } = formState;
-  const { isLoading } = app;
 
   useLayoutEffect(() => {
-    const { isLoggedIn } = auth;
     if (isLoggedIn) {
       history.push('/dashboard');
     }
@@ -107,8 +106,8 @@ export const Login = ({ history, dispatchLogin, auth, app }) => {
 };
 
 export const mapStateToProps = (state) => ({
-  auth: state.auth,
-  app: state.app,
+  isLoggedIn: selectIsLoggedIn(state),
+  isLoading: selectIsLoading(state),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

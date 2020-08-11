@@ -28,13 +28,9 @@ describe('Testing Item list component', () => {
       <Provider store={store}>
         <ItemList
           fetchItems={jest.fn()}
-          auth={{
-            userInformation: {},
-          }}
-          category={{
-            isFetching: false,
-            items: [],
-          }}
+          userInformation={{}}
+          isFetching={false}
+          items={[]}
         />
         , ,
       </Provider>,
@@ -84,22 +80,6 @@ describe('Testing Item list component', () => {
     );
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('testing mapStateToProps', () => {
-    const state = {
-      auth: {
-        isLoggedIn: false,
-      },
-      category: {
-        categories: [],
-      },
-    };
-
-    const mappedState = mapStateToProps(state);
-
-    expect(mappedState.isLoggedIn).toEqual(false);
-    expect(mappedState.category.categories).toEqual([]);
   });
 
   it('testing mapDispatchToProps', () => {

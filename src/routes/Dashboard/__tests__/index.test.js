@@ -4,13 +4,7 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import renderer from 'react-test-renderer';
-import {
-  Dashboard,
-  mapDispatchToProps,
-  mapStateToProps,
-  ImageModal,
-  AddItemModal,
-} from '../';
+import { Dashboard, mapDispatchToProps, ImageModal, AddItemModal } from '../';
 
 describe('Testing dashboard route', () => {
   afterEach(cleanup);
@@ -28,14 +22,10 @@ describe('Testing dashboard route', () => {
     const { asFragment } = render(
       <Provider store={store}>
         <Dashboard
-          category={{
-            isFetching: false,
-            categories: [],
-          }}
+          isFetching={false}
+          categories={[]}
           fetchCategoryList={jest.fn()}
-          auth={{
-            isLoggedIn: false,
-          }}
+          isLoggedIn={false}
         />
         ,
       </Provider>,
@@ -49,13 +39,9 @@ describe('Testing dashboard route', () => {
     const tree = renderer.create(
       <Provider store={store}>
         <Dashboard
-          category={{
-            isFetching: false,
-            categories: [],
-          }}
-          auth={{
-            isLoggedIn: false,
-          }}
+          isFetching={false}
+          categories={[]}
+          isLoggedIn={false}
           fetchCategoryList={mockFetchingData}
         />
       </Provider>,
@@ -63,22 +49,6 @@ describe('Testing dashboard route', () => {
     tree.update();
 
     expect(mockFetchingData).toHaveBeenCalled();
-  });
-
-  it('testing mapStateToProps', () => {
-    const state = {
-      auth: {
-        isLoggedIn: false,
-      },
-      category: {
-        categories: [],
-      },
-    };
-
-    const mappedState = mapStateToProps(state);
-
-    expect(mappedState.isLoggedIn).toEqual(false);
-    expect(mappedState.category.categories).toEqual([]);
   });
 
   it('testing mapDispatchToProps', () => {

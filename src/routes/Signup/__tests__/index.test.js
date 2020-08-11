@@ -20,29 +20,14 @@ describe('Testing sign up route', () => {
 
   it('Should match snapshot', () => {
     const { asFragment } = render(
-      <Signup
-        auth={{
-          isLoggedIn: false,
-        }}
-        app={{
-          isLoading: false,
-        }}
-      />,
+      <Signup isLoggedIn={false} isLoading={false} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('Should navigate back to dashboard when user is not logged in', () => {
     const tree = renderer.create(
-      <Signup
-        auth={{
-          isLoggedIn: true,
-        }}
-        app={{
-          isLoading: false,
-        }}
-        history={history}
-      />,
+      <Signup isLoggedIn={true} isLoading={false} history={history} />,
     );
     tree.update();
     expect(pushFunction).toHaveBeenCalled();
@@ -73,18 +58,6 @@ describe('Testing sign up route', () => {
       .onClick();
 
     expect(pushToLogInPageFunc).toHaveBeenCalled();
-  });
-
-  it('Testing mapStateToProps', () => {
-    const state = {
-      auth: {
-        isLoggedIn: false,
-      },
-    };
-
-    const transformedState = mapStateToProps(state);
-
-    expect(transformedState.auth.isLoggedIn).toBe(false);
   });
 
   it('Testing mapDistpachToProps', () => {
