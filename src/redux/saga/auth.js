@@ -1,7 +1,7 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import _get from 'lodash/get';
-import AuthActions, { AuthTypes } from '../reducer/authReducer';
-import AppActions from '../reducer/appReducer';
+import AuthActions, { AuthTypes } from '../actions/auth';
+import AppActions from '../actions/app';
 import {
   signup as _signup,
   login as _login,

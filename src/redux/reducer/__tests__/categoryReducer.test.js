@@ -1,14 +1,15 @@
 import { createStore } from 'redux';
-import actions, { reducer } from '../categoryReducer';
+import categoryReducer from '../category';
+import categoryActions from '../../actions/category';
 import _isEqual from 'lodash/isEqual';
 
 describe('Testing category reducer', () => {
   it('Should update store based on specific action', () => {
-    const store = createStore(reducer);
-    store.dispatch(actions.setIsFetching(true));
-    store.dispatch(actions.setIsFetchingItem(true));
+    const store = createStore(categoryReducer);
+    store.dispatch(categoryActions.setIsFetching(true));
+    store.dispatch(categoryActions.setIsFetchingItem(true));
     store.dispatch(
-      actions.setItems([
+      categoryActions.setItems([
         {
           id: 1,
           name: 'Trung',
@@ -19,12 +20,12 @@ describe('Testing category reducer', () => {
         },
       ]),
     );
-    store.dispatch(actions.setCategories([2]));
-    store.dispatch(actions.setTotalCategory(3));
-    store.dispatch(actions.setTotalItem(2));
-    store.dispatch(actions.setCurrentItem({ name: 'Trung' }));
+    store.dispatch(categoryActions.setCategories([2]));
+    store.dispatch(categoryActions.setTotalCategory(3));
+    store.dispatch(categoryActions.setTotalItem(2));
+    store.dispatch(categoryActions.setCurrentItem({ name: 'Trung' }));
     store.dispatch(
-      actions.setItemDetail({
+      categoryActions.setItemDetail({
         id: 1,
         name: 'Alex',
       }),

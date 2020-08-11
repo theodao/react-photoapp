@@ -11,7 +11,7 @@ import ToastContent from '../../components/ToastContent';
 import Button from '../../components/Button';
 import { Fonts } from '../../themes';
 import { error } from '../../constants';
-import CategoryActions from '../../redux/reducer/categoryReducer';
+import CategoryActions from '../../redux/actions/category';
 import styles from './styles.module.scss';
 
 const { spacing } = Fonts;

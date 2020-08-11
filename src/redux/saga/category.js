@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import _get from 'lodash/get';
-import CategoryActions, { CategoryTypes } from '../reducer/categoryReducer';
-import AppActions from '../reducer/appReducer';
+import CategoryActions, { CategoryTypes } from '../actions/category';
+import AppActions from '../actions/app';
 import {
   getListCategories,
   getListItems,

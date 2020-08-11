@@ -100,20 +100,20 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
             class="Pagination u-marginNone u-paddingNone"
           >
             <li
-              class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-prev"
+              class="Pagination-item u-inlineBlock u-marginHorizontalTiny u-marginBottomExtraSmall Pagination-prev"
             >
               <span
                 class="u-block hover:u-textDecorationNone"
               >
                 <div
-                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone is-onlyIcon u-fontMedium"
                 >
                   <span
                     class="Button-icon u-inlineBlock"
                   >
                     <svg
                       aria-hidden="true"
-                      class=""
+                      class="u-textLight"
                       focusable="false"
                       height="16px"
                       style="display: inline-block; vertical-align: middle;"
@@ -131,7 +131,7 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
               </span>
             </li>
             <li
-              class="Pagination-item is-active u-inlineBlock u-marginHorizontalTiny"
+              class="Pagination-item is-active u-inlineBlock u-marginHorizontalTiny u-marginBottomExtraSmall"
             >
               <span
                 class="u-block hover:u-textDecorationNone"
@@ -144,20 +144,20 @@ exports[`Testing dashboard route Should match snapshot 1`] = `
               </span>
             </li>
             <li
-              class="Pagination-item u-inlineBlock u-marginHorizontalTiny Pagination-next"
+              class="Pagination-item u-inlineBlock u-marginHorizontalTiny u-marginBottomExtraSmall Pagination-next"
             >
               <span
                 class="u-block hover:u-textDecorationNone"
               >
                 <div
-                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone u-fontMedium"
+                  class="Button u-flexInline u-justifyContentCenter u-alignItemsCenter u-textDecorationNone u-roundedMedium u-textGray hover:u-textGray u-backgroundLightest hover:u-backgroundUltraLight u-border hover:u-textDecorationNone Button--small is-disabled u-cursorNotAllow u-pointerEventsNone is-onlyIcon u-fontMedium"
                 >
                   <span
                     class="Button-icon u-inlineBlock"
                   >
                     <svg
                       aria-hidden="true"
-                      class=""
+                      class="u-textLight"
                       focusable="false"
                       height="16px"
                       style="display: inline-block; vertical-align: middle;"

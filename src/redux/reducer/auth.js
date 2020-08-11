@@ -1,17 +1,6 @@
-import { createActions, createReducer } from 'reduxsauce';
+import { createReducer } from 'reduxsauce';
 import produce from 'immer';
-
-const { Types, Creators } = createActions({
-  setIsLoggedIn: ['payload'],
-  setUserToken: ['payload'],
-  setUserInformation: ['payload'],
-  login: ['payload'],
-  logout: ['payload'],
-  signup: ['payload'],
-});
-
-export const AuthTypes = Types;
-export default Creators;
+import { AuthTypes } from '../actions/auth';
 
 /** Initial State  */
 const INITIAL_STATE = {
@@ -37,8 +26,8 @@ const setUserInformation = (state, { payload: userInformation }) =>
   });
 
 /** Link Reducer to Action types  */
-export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_IS_LOGGED_IN]: setIsLoggedIn,
-  [Types.SET_USER_TOKEN]: setUserToken,
-  [Types.SET_USER_INFORMATION]: setUserInformation,
+export default createReducer(INITIAL_STATE, {
+  [AuthTypes.SET_IS_LOGGED_IN]: setIsLoggedIn,
+  [AuthTypes.SET_USER_TOKEN]: setUserToken,
+  [AuthTypes.SET_USER_INFORMATION]: setUserInformation,
 });

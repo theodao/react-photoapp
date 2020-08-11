@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import _get from 'lodash/get';
 import cx from 'classnames';
-import CategoryActions from '../../redux/reducer/categoryReducer';
+import CategoryActions from '../../redux/actions/category';
 import CardImage from '../../components/CardImage';
 import ToastContent from '../../components/ToastContent';
 import Empty from '../../components/Empty';

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
-import AuthActions from '../../redux/reducer/authReducer';
+import AuthActions from '../../redux/actions/auth';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';

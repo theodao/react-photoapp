@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Loader, TopMenu } from '@gotitinc/design-system';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import AuthActions from '../redux/reducer/authReducer';
+import AuthActions from '../redux/actions/auth';
 import Button from '../components/Button';
 
 export const MainLayout = ({

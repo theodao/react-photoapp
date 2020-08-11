@@ -15,7 +15,7 @@ import MainLayout from '../../Layout/MainLayout';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Empty from '../../components/Empty';
-import CategoryActions from '../../redux/reducer/categoryReducer';
+import CategoryActions from '../../redux/actions/category';
 import { error } from '../../constants';
 import { Fonts } from '../../themes';
 import styles from './styles.module.scss';

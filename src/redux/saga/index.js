@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects';
 
 /** All saga  */
-import authSaga from './authSaga';
-import categorySaga from './categorySaga';
+import authSaga from './auth';
+import categorySaga from './category';
 
 export default function* root() {
   yield all([...authSaga, ...categorySaga]);

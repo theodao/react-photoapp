@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import authReducer from './auth';
+import appReducer from './app';
+import categoryReducer from './category';
 
 export default combineReducers({
-  auth: require('./authReducer').reducer,
-  app: require('./appReducer').reducer,
-  category: require('./categoryReducer').reducer,
+  auth: authReducer,
+  app: appReducer,
+  category: categoryReducer,
 });

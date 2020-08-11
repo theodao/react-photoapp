@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { toast } from '@gotitinc/design-system';
 import ToastContent from '../../components/ToastContent';
-import AuthActions from '../../redux/reducer/authReducer';
+import AuthActions from '../../redux/actions/auth';
 import Spacing, { SpacingSizes } from '../../components/styled/Spacing';
 import Input from '../../components/Input';
 import Button from '../../components/Button';

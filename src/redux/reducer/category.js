@@ -1,26 +1,6 @@
-import { createActions, createReducer } from 'reduxsauce';
+import { createReducer } from 'reduxsauce';
 import produce from 'immer';
-
-const { Types, Creators } = createActions({
-  setCategories: ['payload'],
-  setTotalCategory: ['payload'],
-  setItems: ['payload'],
-  setTotalItem: ['payload'],
-  setIsFetching: ['payload'],
-  setIsFetchingItem: ['payload'],
-  setCurrentItem: ['payload'],
-  fetchCategories: ['payload'],
-  setItemDetail: ['payload'],
-  fetchItems: ['payload'],
-  fetchItemDetail: ['payload'],
-  addItem: ['payload'],
-  addCategory: ['payload'],
-  deleteItem: ['payload'],
-  updateItem: ['payload'],
-});
-
-export const CategoryTypes = Types;
-export default Creators;
+import { CategoryTypes } from '../actions/category';
 
 /** Initial State */
 const INITIAL_STATE = {
@@ -81,13 +61,13 @@ const setIsFetchingItem = (state, { payload: isFetchingItem }) =>
   });
 
 /** Link reducer to Action Types */
-export const reducer = createReducer(INITIAL_STATE, {
-  [Types.SET_CATEGORIES]: setCategories,
-  [Types.SET_ITEMS]: setItems,
-  [Types.SET_IS_FETCHING]: setIsFetching,
-  [Types.SET_IS_FETCHING_ITEM]: setIsFetchingItem,
-  [Types.SET_TOTAL_CATEGORY]: setTotalCategories,
-  [Types.SET_TOTAL_ITEM]: setTotalItems,
-  [Types.SET_CURRENT_ITEM]: setCurrentItem,
-  [Types.SET_ITEM_DETAIL]: setItemDetail,
+export default createReducer(INITIAL_STATE, {
+  [CategoryTypes.SET_CATEGORIES]: setCategories,
+  [CategoryTypes.SET_ITEMS]: setItems,
+  [CategoryTypes.SET_IS_FETCHING]: setIsFetching,
+  [CategoryTypes.SET_IS_FETCHING_ITEM]: setIsFetchingItem,
+  [CategoryTypes.SET_TOTAL_CATEGORY]: setTotalCategories,
+  [CategoryTypes.SET_TOTAL_ITEM]: setTotalItems,
+  [CategoryTypes.SET_CURRENT_ITEM]: setCurrentItem,
+  [CategoryTypes.SET_ITEM_DETAIL]: setItemDetail,
 });

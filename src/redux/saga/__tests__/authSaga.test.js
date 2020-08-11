@@ -1,7 +1,7 @@
 import { runSaga } from 'redux-saga';
 import Sinon from 'sinon';
 import CategoryAPI from '../../../services';
-import { login, logout, signup } from '../authSaga';
+import { login, logout, signup } from '../auth';
 
 describe('Testing auth saga', () => {
   it('Should login', async () => {

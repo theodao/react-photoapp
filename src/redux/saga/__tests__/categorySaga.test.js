@@ -8,7 +8,7 @@ import {
   deleteItem,
   updateItem,
   addCategory,
-} from '../categorySaga';
+} from '../category';
 import CategoryAPI from '../../../services';
 
 describe('Testing category saga', () => {
